@@ -1,0 +1,136 @@
+/* Calendar — Wave 5 */
+/* @brkta/ui-core/calendar/calendar.css */
+
+[data-brkta-calendar] {
+  display: inline-flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  background-color: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  width: 260px;
+  user-select: none;
+}
+
+[data-brkta-calendar-header] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+[data-brkta-calendar-title] {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+[data-brkta-calendar-nav] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-calendar-nav]:hover {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+[data-brkta-calendar-nav]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
+}
+
+[data-brkta-calendar-nav]:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+[data-brkta-calendar-grid] {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+  justify-items: center;
+}
+
+[data-brkta-calendar-weekday] {
+  padding: var(--space-1) 0;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  width: 32px;
+  line-height: 32px;
+}
+
+[data-brkta-calendar-day] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  font-size: 0.8125rem;
+  font-family: var(--font-sans);
+  color: var(--foreground);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+  margin: 0;
+  padding: 0;
+}
+
+[data-brkta-calendar-day]:hover:not([data-disabled]):not([data-selected]) {
+  background-color: var(--muted);
+}
+
+[data-brkta-calendar-day]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
+}
+
+[data-brkta-calendar-day][data-today] {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+[data-brkta-calendar-day][data-selected] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 600;
+}
+
+[data-brkta-calendar-day][data-selected][data-today] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 700;
+  box-shadow: inset 0 0 0 2px var(--primary-foreground);
+}
+
+[data-brkta-calendar-day][data-disabled] {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-calendar-day],
+  [data-brkta-calendar-nav] {
+    transition: none;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "./dist",
+  "assets": [],
+  "allowedNonPeerDependencies": [
+    "tslib",
+    "@brkta/ui-core",
+    "@brkta/design-tokens",
+    "@brkta/platform-core"
+  ],
+  "lib": {
+    "entryFile": "./src/public-api.ts"
+  }
+}

@@ -1,0 +1,293 @@
+/* Sidebar — Wave 4B */
+/* @brkta/ui-core/sidebar/sidebar.css */
+
+[data-brkta-sidebar] {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+  border-inline-end: 1px solid var(--border);
+  background-color: var(--surface);
+  transition: width var(--duration-normal) var(--ease-out);
+  width: 260px;
+  overflow: hidden;
+}
+
+[data-brkta-sidebar][data-collapsed] {
+  width: 64px;
+}
+
+/* Embedded: size to the containing layout rather than the viewport shell. */
+[data-brkta-sidebar][data-variant="embedded"] {
+  inline-size: 100%;
+  max-inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 0;
+
+  /* Physical fallbacks for engines without logical sizing support. */
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 0;
+
+  background-color: transparent;
+  box-shadow: none;
+  border-inline-end: 0;
+}
+
+/* Keep the compact rail behavior available when an embedded sidebar collapses. */
+[data-brkta-sidebar][data-variant="embedded"][data-collapsed] {
+  inline-size: 64px;
+  width: 64px;
+}
+
+[data-brkta-sidebar-header] {
+  display: flex;
+  align-items: center;
+  padding: var(--space-4) var(--space-3);
+  border-bottom: 1px solid var(--border);
+  min-height: 56px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  gap: var(--space-2);
+}
+
+[data-brkta-sidebar][data-variant="embedded"] [data-brkta-sidebar-header] {
+  border-block-end: 0;
+  border-bottom: 0;
+}
+
+[data-brkta-sidebar][data-variant="embedded"][data-collapsed] [data-brkta-sidebar-header] {
+  gap: 0;
+  padding-inline: var(--space-2);
+}
+
+[data-brkta-sidebar][data-collapsed] [data-brkta-sidebar-header] {
+  justify-content: center;
+  padding: var(--space-4) var(--space-2);
+}
+
+[data-brkta-sidebar][data-collapsed] [data-brkta-sidebar-header-label] {
+  display: none;
+}
+
+[data-brkta-sidebar-nav] {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+[data-brkta-sidebar-item] {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+  min-height: 40px;
+  gap: var(--space-3);
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: start;
+  font-family: var(--font-sans);
+  /* Required by the hover fill below: the circle is absolutely positioned inside and
+     must be clipped to the item's rounded shape. */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Sidebar items share the Button's hover fill, expanding from where the pointer
+ * entered. Same origin variables, so the component sets them the same way. */
+[data-brkta-sidebar-item]::before {
+  position: absolute;
+  z-index: 0;
+  inset-block-start: var(--brkta-sidebar-fill-y, 50%);
+  inset-inline-start: var(--brkta-sidebar-fill-x, 50%);
+  /* Large enough that a circle centred on either edge still reaches the far one. A
+     diameter merely equal to the item's width leaves a corner unfilled when the pointer
+     enters at the end of a wide row. */
+  inline-size: var(--brkta-sidebar-fill-size, 640px);
+  block-size: var(--brkta-sidebar-fill-size, 640px);
+  content: "";
+  border-radius: 50%;
+  background: var(--navigation-active);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+/* The label and icon ride above the fill. */
+[data-brkta-sidebar-item] > * {
+  position: relative;
+  z-index: 1;
+}
+
+[data-brkta-sidebar-item]:not([data-disabled]):hover::before,
+[data-brkta-sidebar-item]:not([data-disabled]):focus-visible::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-sidebar-item]::before {
+    transition: none;
+  }
+}
+
+/*
+ * Hover and active are both accent, separated by strength rather than hue: hover is the
+ * solid accent under the pointer, active is a lighter wash that persists. Using the same
+ * value for both left a user unable to tell the page they are on from the row they are
+ * pointing at.
+ */
+/* No background-color here: the fill circle paints the accent. Setting both would make
+   the item accent before the fill arrived, and the animation would be invisible. */
+[data-brkta-sidebar-item]:hover,
+[data-brkta-sidebar-item]:focus-visible {
+  color: var(--navigation-active-foreground);
+}
+
+/* Selected destinations use the solid navigation role so the current submenu is clear. */
+[data-brkta-sidebar-item][data-active] {
+  background-color: var(--navigation-active);
+  color: var(--navigation-active-foreground);
+  font-weight: 600;
+}
+
+[data-brkta-sidebar-item][data-disabled] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+[data-brkta-sidebar-item]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
+}
+
+/* Collapsed: only show icon, hide label and badge */
+[data-brkta-sidebar][data-collapsed] [data-brkta-sidebar-item] {
+  justify-content: center;
+  padding: var(--space-2);
+}
+
+[data-brkta-sidebar][data-collapsed] [data-brkta-sidebar-item-label] {
+  display: none;
+}
+
+[data-brkta-sidebar][data-collapsed] [data-brkta-sidebar-item-badge] {
+  display: none;
+}
+
+[data-brkta-sidebar-item-icon] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+[data-brkta-sidebar-item-label] {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-brkta-sidebar-item-badge] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+[data-brkta-sidebar-item][data-active] [data-brkta-sidebar-item-badge] {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+[data-brkta-sidebar-footer] {
+  padding: var(--space-3);
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+[data-brkta-sidebar][data-collapsed] [data-brkta-sidebar-footer] {
+  text-align: center;
+  padding: var(--space-3) var(--space-2);
+}
+
+/* Collapse toggle button */
+[data-brkta-sidebar-toggle] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  flex-shrink: 0;
+  margin-inline-start: auto;
+}
+
+/* The collapse control is chrome, not a destination. It keeps a surface change on hover
+   so it still feels interactive, but its icon colour stays put — a recolouring icon here
+   read as a state change on a button that only folds the panel. */
+[data-brkta-sidebar-toggle]:hover {
+  color: inherit;
+  background-color: var(--muted);
+}
+
+[data-brkta-sidebar-toggle]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+[data-brkta-sidebar][data-variant="embedded"] [data-brkta-sidebar-toggle] {
+  /* Physical fallbacks for engines without logical sizing support. */
+  width: var(--height-md);
+  height: var(--height-md);
+  max-width: 100%;
+
+  inline-size: var(--height-md);
+  block-size: var(--height-md);
+  max-inline-size: 100%;
+  border: 0;
+  flex: 0 1 auto;
+}
+
+[data-brkta-sidebar][data-collapsed] [data-brkta-sidebar-toggle] {
+  margin: 0 auto;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-sidebar] {
+    transition: none;
+  }
+}

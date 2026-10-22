@@ -1,0 +1,12 @@
+/* ======================================================================
+ * field-description.css — BRKTA Field Description visual recipe
+ *
+ * Longer description text above or below a field.
+ * Targeting: [data-brkta-field-description] attribute selector
+ * ====================================================================== */
+
+[data-brkta-field-description] {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+}

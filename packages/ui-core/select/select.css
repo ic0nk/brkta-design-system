@@ -1,0 +1,346 @@
+/* ======================================================================
+ * select.css — BRKTA Custom Select visual recipe
+ *
+ * Custom-designed dropdown that replaces unstyled browser-native <option>
+ * menus with a warm-cream BRKTA-branded alternative.
+ *
+ * This is the STANDARD select for BRKTA product UI.
+ * NativeSelect is a restricted/browser-native exception only.
+ *
+ * Targeting data attributes:
+ *   [data-brkta-select]             — wrapper (relative positioning anchor)
+ *   [data-brkta-select][data-open]  — wrapper when dropdown is visible
+ *   [data-brkta-select-trigger]     — clickable trigger button
+ *   [data-brkta-select-value]       — selected value text
+ *   [data-brkta-select-icon]        — chevron icon
+ *   [data-brkta-select-content]     — dropdown menu container
+ *   [data-brkta-select-option]      — individual option
+ * ====================================================================== */
+
+/* ---- Wrapper ---- */
+
+[data-brkta-select] {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Lift wrapper stacking context when open so dropdown is above subsequent siblings */
+[data-brkta-select][data-open] {
+  z-index: var(--z-dropdown);
+}
+
+/* ---- Trigger ---- */
+
+[data-brkta-select-trigger] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  outline: none;
+  text-align: start;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    border-radius var(--duration-fast) var(--ease-out);
+  user-select: none;
+  position: relative;
+}
+
+[data-brkta-select-trigger]:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+}
+
+/* Open trigger — flatter bottom corners to connect with dropdown */
+[data-brkta-select][data-open] [data-brkta-select-trigger] {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-sm) var(--radius-sm);
+}
+
+[data-brkta-select][data-open] [data-brkta-select-trigger][data-variant="filled"] {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+[data-brkta-select][data-open] [data-brkta-select-trigger][data-variant="ghost"] {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+/* ---- Trigger variants ---- */
+
+[data-brkta-select-trigger][data-variant="default"] {
+  background-color: var(--background);
+  border-color: var(--input);
+}
+
+[data-brkta-select-trigger][data-variant="filled"] {
+  background-color: var(--muted);
+  border-color: transparent;
+}
+
+[data-brkta-select-trigger][data-variant="ghost"] {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+[data-brkta-select-trigger][data-variant="default"]:hover {
+  border-color: var(--foreground);
+}
+
+[data-brkta-select-trigger][data-variant="filled"]:hover {
+  background-color: color-mix(in oklch, var(--muted), var(--foreground) 5%);
+}
+
+[data-brkta-select-trigger][data-variant="ghost"]:hover {
+  background-color: var(--muted);
+}
+
+[data-brkta-select-trigger][data-variant="filled"]:focus-visible {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+[data-brkta-select-trigger][data-variant="ghost"]:focus-visible {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+/* ---- Trigger sizes ---- */
+
+[data-brkta-select-trigger][data-size="sm"] {
+  padding-inline: 0.5rem;
+  height: 2rem;
+  font-size: var(--font-size-xs);
+  line-height: 1.25rem;
+}
+
+[data-brkta-select-trigger][data-size="md"] {
+  padding-inline: 0.75rem;
+  height: 2.75rem;
+  font-size: var(--font-size-sm);
+  line-height: 1.5rem;
+}
+
+[data-brkta-select-trigger][data-size="lg"] {
+  padding-inline: 1rem;
+  height: 3.5rem;
+  font-size: var(--font-size-base);
+  line-height: 1.75rem;
+}
+
+/* ---- Trigger disabled ---- */
+
+[data-brkta-select-trigger][data-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---- Trigger invalid ---- */
+
+[data-brkta-select-trigger][data-invalid="true"] {
+  border-color: var(--destructive);
+}
+
+[data-brkta-select-trigger][data-invalid="true"]:focus-visible,
+[data-brkta-select][data-open] [data-brkta-select-trigger][data-invalid="true"] {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 2px var(--destructive), 0 0 0 4px var(--background);
+}
+
+/* ---- Value text ---- */
+
+[data-brkta-select-value] {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-brkta-select-value][data-placeholder] {
+  color: var(--muted-foreground);
+}
+
+/* ---- Chevron icon ---- */
+
+[data-brkta-select-icon] {
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+/* Arrow — subtle move on hover (only when not open) */
+[data-brkta-select-trigger]:hover [data-brkta-select-icon] {
+  transform: translateY(1px);
+}
+
+[data-brkta-select][data-open] [data-brkta-select-trigger]:hover [data-brkta-select-icon] {
+  transform: rotate(180deg);
+}
+
+/* Arrow — rotate when open */
+[data-brkta-select][data-open] [data-brkta-select-icon] {
+  transform: rotate(180deg);
+  color: var(--foreground);
+}
+
+/* ---- Dropdown content ---- */
+
+[data-brkta-select-content] {
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+  width: 100%;
+  min-width: max-content;
+  background-color: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm) var(--radius-sm) var(--radius-lg) var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  z-index: 1;
+  overflow: hidden;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  transform-origin: top center;
+  animation: brkta-select-open var(--duration-fast) var(--ease-out) both;
+}
+
+/* Close animation */
+[data-brkta-select-content][data-closing] {
+  animation: brkta-select-close var(--duration-fast) var(--ease-out) both;
+  pointer-events: none;
+}
+
+/* Open animation */
+@keyframes brkta-select-open {
+  from {
+    opacity: 0;
+    transform: scaleY(0.95) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+/* Close animation — reverse into trigger */
+@keyframes brkta-select-close {
+  from {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scaleY(0.95) translateY(-4px);
+  }
+}
+
+/* Match content border to trigger border when open */
+[data-brkta-select][data-open] [data-brkta-select-content]:not([data-closing]) {
+  border-color: var(--ring);
+}
+
+/* ---- Dropdown option ---- */
+
+[data-brkta-select-option] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: var(--radius-md);
+  cursor: default;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--foreground);
+  transition: background-color var(--duration-fast) var(--ease-out);
+  user-select: none;
+}
+
+[data-brkta-select-trigger][data-size="sm"] ~ [data-brkta-select-content] [data-brkta-select-option] {
+  font-size: var(--font-size-xs);
+  padding: 0.25rem 0.375rem;
+}
+
+[data-brkta-select-trigger][data-size="lg"] ~ [data-brkta-select-content] [data-brkta-select-option] {
+  font-size: var(--font-size-base);
+  padding: 0.5rem 0.75rem;
+}
+
+/* Option hover */
+[data-brkta-select-option]:hover:not([data-disabled="true"]) {
+  background-color: var(--muted);
+}
+
+/* Option keyboard-active */
+[data-brkta-select-option][data-active="true"]:not([data-disabled="true"]) {
+  background-color: var(--muted);
+  outline: none;
+}
+
+/* Option selected */
+[data-brkta-select-option][data-selected="true"] {
+  font-weight: var(--font-weight-medium);
+}
+
+[data-brkta-select-option][data-selected="true"]::after {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  background-color: var(--primary);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+/* Option disabled */
+[data-brkta-select-option][data-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---- Scroll viewport (for many options) ---- */
+
+[data-brkta-select-content][data-scrollable] {
+  max-height: 15rem;
+  overflow-y: auto;
+}
+
+/* ---- Reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-select-content] {
+    animation: none;
+  }
+
+  [data-brkta-select-content][data-closing] {
+    animation: none;
+  }
+
+  [data-brkta-select-icon] {
+    transition: none;
+  }
+
+  [data-brkta-select-trigger] {
+    transition: none;
+  }
+}

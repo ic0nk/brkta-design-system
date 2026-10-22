@@ -1,0 +1,6 @@
+/* Toggle — Wave 7B */
+[data-brkta-toggle] { display: inline-flex; align-items: center; justify-content: center; padding: var(--space-2) var(--space-3); border-radius: var(--radius-md); border: 1px solid var(--border); background: var(--card); color: var(--muted-foreground); font-size: 0.875rem; cursor: pointer; transition: all var(--duration-fast) var(--ease-out); font-family: var(--font-sans); min-height: 36px; }
+[data-brkta-toggle]:hover { background: var(--muted); color: var(--foreground); }
+[data-brkta-toggle][data-pressed] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+[data-brkta-toggle][data-disabled] { opacity: 0.4; pointer-events: none; }
+[data-brkta-toggle]:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }

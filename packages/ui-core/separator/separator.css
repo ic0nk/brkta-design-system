@@ -1,0 +1,25 @@
+/* ======================================================================
+ * separator.css — BRKTA Separator visual recipe
+ *
+ * A visual divider between sections. Can be horizontal (full width)
+ * or vertical (full height).
+ * Targeting: [data-brkta-separator] attribute selector
+ * ====================================================================== */
+
+[data-brkta-separator] {
+  flex-shrink: 0;
+  background-color: var(--border);
+  border: none;
+  margin: 0;
+}
+
+[data-brkta-separator][data-orientation="horizontal"] {
+  width: 100%;
+  height: 1px;
+}
+
+[data-brkta-separator][data-orientation="vertical"] {
+  width: 1px;
+  height: 100%;
+  align-self: stretch;
+}

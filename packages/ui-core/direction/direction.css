@@ -1,0 +1,3 @@
+/* Direction — Wave 7B */
+[data-brkta-direction] { border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-4); min-height: 60px; }
+[data-brkta-direction][data-dir="rtl"] { direction: rtl; text-align: right; }

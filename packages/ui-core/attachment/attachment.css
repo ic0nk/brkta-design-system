@@ -1,0 +1,11 @@
+/* Attachment — Wave 7A */
+[data-brkta-attachment] { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--card); max-width: 320px; }
+[data-brkta-attachment-icon] { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--muted); color: var(--muted-foreground); flex-shrink: 0; font-size: 0.75rem; font-weight: 600; }
+[data-brkta-attachment-info] { flex: 1; min-width: 0; }
+[data-brkta-attachment-name] { font-size: 0.8125rem; font-weight: 600; color: var(--foreground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+[data-brkta-attachment-meta] { font-size: 0.6875rem; color: var(--muted-foreground); margin-top: 2px; }
+[data-brkta-attachment-actions] { display: flex; gap: var(--space-1); }
+[data-brkta-attachment][data-status="uploading"] [data-brkta-attachment-icon] { background: var(--information); color: var(--information-foreground); }
+[data-brkta-attachment][data-status="success"] [data-brkta-attachment-icon] { background: var(--success); color: var(--success-foreground); }
+[data-brkta-attachment][data-status="error"] { border-color: var(--destructive); }
+[data-brkta-attachment][data-status="error"] [data-brkta-attachment-icon] { background: var(--destructive); color: var(--destructive-foreground); }

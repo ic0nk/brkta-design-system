@@ -1,0 +1,201 @@
+/*
+ * BRKTA — Glass Effects
+ * ========================================================================
+ *
+ * Frosted-glass / blur-backdrop recipes used consistently across the
+ * Angular dashboard and Next.js website.
+ *
+ * ── Design Principles ─────────────────────────────────────────────────
+ * - All glass surfaces use `color-mix()` so they automatically adapt
+ *   to the active theme (light or dark).
+ * - No `!important` — specificity is managed through class nesting.
+ * - Backdrop blur is GPU-accelerated where supported.
+ *
+ * ── Usage ─────────────────────────────────────────────────────────────
+ *   <div class="glass-card">…</div>
+ *   <div class="glass-elevated">…</div>
+ *
+ * ── Browser Support ───────────────────────────────────────────────────
+ * `backdrop-filter` is supported in all modern browsers.
+ * Fallback: semi-transparent background colour without blur.
+ *
+ * ========================================================================
+ */
+
+/*
+ * Base glass mixin (not a utility class — used by the recipes below).
+ * Uses `color-mix` to blend the current surface colour with transparency.
+ */
+@layer utilities {
+  /*
+   * Glass Card
+   * ----------
+   * Standard frosted card for dashboards, metric tiles, etc.
+   */
+  .glass-card {
+    background-color: color-mix(in oklch, var(--surface) 60%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid color-mix(in oklch, var(--border) 40%, transparent);
+  }
+
+  /*
+   * Glass Elevated
+   * --------------
+   * Stronger blur for modals, popovers, and floating panels.
+   */
+  .glass-elevated,
+  [data-brkta-button][data-appearance="glass"] {
+    --brkta-glass-elevated-background: color-mix(
+      in oklch,
+      var(--surface) 70%,
+      transparent
+    );
+    --brkta-glass-elevated-backdrop-filter: blur(24px);
+    --brkta-glass-elevated-border-color: color-mix(
+      in oklch,
+      var(--border) 50%,
+      transparent
+    );
+    background-color: var(--brkta-glass-elevated-background);
+    backdrop-filter: var(--brkta-glass-elevated-backdrop-filter);
+    -webkit-backdrop-filter: var(--brkta-glass-elevated-backdrop-filter);
+    border: 1px solid var(--brkta-glass-elevated-border-color);
+  }
+
+  /*
+   * Glass Surface
+   * -------------
+   * Subtle blur for tables, section headers, and secondary panels.
+   */
+  .glass-surface {
+    background-color: color-mix(in oklch, var(--surface) 40%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in oklch, var(--border) 20%, transparent);
+  }
+
+  /*
+   * Glass Nav Pill
+   * --------------
+   * Navigation pill / tab style used in top navigation bars.
+   */
+  .glass-nav-pill {
+    background-color: color-mix(in oklch, var(--accent) 15%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in oklch, var(--accent) 20%, transparent);
+    color: var(--foreground);
+  }
+
+  /*
+   * Glass Nav Menu
+   * --------------
+   * Dropdown / flyout menu background with glass effect.
+   */
+  .glass-nav-menu {
+    background-color: color-mix(in oklch, var(--popover) 75%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+  }
+
+  /*
+   * Glass Nav Item
+   * --------------
+   * Default navigation item state.
+   */
+  .glass-nav-item {
+    background-color: transparent;
+    color: var(--muted-foreground);
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
+  }
+
+  /*
+   * Glass Nav Item Hover / Active
+   * -----------------------------
+   * Navigation item hover and active state.
+   */
+  .glass-nav-item:hover,
+  .glass-nav-item:focus-visible {
+    background-color: color-mix(in oklch, var(--accent) 12%, transparent);
+    color: var(--foreground);
+  }
+
+  /*
+   * Glass Nav Item Active (selected)
+   * --------------------------------
+   * Currently selected navigation item.
+   */
+  .glass-nav-item-active {
+    background-color: color-mix(in oklch, var(--accent) 18%, transparent);
+    color: var(--accent-foreground);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /*
+   * Glass Nav Subitem
+   * -----------------
+   * Second-level navigation item.
+   */
+  .glass-nav-subitem {
+    background-color: transparent;
+    color: var(--muted-foreground);
+    padding-left: 1rem;
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out);
+  }
+
+  .glass-nav-subitem:hover,
+  .glass-nav-subitem:focus-visible {
+    background-color: color-mix(in oklch, var(--accent) 10%, transparent);
+    color: var(--foreground);
+  }
+
+  /*
+   * Glass Nav Subitem Active (selected)
+   * -----------------------------------
+   * Currently selected second-level navigation item.
+   */
+  .glass-nav-subitem-active {
+    background-color: color-mix(in oklch, var(--accent) 14%, transparent);
+    color: var(--accent-foreground);
+    border-left: 2px solid var(--accent);
+  }
+}
+
+/*
+ * Reduced Transparency
+ * ========================================================================
+ * Respect user preference for reduced transparency by removing backdrop
+ * blur and making glass surfaces more opaque for readability.
+ */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-card,
+  .glass-elevated,
+  [data-brkta-button][data-appearance="glass"],
+  .glass-surface,
+  .glass-nav-pill,
+  .glass-nav-menu {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: var(--surface);
+  }
+
+  .glass-elevated,
+  [data-brkta-button][data-appearance="glass"] {
+    --brkta-glass-elevated-background: var(--surface);
+    --brkta-glass-elevated-backdrop-filter: none;
+    --brkta-glass-elevated-border-color: var(--border);
+  }
+
+  .glass-nav-item-active,
+  .glass-nav-subitem-active {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

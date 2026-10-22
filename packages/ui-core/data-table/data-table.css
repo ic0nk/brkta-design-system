@@ -1,0 +1,29 @@
+/* Data Table — Wave 6 */
+[data-brkta-data-table] { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+[data-brkta-data-table] thead {
+  background-color: var(--table-header);
+  border-bottom: 2px solid var(--border);
+}
+[data-brkta-data-table] th {
+  padding: var(--space-3); text-align: left; font-weight: 600; color: var(--muted-foreground);
+  font-size: 0.8125rem; cursor: default; user-select: none; white-space: nowrap; vertical-align: middle;
+}
+[data-brkta-data-table] th[data-sortable] { cursor: pointer; }
+[data-brkta-data-table] th[data-sortable]:hover { color: var(--foreground); }
+[data-brkta-data-table] th[aria-sort] { color: var(--foreground); }
+[data-brkta-data-table] td { padding: var(--space-3); border-bottom: 1px solid var(--divider); color: var(--foreground); vertical-align: middle; }
+[data-brkta-data-table] th[data-brkta-data-table-actions-heading], [data-brkta-data-table] td[data-brkta-data-table-actions] { text-align: end; }
+[data-brkta-data-table-actions] { white-space: nowrap; }
+[data-brkta-data-table-action-list] { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: var(--space-2); }
+[data-brkta-data-table] tr:hover td { background-color: var(--muted); }
+/* Subtle selected row using --muted token */
+[data-brkta-data-table] tr[data-selected] td { background-color: var(--muted); color: var(--foreground); }
+[data-brkta-data-table][data-dense] th, [data-brkta-data-table][data-dense] td { padding: var(--space-2) var(--space-3); font-size: 0.8125rem; }
+[data-brkta-data-table-empty] { padding: var(--space-8); text-align: center; color: var(--muted-foreground); }
+[data-brkta-data-table-loading] { padding: var(--space-8); text-align: center; color: var(--muted-foreground); }
+[data-brkta-data-table-status] { display: inline-flex; align-items: center; gap: var(--space-1); font-size: 0.8125rem; }
+[data-brkta-data-table-status-dot] { width: 6px; height: 6px; border-radius: var(--radius-full); flex-shrink: 0; }
+[data-brkta-data-table-status-dot][data-status="active"] { background-color: var(--success); }
+[data-brkta-data-table-status-dot][data-status="inactive"] { background-color: var(--muted-foreground); }
+[data-brkta-data-table-status-dot][data-status="warning"] { background-color: var(--warning); }
+@media (prefers-reduced-motion: reduce) { [data-brkta-data-table] * { transition: none; } }

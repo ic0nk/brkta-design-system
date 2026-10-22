@@ -1,0 +1,50 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "brkta-ui-angular": {
+      "projectType": "library",
+      "root": ".",
+      "sourceRoot": "src",
+      "prefix": "brkta",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "ng-package.json"
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "tsConfig": ".storybook/tsconfig.json",
+            "configDir": ".storybook",
+            "compodoc": false,
+            "styles": [
+              "@brkta/design-tokens/theme.css",
+              "@brkta/design-tokens/base.css",
+              "@brkta/design-tokens/glass.css",
+              "@brkta/ui-core/styles/components.css"
+            ]
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "tsConfig": ".storybook/tsconfig.json",
+            "configDir": ".storybook",
+            "outputDir": "storybook-static",
+            "compodoc": false,
+            "styles": [
+              "@brkta/design-tokens/theme.css",
+              "@brkta/design-tokens/base.css",
+              "@brkta/design-tokens/glass.css",
+              "@brkta/ui-core/styles/components.css"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "@brkta/design-tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "theme.css",
+  "scripts": {
+    "build": "echo 'design-tokens: CSS-only, no compilation required'",
+    "validate:contrast": "node scripts/validate-contrast.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "exports": {
+    "./fonts.css": "./fonts.css",
+    "./theme.css": "./theme.css",
+    "./base.css": "./base.css",
+    "./glass.css": "./glass.css",
+    "./*": "./*"
+  },
+  "devDependencies": {
+    "culori": "^4.0.2"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@fontsource-variable/noto-sans-arabic": "^5.3.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ic0nk/brkta-design-system.git",
+    "directory": "packages/design-tokens"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "*.css",
+    "fonts/**",
+    "scripts/validate-contrast.mjs"
+  ]
+}

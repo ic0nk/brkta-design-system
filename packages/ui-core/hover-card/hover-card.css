@@ -1,0 +1,30 @@
+/* Hover Card — Wave 7C */
+[data-brkta-hover-card] { position: relative; display: inline-block; }
+[data-brkta-hover-card-trigger] { cursor: pointer; display: inline-flex; }
+[data-brkta-hover-card-content] {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 16rem;
+  max-width: 22rem;
+  background: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-4);
+  z-index: var(--z-popover);
+  font-family: var(--font-sans);
+  color: var(--foreground);
+  animation: brkta-overlay-in var(--duration-fast) var(--ease-out) both;
+  transform-origin: top left;
+}
+[data-brkta-hover-card-content][data-side="bottom"] { top: calc(100% + 0.5rem); }
+[data-brkta-hover-card-content][data-side="top"] { bottom: calc(100% + 0.5rem); top: auto; }
+[data-brkta-hover-card-content][data-closing] {
+  animation: brkta-overlay-out var(--duration-fast) var(--ease-out) both;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-hover-card-content] { animation: none; }
+  [data-brkta-hover-card-content][data-closing] { animation: none; }
+}

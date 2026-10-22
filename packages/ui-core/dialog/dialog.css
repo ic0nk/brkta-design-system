@@ -1,0 +1,115 @@
+/* ======================================================================
+ * dialog.css — BRKTA Dialog (modal) visual recipe
+ *
+ * Modal overlay + centered content panel.
+ * ====================================================================== */
+
+[data-brkta-dialog-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: oklch(0.2042 0.0079 95.4 / 0.4);
+  animation: brkta-fade-in var(--duration-fast) var(--ease-out);
+  padding: 1rem;
+}
+
+[data-brkta-dialog-overlay][data-closing] {
+  animation: brkta-fade-out var(--duration-fast) var(--ease-out) both;
+  pointer-events: none;
+}
+
+[data-brkta-dialog-content] {
+  position: relative;
+  z-index: var(--z-modal);
+  width: 100%;
+  max-width: 32rem;
+  max-height: 85vh;
+  overflow-y: auto;
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 1.5rem;
+  font-family: var(--font-sans);
+  color: var(--foreground);
+  animation: brkta-dialog-in var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-dialog-content][data-closing] {
+  animation: brkta-dialog-out var(--duration-fast) var(--ease-out) both;
+}
+
+[data-brkta-dialog-header] {
+  margin-bottom: 1rem;
+}
+
+[data-brkta-dialog-title] {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+}
+
+[data-brkta-dialog-description] {
+  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--muted-foreground);
+}
+
+[data-brkta-dialog-footer] {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+[data-brkta-dialog-close] {
+  position: absolute;
+  inset-block-start: 0.75rem;
+  inset-inline-end: 0.75rem;
+  min-inline-size: var(--height-md);
+  min-block-size: var(--height-md);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted-foreground);
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-brkta-dialog-close]:hover {
+  color: var(--foreground);
+  background-color: var(--muted);
+}
+
+@keyframes brkta-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes brkta-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes brkta-dialog-in {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes brkta-dialog-out {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to   { opacity: 0; transform: scale(0.95) translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-dialog-overlay],
+  [data-brkta-dialog-content] { animation: none; }
+  [data-brkta-dialog-overlay][data-closing],
+  [data-brkta-dialog-content][data-closing] { animation: none; }
+}

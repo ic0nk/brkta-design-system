@@ -1,0 +1,7 @@
+/* Input Group — Wave 7B */
+[data-brkta-input-group] { display: flex; align-items: center; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--card); overflow: hidden; transition: border-color var(--duration-fast) var(--ease-out); }
+[data-brkta-input-group]:focus-within { border-color: var(--ring); box-shadow: 0 0 0 1px var(--ring); }
+[data-brkta-input-group] [data-brkta-input] { border: none; box-shadow: none; border-radius: 0; flex: 1; min-width: 0; }
+[data-brkta-input-group-addon] { display: flex; align-items: center; padding: 0 var(--space-3); color: var(--muted-foreground); font-size: 0.875rem; white-space: nowrap; }
+[data-brkta-input-group][data-disabled] { opacity: var(--opacity-disabled); pointer-events: none; }
+[data-brkta-input-group][data-invalid] { border-color: var(--destructive); }

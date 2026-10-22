@@ -1,0 +1,27 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'brkta-animated-bar-chart',
+  standalone: true,
+  template: `
+    <svg
+      class="brkta-icon-motion brkta-icon-motion-bar-chart"
+      [attr.width]="size"
+      [attr.height]="size"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="12" y1="20" x2="12" y2="10" />
+      <line x1="18" y1="20" x2="18" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="16" />
+    </svg>
+  `,
+})
+export class AnimatedBarChartComponent {
+  @Input() size = 20;
+}

@@ -1,0 +1,14 @@
+/* ======================================================================
+ * alert-dialog.css — BRKTA Alert Dialog visual recipe
+ *
+ * Uses dialog.css overlay + content structure. Adds destructive styling.
+ * ====================================================================== */
+
+[data-brkta-alert-dialog] [data-brkta-dialog-content] {
+  border-color: var(--destructive);
+  border-width: 2px;
+}
+
+[data-brkta-alert-dialog][data-destructive="true"] [data-brkta-dialog-content] {
+  border-color: var(--destructive);
+}

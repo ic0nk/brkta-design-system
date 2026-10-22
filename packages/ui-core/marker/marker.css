@@ -1,0 +1,10 @@
+/* Marker — Wave 7A */
+[data-brkta-marker] { display: inline-flex; align-items: center; gap: var(--space-1); font-size: 0.75rem; }
+[data-brkta-marker-dot] { width: 6px; height: 6px; border-radius: var(--radius-full); flex-shrink: 0; }
+[data-brkta-marker-dot][data-variant="default"] { background-color: var(--muted-foreground); }
+[data-brkta-marker-dot][data-variant="success"] { background-color: var(--success); }
+[data-brkta-marker-dot][data-variant="warning"] { background-color: var(--warning); }
+[data-brkta-marker-dot][data-variant="destructive"] { background-color: var(--destructive); }
+[data-brkta-marker-dot][data-variant="info"] { background-color: var(--information); }
+[data-brkta-marker][data-size="lg"] [data-brkta-marker-dot] { width: 10px; height: 10px; }
+[data-brkta-marker][data-size="lg"] { font-size: 0.875rem; }

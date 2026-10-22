@@ -1,0 +1,48 @@
+export const SUPPORTED_ICON_NAMES = [
+  'arrow-right',
+  'arrow-left',
+  'locate',
+  'plus',
+  'search',
+  'settings',
+  'bell',
+  'message-circle',
+  'inbox',
+  'copy',
+  'send',
+  'check',
+  'save',
+  'pen',
+  'trash',
+  'eye',
+  'eye-off',
+  'sun',
+  'moon',
+  'monitor',
+  'package',
+  'log-out',
+  'building-2',
+  'users',
+  'panel-left',
+  'dashboard',
+  'shopping-cart',
+  'bar-chart',
+  'paperclip',
+  'upload',
+  'calculator',
+  'palette',
+  'list-filter',
+  'history',
+  'file-text',
+  'credit-card',
+  'book-open',
+  'bar-chart-3',
+  'sparkles',
+  'scissors',
+] as const;
+
+export type SupportedIconName = (typeof SUPPORTED_ICON_NAMES)[number];
+
+export function isSupportedIconName(icon: unknown): icon is SupportedIconName {
+  return typeof icon === 'string' && (SUPPORTED_ICON_NAMES as readonly string[]).includes(icon);
+}

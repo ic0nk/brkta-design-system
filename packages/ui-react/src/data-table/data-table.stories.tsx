@@ -1,0 +1,14 @@
+import type { Meta, StoryObj } from '@storybook/react'; import { DataTable } from './data-table';
+import { Badge } from '../badge/badge';
+const meta={title:'Components/DataTable',component:DataTable,tags:['autodocs']} as Meta;export default meta;type Story=StoryObj<typeof DataTable>;
+const cols=[{key:'name',label:'Name',sortable:true},{key:'role',label:'Role'},{key:'status',label:'Status'}];
+const rows=[{name:'Alice Chen',role:'Admin',status:'Active'},{name:'Bob Smith',role:'Editor',status:'Active'},{name:'Carol Lee',role:'Viewer',status:'Inactive'}];
+export const Default:Story={args:{columns:cols,rows}};
+export const CellTemplates:Story={args:{columns:cols,rows,cellTemplates:{status:({value})=><Badge>{String(value)}</Badge>}}};
+export const HeaderSurface:Story={args:{columns:cols,rows},parameters:{docs:{description:{story:'The shared table recipe gives the header a distinct semantic muted surface in light and dark themes.'}}}};
+export const Sortable:Story={args:{columns:cols,rows,sortColumn:'name',sortDirection:'asc'}};
+export const Selectable:Story={args:{columns:cols,rows,selectable:true}};
+export const WithActions:Story={args:{columns:cols,rows,rowActionLabel:'Edit'}};
+export const WithMultipleGovernedActions:Story={args:{columns:cols,rows,rowActions:[{id:'edit',label:'Edit',variant:'ghost'},{id:'archive',label:'Archive',variant:'destructive',visible:(row)=>row.status==='Active'}],rowActionsLabel:'Actions'}};
+export const Empty:Story={args:{columns:cols,rows:[],emptyText:'No records found'}};
+export const Loading:Story={args:{columns:cols,rows:[],loading:true}};

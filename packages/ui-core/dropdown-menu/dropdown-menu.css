@@ -1,0 +1,185 @@
+/* ======================================================================
+ * dropdown-menu.css — BRKTA Dropdown Menu visual recipe
+ *
+ * Warm-cream dropdown menu matching the Select dropdown visual direction.
+ * Targeting data attributes:
+ *   [data-brkta-dropdown-menu]            — wrapper (positioning anchor)
+ *   [data-brkta-dropdown-menu-trigger]    — trigger element
+ *   [data-brkta-dropdown-menu-content]    — menu panel
+ *   [data-brkta-dropdown-menu-item]       — menu item
+ *   [data-brkta-dropdown-menu-separator]  — divider
+ *   [data-brkta-dropdown-menu-label]      — group label
+ * ====================================================================== */
+
+/* ---- Wrapper ---- */
+[data-brkta-dropdown-menu] {
+  position: relative;
+  display: inline-block;
+}
+
+/* Elevate wrapper when open */
+[data-brkta-dropdown-menu][data-open="true"] {
+  z-index: var(--z-dropdown);
+}
+
+/* ---- Icon-only trigger ---- */
+[data-brkta-dropdown-menu-trigger][data-icon-only] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--height-md);
+  height: var(--height-md);
+  padding: 0;
+  border: 1px solid var(--brkta-dropdown-trigger-border, var(--border));
+  border-radius: 999px;
+  color: var(--brkta-dropdown-trigger-foreground, var(--foreground));
+  background: var(--brkta-dropdown-trigger-background, var(--card));
+  cursor: pointer;
+}
+
+[data-brkta-dropdown-menu-trigger][data-icon-only][data-bare-icon-trigger] {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+[data-brkta-dropdown-menu-trigger][data-icon-only]:focus-visible {
+  outline: calc(var(--space-1) / 2) solid var(--ring);
+  outline-offset: calc(var(--space-1) / 2);
+}
+
+[data-brkta-dropdown-menu-trigger-icon] {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+[data-brkta-dropdown-menu-trigger-icon] span {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---- Content panel ---- */
+[data-brkta-dropdown-menu-content] {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  min-width: 10rem;
+  background-color: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  z-index: 1;
+  overflow: hidden;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  transform-origin: top center;
+  animation: brkta-overlay-in var(--duration-fast) var(--ease-out) both;
+}
+
+[data-brkta-dropdown-menu][data-placement="top"] [data-brkta-dropdown-menu-content] {
+  top: auto;
+  bottom: calc(100% + 0.25rem);
+  transform-origin: bottom center;
+}
+
+[data-brkta-dropdown-menu][data-align="end"] [data-brkta-dropdown-menu-content] {
+  right: 0;
+  left: auto;
+}
+
+[data-brkta-dropdown-menu-content][data-closing] {
+  animation: brkta-overlay-out var(--duration-fast) var(--ease-out) both;
+  pointer-events: none;
+}
+
+/* ---- Menu item ---- */
+[data-brkta-dropdown-menu-item] {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: var(--radius-md);
+  cursor: default;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--foreground);
+  transition: background-color var(--duration-fast) var(--ease-out);
+  user-select: none;
+  outline: none;
+}
+
+[data-brkta-dropdown-menu-item]:hover:not([data-disabled="true"]) {
+  background-color: var(--muted);
+}
+
+[data-brkta-dropdown-menu-item][data-active="true"]:not([data-disabled="true"]) {
+  background-color: var(--muted);
+}
+
+[data-brkta-dropdown-menu-item][data-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+[data-brkta-dropdown-menu-item][data-destructive="true"]:not([data-disabled="true"]) {
+  color: var(--destructive);
+}
+
+[data-brkta-dropdown-menu-item][data-destructive="true"]:hover:not([data-disabled="true"]) {
+  background-color: color-mix(in oklch, var(--destructive), transparent 90%);
+}
+
+/* Item icon */
+[data-brkta-dropdown-menu-item-icon] {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: var(--muted-foreground);
+}
+
+/* Item shortcut */
+[data-brkta-dropdown-menu-item-shortcut] {
+  margin-inline-start: auto;
+  font-size: var(--font-size-xs);
+  color: var(--muted-foreground);
+  letter-spacing: 0.05em;
+}
+
+/* ---- Separator ---- */
+[data-brkta-dropdown-menu-separator] {
+  height: 1px;
+  margin: 0.25rem -0.25rem;
+  background-color: var(--border);
+}
+
+/* ---- Label / Group heading ---- */
+[data-brkta-dropdown-menu-label] {
+  padding: 0.375rem 0.5rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  user-select: none;
+}
+
+/* ---- Overlay keyframes (shared with popover/tooltip) ---- */
+@keyframes brkta-overlay-in {
+  from { opacity: 0; transform: scaleY(0.95) translateY(-4px); }
+  to   { opacity: 1; transform: scaleY(1) translateY(0); }
+}
+
+@keyframes brkta-overlay-out {
+  from { opacity: 1; transform: scaleY(1) translateY(0); }
+  to   { opacity: 0; transform: scaleY(0.95) translateY(-4px); }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-dropdown-menu-content] { animation: none; }
+  [data-brkta-dropdown-menu-content][data-closing] { animation: none; }
+  [data-brkta-dropdown-menu-item] { transition: none; }
+}

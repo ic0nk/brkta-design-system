@@ -1,0 +1,116 @@
+/* ======================================================================
+ * textarea.css — BRKTA Textarea visual recipe
+ *
+ * Multi-line text input with variants, sizes, and states.
+ * Targeting: [data-brkta-textarea] attribute selector
+ * ====================================================================== */
+
+[data-brkta-textarea] {
+  display: flex;
+  width: 100%;
+  min-height: 2.75rem;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  outline: none;
+  resize: vertical;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-textarea]::placeholder {
+  color: var(--muted-foreground);
+  opacity: 0.6;
+}
+
+/* ---- Sizes ---- */
+
+[data-brkta-textarea][data-size="sm"] {
+  padding: 0.375rem 0.5rem;
+  font-size: var(--font-size-xs);
+  line-height: 1.25rem;
+  min-height: 2rem;
+}
+
+[data-brkta-textarea][data-size="md"] {
+  padding: 0.5rem 0.75rem;
+  font-size: var(--font-size-sm);
+  line-height: 1.5rem;
+  min-height: 2.75rem;
+}
+
+[data-brkta-textarea][data-size="lg"] {
+  padding: 0.75rem 1rem;
+  font-size: var(--font-size-base);
+  line-height: 1.75rem;
+  min-height: 3.5rem;
+}
+
+/* ---- Variants ---- */
+
+[data-brkta-textarea][data-variant="default"] {
+  background-color: var(--background);
+  border-color: var(--input);
+}
+
+[data-brkta-textarea][data-variant="filled"] {
+  background-color: var(--muted);
+  border-color: transparent;
+}
+
+[data-brkta-textarea][data-variant="ghost"] {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* ---- Hover ---- */
+
+[data-brkta-textarea][data-variant="default"]:hover {
+  border-color: var(--foreground);
+}
+
+[data-brkta-textarea][data-variant="filled"]:hover {
+  background-color: color-mix(in oklch, var(--muted), var(--foreground) 5%);
+}
+
+[data-brkta-textarea][data-variant="ghost"]:hover {
+  background-color: var(--muted);
+}
+
+/* ---- Focus-visible ---- */
+
+[data-brkta-textarea]:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+}
+
+[data-brkta-textarea][data-variant="filled"]:focus-visible {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+[data-brkta-textarea][data-variant="ghost"]:focus-visible {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+/* ---- Disabled ---- */
+
+[data-brkta-textarea][data-disabled="true"],
+[data-brkta-textarea]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---- Invalid ---- */
+
+[data-brkta-textarea][data-invalid="true"] {
+  border-color: var(--destructive);
+}
+
+[data-brkta-textarea][data-invalid="true"]:focus-visible {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 2px var(--destructive), 0 0 0 4px var(--background);
+}

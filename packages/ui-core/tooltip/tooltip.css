@@ -1,0 +1,63 @@
+/* ======================================================================
+ * tooltip.css — BRKTA Tooltip visual recipe
+ *
+ * Quiet compact text label on hover/focus.
+ * Targeting data attributes:
+ *   [data-brkta-tooltip]          — wrapper (positioning anchor)
+ *   [data-brkta-tooltip-trigger]  — hover/focus trigger
+ *   [data-brkta-tooltip-content]  — tooltip label
+ * ====================================================================== */
+
+[data-brkta-tooltip] {
+  position: relative;
+  display: inline-block;
+}
+
+[data-brkta-tooltip][data-open="true"] {
+  z-index: var(--z-tooltip);
+}
+
+[data-brkta-tooltip-content] {
+  position: absolute;
+  top: calc(100% + 0.375rem);
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 16rem;
+  background-color: var(--foreground);
+  color: var(--background);
+  border-radius: var(--radius-md);
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  line-height: 1.25rem;
+  white-space: nowrap;
+  z-index: 1;
+  pointer-events: none;
+  animation: brkta-tooltip-in var(--duration-fast) var(--ease-out) both;
+  transform-origin: top center;
+}
+
+[data-brkta-tooltip-content][data-closing] {
+  animation: brkta-tooltip-out var(--duration-fast) var(--ease-out) both;
+}
+
+@keyframes brkta-tooltip-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-2px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes brkta-tooltip-out {
+  from { opacity: 1; transform: translateX(-50%) translateY(0); }
+  to   { opacity: 0; transform: translateX(-50%) translateY(-2px); }
+}
+
+/* Dark mode — invert foreground/background */
+.dark [data-brkta-tooltip-content] {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-tooltip-content] { animation: none; }
+  [data-brkta-tooltip-content][data-closing] { animation: none; }
+}

@@ -1,0 +1,129 @@
+/* Button Group — Wave 4B */
+/* @brkta/ui-core/button-group/button-group.css */
+
+[data-brkta-button-group] {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
+  overflow: clip;
+}
+
+[data-brkta-button-group][data-orientation="vertical"] {
+  flex-direction: column;
+}
+
+/* Attach buttons together — remove inner radius and borders */
+/* Uses descendant (space) combinator so Angular <brkta-button> children
+   (where [data-brkta-button] is inside the host element) are also targeted. */
+[data-brkta-button-group] [data-brkta-button],
+[data-brkta-button-group] button[data-brkta-button] {
+  border-radius: 0;
+  margin: 0;
+}
+
+/* First button gets left/top radius */
+[data-brkta-button-group]:not([data-orientation="vertical"]) > :first-child {
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+[data-brkta-button-group][data-orientation="vertical"] > :first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+/* Last button gets right/bottom radius */
+[data-brkta-button-group]:not([data-orientation="vertical"]) > :last-child {
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+[data-brkta-button-group][data-orientation="vertical"] > :last-child {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* Only one button — full radius both sides */
+[data-brkta-button-group] > :first-child:last-child {
+  border-radius: var(--radius-md);
+}
+
+/* Merge borders between adjacent buttons */
+[data-brkta-button-group]:not([data-orientation="vertical"]) > * + * {
+  margin-left: -1px;
+}
+
+[data-brkta-button-group][data-orientation="vertical"] > * + * {
+  margin-top: -1px;
+}
+
+/* Ensure the border overlap looks correct on hover/focus */
+[data-brkta-button-group] [data-brkta-button]:hover,
+[data-brkta-button-group] button[data-brkta-button]:hover {
+  z-index: 1;
+}
+
+[data-brkta-button-group] [data-brkta-button]:focus-visible,
+[data-brkta-button-group] button[data-brkta-button]:focus-visible {
+  z-index: 2;
+}
+
+/* Disabled state */
+[data-brkta-button-group][data-disabled] {
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+[data-brkta-button-group][aria-disabled="true"] [data-brkta-button],
+[data-brkta-button-group][aria-disabled="true"] button[data-brkta-button] {
+  opacity: var(--opacity-disabled);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* ---- Moving border dash — group-level (wraps entire group) ---- */
+
+[data-brkta-button-group]::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--brkta-button-motion-color, color-mix(in oklch, var(--foreground) 55%, transparent));
+  pointer-events: none;
+  opacity: 0;
+  z-index: 0;
+}
+
+@supports (offset-path: inset(0 round 10px)) {
+  [data-brkta-button-group]::after {
+    offset-path: inset(1px round var(--radius-md));
+    offset-distance: 0%;
+    offset-rotate: auto;
+  }
+
+  @media (hover: hover) {
+    [data-brkta-button-group]:not([data-disabled]):hover::after,
+    [data-brkta-button-group]:not([data-disabled]):focus-within::after {
+      opacity: 1;
+      animation: brkta-button-group-border-dash 1.8s linear infinite;
+    }
+  }
+}
+
+@keyframes brkta-button-group-border-dash {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* Individual button dashes are suppressed via button.css:
+   [data-brkta-button-group] > [data-brkta-button]::after { display: none } */
+
+/* Reduced motion — disable group dash */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-button-group]::after {
+    animation: none !important;
+    transition: none !important;
+    opacity: 0 !important;
+  }
+}

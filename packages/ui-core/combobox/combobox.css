@@ -1,0 +1,110 @@
+/* Combobox — Wave 5 */
+/* @brkta/ui-core/combobox/combobox.css */
+
+[data-brkta-combobox] {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+[data-brkta-combobox-trigger] {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 var(--space-3);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: text;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-combobox-trigger]:focus-within,
+[data-brkta-combobox-trigger][data-open] {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+[data-brkta-combobox-trigger][data-invalid] {
+  border-color: var(--destructive);
+}
+
+[data-brkta-combobox] [data-brkta-combobox-input] {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--foreground);
+  min-width: 0;
+}
+
+[data-brkta-combobox] [data-brkta-combobox-input]::placeholder {
+  color: var(--muted-foreground);
+}
+
+[data-brkta-combobox-list] {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: var(--z-popover, 50);
+  max-height: 240px;
+  overflow-y: auto;
+  background-color: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-1);
+}
+
+[data-brkta-combobox-option] {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  min-height: 36px;
+}
+
+[data-brkta-combobox-option]:hover,
+[data-brkta-combobox-option][data-active] {
+  background-color: var(--muted);
+}
+
+[data-brkta-combobox-option][data-disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+[data-brkta-combobox-empty] {
+  padding: var(--space-3);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+[data-brkta-combobox][data-disabled] [data-brkta-combobox-trigger] {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+[data-brkta-combobox][data-disabled] [data-brkta-combobox-input] {
+  cursor: not-allowed;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-combobox-trigger],
+  [data-brkta-combobox-option] {
+    transition: none;
+  }
+}

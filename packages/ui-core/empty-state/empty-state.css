@@ -1,0 +1,9 @@
+/* empty-state.css — BRKTA Empty State */
+[data-brkta-empty] { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 1.5rem; text-align: center; }
+[data-brkta-empty-icon] { margin-bottom: 1rem; color: var(--muted-foreground); }
+[data-brkta-empty-title] { font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); color: var(--foreground); margin-bottom: 0.5rem; }
+[data-brkta-empty-description] { font-size: var(--font-size-sm); color: var(--muted-foreground); max-width: 24rem; line-height: 1.5; }
+[data-brkta-empty-action] { margin-top: 1.5rem; }
+/* Variant: compact */
+[data-brkta-empty][data-variant="compact"] { padding: 1.5rem 1rem; }
+[data-brkta-empty][data-variant="compact"] [data-brkta-empty-title] { font-size: var(--font-size-base); }

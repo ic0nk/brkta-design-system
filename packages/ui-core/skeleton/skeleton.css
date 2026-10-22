@@ -1,0 +1,47 @@
+/* ======================================================================
+ * skeleton.css — BRKTA Skeleton visual recipe
+ *
+ * Loading placeholder that pulses to indicate content is loading.
+ * Targeting: [data-brkta-skeleton] attribute selector
+ * ====================================================================== */
+
+@keyframes brkta-skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+[data-brkta-skeleton] {
+  border-radius: var(--radius-md);
+  background-color: var(--skeleton);
+  animation: brkta-skeleton-pulse 2s ease-in-out infinite;
+}
+
+[data-brkta-skeleton][data-variant="text"] {
+  height: 0.75rem;
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+[data-brkta-skeleton][data-variant="card"] {
+  height: 8rem;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+[data-brkta-skeleton][data-variant="table"] {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-skeleton] {
+    animation: none;
+  }
+}

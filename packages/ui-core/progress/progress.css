@@ -1,0 +1,37 @@
+/* ======================================================================
+ * progress.css — BRKTA Progress visual recipe
+ *
+ * Determinate progress bar. Uses an inner fill element with width
+ * controlled by the component wrapper via inline style.
+ * Targeting: [data-brkta-progress] attribute selector
+ * ====================================================================== */
+
+[data-brkta-progress] {
+  position: relative;
+  width: 100%;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+  overflow: hidden;
+}
+
+[data-brkta-progress] [data-brkta-progress-indicator] {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+/* ---- Sizes ---- */
+
+[data-brkta-progress][data-size="sm"] {
+  height: 0.25rem;
+}
+
+[data-brkta-progress][data-size="md"] {
+  height: 0.5rem;
+}
+
+[data-brkta-progress][data-size="lg"] {
+  height: 0.75rem;
+}

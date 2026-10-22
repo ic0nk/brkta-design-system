@@ -1,0 +1,105 @@
+/* ======================================================================
+ * native-select.css — BRKTA Native Select visual recipe
+ *
+ * Styled native <select> with custom chevron.
+ * Targeting: [data-brkta-native-select] attribute selector
+ * ====================================================================== */
+
+[data-brkta-native-select] {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+/* ---- Sizes ---- */
+
+[data-brkta-native-select][data-size="sm"] {
+  padding-inline: 0.5rem;
+  height: 2rem;
+  font-size: var(--font-size-xs);
+  line-height: 1.25rem;
+  background-position: right 0.5rem center;
+}
+
+[data-brkta-native-select][data-size="md"] {
+  padding-inline: 0.75rem;
+  height: 2.75rem;
+  font-size: var(--font-size-sm);
+  line-height: 1.5rem;
+}
+
+[data-brkta-native-select][data-size="lg"] {
+  padding-inline: 1rem;
+  height: 3.5rem;
+  font-size: var(--font-size-base);
+  line-height: 1.75rem;
+}
+
+/* ---- Variants ---- */
+
+[data-brkta-native-select][data-variant="default"] {
+  background-color: var(--background);
+  border-color: var(--input);
+}
+
+[data-brkta-native-select][data-variant="filled"] {
+  background-color: var(--muted);
+  border-color: transparent;
+}
+
+/* ---- Hover ---- */
+
+[data-brkta-native-select][data-variant="default"]:hover {
+  border-color: var(--foreground);
+}
+
+[data-brkta-native-select][data-variant="filled"]:hover {
+  background-color: color-mix(in oklch, var(--muted), var(--foreground) 5%);
+}
+
+/* ---- Focus-visible ---- */
+
+[data-brkta-native-select]:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+}
+
+[data-brkta-native-select][data-variant="filled"]:focus-visible {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+/* ---- Disabled ---- */
+
+[data-brkta-native-select][data-disabled="true"],
+[data-brkta-native-select]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---- Invalid ---- */
+
+[data-brkta-native-select][data-invalid="true"] {
+  border-color: var(--destructive);
+}
+
+[data-brkta-native-select][data-invalid="true"]:focus-visible {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 2px var(--destructive), 0 0 0 4px var(--background);
+}

@@ -1,0 +1,12 @@
+export { AnimatedFacebook } from "./animated-facebook";
+export { AnimatedInstagram } from "./animated-instagram";
+export { AnimatedMail } from "./animated-mail";
+export { AnimatedMessageCircle } from "./animated-message-circle";
+export { AnimatedInbox } from "./animated-inbox";
+export { AnimatedPanelLeft } from "./animated-panel-left";
+export { AnimatedLocate } from "./animated-locate";
+export { AnimatedUpload } from "./animated-upload";
+export { AnimatedPhone } from "./animated-phone";
+export { AnimatedWhatsapp } from "./animated-whatsapp";
+export { AnimatedLinkedin } from "./animated-linkedin";
+export { AnimatedTiktok } from "./animated-tiktok";

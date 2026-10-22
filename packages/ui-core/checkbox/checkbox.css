@@ -1,0 +1,108 @@
+/* ======================================================================
+ * checkbox.css — BRKTA Checkbox visual recipe
+ *
+ * Styled checkbox with native <input type="checkbox">.
+ * Targeting: [data-brkta-checkbox] attribute selector
+ * ====================================================================== */
+
+[data-brkta-checkbox] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  min-height: 1.25rem;
+  user-select: none;
+}
+
+[data-brkta-checkbox] input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[data-brkta-checkbox] .brkta-checkbox-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-sm);
+  background-color: var(--background);
+  flex-shrink: 0;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+/* ---- Checked ---- */
+
+[data-brkta-checkbox] input[type="checkbox"]:checked + .brkta-checkbox-indicator {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+[data-brkta-checkbox] input[type="checkbox"]:checked + .brkta-checkbox-indicator::after {
+  content: '';
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ---- Indeterminate ---- */
+
+[data-brkta-checkbox] input[type="checkbox"]:indeterminate + .brkta-checkbox-indicator {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+[data-brkta-checkbox] input[type="checkbox"]:indeterminate + .brkta-checkbox-indicator::after {
+  content: '';
+  display: block;
+  width: 0.625rem;
+  height: 0.125rem;
+  background-color: var(--primary-foreground);
+  border-radius: 1px;
+}
+
+/* ---- Hover ---- */
+
+[data-brkta-checkbox]:hover .brkta-checkbox-indicator {
+  border-color: var(--foreground);
+}
+
+/* ---- Focus-visible ---- */
+
+[data-brkta-checkbox] input[type="checkbox"]:focus-visible + .brkta-checkbox-indicator {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+}
+
+/* ---- Disabled ---- */
+
+[data-brkta-checkbox][data-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---- Invalid ---- */
+
+[data-brkta-checkbox][data-invalid="true"] .brkta-checkbox-indicator {
+  border-color: var(--destructive);
+}
+
+[data-brkta-checkbox][data-invalid="true"] input[type="checkbox"]:focus-visible + .brkta-checkbox-indicator {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 2px var(--destructive), 0 0 0 4px var(--background);
+}

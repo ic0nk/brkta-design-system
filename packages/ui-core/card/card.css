@@ -1,0 +1,73 @@
+/* ======================================================================
+ * card.css — BRKTA Card visual recipe
+ *
+ * Card is a content container with optional header, content, and footer.
+ * Targeting: [data-brkta-card] attribute selector (framework-neutral)
+ * ====================================================================== */
+
+[data-brkta-card] {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  background-color: var(--card);
+  color: var(--card-foreground);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-card][data-variant="default"] {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-brkta-card][data-variant="outlined"] {
+  border: 1px solid var(--border);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+[data-brkta-card][data-variant="ghost"] {
+  border: 1px solid transparent;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* ---- Card parts ---- */
+
+[data-brkta-card] [data-brkta-card-header] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: var(--space-4) var(--space-4) 0 var(--space-4);
+}
+
+[data-brkta-card] [data-brkta-card-header]:only-child {
+  padding-bottom: var(--space-4);
+}
+
+[data-brkta-card] [data-brkta-card-title] {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--heading);
+}
+
+[data-brkta-card] [data-brkta-card-description] {
+  font-size: var(--font-size-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+[data-brkta-card] [data-brkta-card-content] {
+  padding: var(--space-4);
+}
+
+[data-brkta-card] [data-brkta-card-header] + [data-brkta-card-content] {
+  padding-top: var(--space-2);
+}
+
+[data-brkta-card] [data-brkta-card-footer] {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4) var(--space-4) var(--space-4);
+  gap: 0.5rem;
+}

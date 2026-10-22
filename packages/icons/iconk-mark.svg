@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!--
+    BRKTA brand mark — simplified icon-only version
+    - Same IK monogram with a lime accent dot at the upper-arm terminal
+    - Works standalone (favicon, avatar, app icon)
+  -->
+  <path
+    d="M5 4v16M10 12l9-8M10 12l9 8"
+    stroke="oklch(0.205 0 0)"
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="19.5" cy="4" r="1.5" fill="oklch(0.82 0.25 120)" />
+</svg>

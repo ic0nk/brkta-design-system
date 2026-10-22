@@ -1,0 +1,13 @@
+/* Command — Wave 6 */
+[data-brkta-command] { position: relative; width: 100%; max-width: 480px; }
+[data-brkta-command-input] { width: 100%; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 0.875rem; background: var(--card); color: var(--foreground); outline: none; }
+[data-brkta-command-input]:focus { border-color: var(--ring); box-shadow: 0 0 0 1px var(--ring); }
+[data-brkta-command-list] { position: absolute; top: calc(100% + 4px); left: 0; right: 0; max-height: 280px; overflow-y: auto; background: var(--popover); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: var(--space-1); z-index: var(--z-popover); }
+[data-brkta-command-group] { padding: var(--space-1) 0; }
+[data-brkta-command-group-label] { padding: var(--space-2) var(--space-3); font-size: 0.6875rem; font-weight: 600; color: var(--muted-foreground); text-transform: uppercase; }
+[data-brkta-command-item] { display: flex; align-items: center; justify-content: space-between; padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); font-size: 0.875rem; color: var(--foreground); cursor: pointer; }
+[data-brkta-command-item]:hover, [data-brkta-command-item][data-active] { background-color: var(--muted); }
+[data-brkta-command-item][data-disabled] { opacity: 0.4; pointer-events: none; }
+[data-brkta-command-item-shortcut] { font-size: 0.75rem; color: var(--muted-foreground); font-family: var(--font-mono); }
+[data-brkta-command-empty] { padding: var(--space-4); text-align: center; font-size: 0.8125rem; color: var(--muted-foreground); }
+@media (prefers-reduced-motion: reduce) { [data-brkta-command-list] { transition: none; } }

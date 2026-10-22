@@ -1,0 +1,672 @@
+/*
+ * BRKTA — Icon Motion (shared hover-animation classes)
+ *
+ * Hover- and focus-visible-triggered motion for toolbar, button,
+ * and compact-action icons.  Designed to match across Angular and
+ * React/Next.js implementations.
+ *
+ * Usage:
+ *   <svg class="brkta-icon-motion brkta-icon-motion-arrow" ...>
+ *
+ * Reduced motion is honoured automatically.
+ * Do NOT use for essential functional feedback.
+ */
+
+/* ─── Base ─────────────────────────────────────── */
+
+.brkta-icon-motion {
+  display: block;
+  transition: transform var(--duration-fast, 150ms)
+    var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+  will-change: transform;
+}
+
+/* ─── Variant animations (hover / focus-visible only on pointing devices) ─── */
+/*
+ * Trigger paths, all resolving to the same transform:
+ *   1. Direct icon hover/focus
+ *   2. Parent button hover/focus        — [data-brkta-button]
+ *   3. Generic trigger class            — .brkta-icon-motion-trigger
+ *   4. Dropdown menu item parent        — [data-brkta-dropdown-menu-item]
+ *   5. Sidebar item parent              — [data-brkta-sidebar-item]
+ *   6. Sidebar collapse toggle          — [data-brkta-sidebar-toggle]
+ *
+ * Disabled items are excluded via :not([data-disabled="true"]).
+ * Reduced motion disables all paths.
+ */
+
+/* Shared disabled exclusion */
+[data-brkta-dropdown-menu-item][data-disabled="true"] .brkta-icon-motion,
+[data-brkta-button][data-disabled="true"] .brkta-icon-motion,
+[data-brkta-sidebar-item][data-disabled] .brkta-icon-motion {
+  transform: none !important;
+  animation: none !important;
+}
+
+@media (hover: hover) {
+  /* Messaging navigation — shared by Angular and React wrappers. */
+  .brkta-icon-motion-message-circle:hover,
+  .brkta-icon-motion-message-circle:focus-visible,
+  .brkta-icon-motion-inbox:hover,
+  .brkta-icon-motion-inbox:focus-visible,
+  [data-brkta-button]:hover :is(.brkta-icon-motion-message-circle, .brkta-icon-motion-inbox),
+  [data-brkta-button]:focus-visible :is(.brkta-icon-motion-message-circle, .brkta-icon-motion-inbox),
+  [data-brkta-sidebar-item]:hover :is(.brkta-icon-motion-message-circle, .brkta-icon-motion-inbox),
+  [data-brkta-sidebar-item]:focus-visible :is(.brkta-icon-motion-message-circle, .brkta-icon-motion-inbox),
+  [data-brkta-dropdown-menu-item]:hover :is(.brkta-icon-motion-message-circle, .brkta-icon-motion-inbox),
+  [data-brkta-dropdown-menu-item]:focus-visible :is(.brkta-icon-motion-message-circle, .brkta-icon-motion-inbox),
+  .brkta-icon-motion-trigger:hover :is(.brkta-icon-motion-message-circle, .brkta-icon-motion-inbox),
+  .brkta-icon-motion-trigger:focus-visible :is(.brkta-icon-motion-message-circle, .brkta-icon-motion-inbox) {
+    transform: translateY(-1px) scale(1.04);
+  }
+
+  /* Arrow */
+  .brkta-icon-motion-arrow:hover,
+  .brkta-icon-motion-arrow:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-arrow,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-arrow,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-arrow,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-arrow,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-arrow,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Directional arrows mirror their visual direction in RTL. */
+  :dir(rtl) .brkta-icon-motion-arrow:hover,
+  :dir(rtl) .brkta-icon-motion-arrow:focus-visible,
+  :dir(rtl) [data-brkta-button]:hover .brkta-icon-motion-arrow,
+  :dir(rtl) [data-brkta-button]:focus-visible .brkta-icon-motion-arrow,
+  :dir(rtl) [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-arrow,
+  :dir(rtl) [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-arrow,
+  :dir(rtl) .brkta-icon-motion-trigger:hover .brkta-icon-motion-arrow,
+  :dir(rtl) .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-arrow {
+    transform: scaleX(-1) translateX(3px);
+  }
+
+  /* Arrow left */
+  .brkta-icon-motion-arrow-left:hover,
+  .brkta-icon-motion-arrow-left:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-arrow-left,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-arrow-left,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-arrow-left,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-arrow-left,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-arrow-left,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-arrow-left {
+    transform: translateX(-3px);
+  }
+
+  /* Directional arrows mirror their visual direction in RTL. */
+  :dir(rtl) .brkta-icon-motion-arrow-left:hover,
+  :dir(rtl) .brkta-icon-motion-arrow-left:focus-visible,
+  :dir(rtl) [data-brkta-button]:hover .brkta-icon-motion-arrow-left,
+  :dir(rtl) [data-brkta-button]:focus-visible .brkta-icon-motion-arrow-left,
+  :dir(rtl) [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-arrow-left,
+  :dir(rtl) [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-arrow-left,
+  :dir(rtl) .brkta-icon-motion-trigger:hover .brkta-icon-motion-arrow-left,
+  :dir(rtl) .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-arrow-left {
+    transform: scaleX(-1) translateX(-3px);
+  }
+
+  /* Locate */
+  .brkta-icon-motion-locate:hover,
+  .brkta-icon-motion-locate:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-locate,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-locate,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-locate,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-locate,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-locate,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-locate {
+    transform: scale(1.08);
+  }
+
+  /* Plus */
+  .brkta-icon-motion-plus:hover,
+  .brkta-icon-motion-plus:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-plus,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-plus,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-plus,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-plus,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-plus,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-plus {
+    transform: rotate(90deg);
+  }
+
+  /* Search */
+  .brkta-icon-motion-search:hover,
+  .brkta-icon-motion-search:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-search,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-search,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-search,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-search,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-search,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-search {
+    transform: scale(1.1);
+  }
+
+  /* Settings */
+  .brkta-icon-motion-settings:hover,
+  .brkta-icon-motion-settings:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-settings,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-settings,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-settings,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-settings,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-settings,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-settings {
+    transform: rotate(20deg);
+  }
+
+  /* Bell */
+  .brkta-icon-motion-bell:hover,
+  .brkta-icon-motion-bell:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-bell,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-bell,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-bell,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-bell,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-bell,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-bell {
+    animation: brkta-shake 0.4s var(--ease-out);
+  }
+
+  /* Copy */
+  .brkta-icon-motion-copy:hover,
+  .brkta-icon-motion-copy:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-copy,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-copy,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion-copy,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-copy,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-copy,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-copy,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-copy {
+    transform: translateY(-1px);
+  }
+
+  /* Send */
+  .brkta-icon-motion-send:hover,
+  .brkta-icon-motion-send:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-send,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-send,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion-send,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-send,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-send,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-send,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-send {
+    transform: translate(2px, -2px);
+  }
+
+  /* Check */
+  .brkta-icon-motion-check:hover,
+  .brkta-icon-motion-check:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-check,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-check,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion-check,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-check,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-check,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-check,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-check {
+    transform: scale(1.15);
+  }
+
+  /* Wave 3A — Save */
+  .brkta-icon-motion-save:hover,
+  .brkta-icon-motion-save:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-save,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-save,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion-save,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-save,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-save,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-save,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-save {
+    transform: translateY(-1px);
+  }
+
+  /* Wave 3A — Pen */
+  .brkta-icon-motion-pen:hover,
+  .brkta-icon-motion-pen:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-pen,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-pen,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion-pen,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-pen,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-pen,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-pen,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-pen {
+    transform: rotate(-15deg) scale(1.1);
+  }
+
+  /* AI content actions — Sparkles writes, Scissors trims. */
+  .brkta-icon-motion-sparkles:hover,
+  .brkta-icon-motion-sparkles:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-sparkles,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-sparkles,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion-sparkles,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-sparkles,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-sparkles,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-sparkles,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-sparkles {
+    transform: rotate(15deg) scale(1.12);
+  }
+
+  .brkta-icon-motion-scissors:hover,
+  .brkta-icon-motion-scissors:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-scissors,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-scissors,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion-scissors,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-scissors,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-scissors,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-scissors,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-scissors {
+    transform: rotate(-12deg) scale(1.1);
+  }
+
+  /* Wave 3A — Trash */
+  .brkta-icon-motion-trash:hover,
+  .brkta-icon-motion-trash:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-trash,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-trash,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion-trash,
+  [data-brkta-tooltip-trigger]:hover .brkta-icon-motion-trash,
+  [data-brkta-tooltip-trigger]:focus-visible .brkta-icon-motion-trash,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-trash,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-trash {
+    transform: translateY(-1px);
+    color: var(--destructive);
+  }
+
+  /* Wave 4B — Dashboard */
+  .brkta-icon-motion-dashboard:hover,
+  .brkta-icon-motion-dashboard:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-dashboard,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-dashboard,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-dashboard,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-dashboard {
+    transform: scale(1.1);
+  }
+
+  /* Wave 4B — Users */
+  .brkta-icon-motion-users:hover,
+  .brkta-icon-motion-users:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-users,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-users,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-users,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-users {
+    transform: scale(1.1);
+  }
+
+  /* Wave 4B — Shopping Cart */
+  .brkta-icon-motion-shopping-cart:hover,
+  .brkta-icon-motion-shopping-cart:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-shopping-cart,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-shopping-cart,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-shopping-cart,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-shopping-cart {
+    transform: translateX(2px);
+  }
+
+  /* Wave 4B — Package */
+  .brkta-icon-motion-package:hover,
+  .brkta-icon-motion-package:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-package,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-package,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-package,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-package {
+    transform: translateY(-1px);
+  }
+
+  /* Communication — Mail */
+  .brkta-icon-motion-mail:hover,
+  .brkta-icon-motion-mail:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-mail,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-mail,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-mail,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-mail {
+    transform: translateY(-1px) rotate(-4deg);
+  }
+
+  /* Communication — Phone */
+  .brkta-icon-motion-phone:hover,
+  .brkta-icon-motion-phone:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-phone,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-phone,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-phone,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-phone {
+    transform: rotate(12deg);
+  }
+
+  /* Communication — WhatsApp */
+  .brkta-icon-motion-whatsapp:hover,
+  .brkta-icon-motion-whatsapp:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-whatsapp,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-whatsapp,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-whatsapp,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-whatsapp {
+    transform: translateY(-1px) scale(1.08);
+  }
+
+  /* Social — Facebook */
+  .brkta-icon-motion-facebook:hover,
+  .brkta-icon-motion-facebook:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-facebook,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-facebook,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-facebook,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-facebook {
+    transform: translateY(-1px) scale(1.08);
+  }
+
+  /* Social — Instagram */
+  .brkta-icon-motion-instagram:hover,
+  .brkta-icon-motion-instagram:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-instagram,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-instagram,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-instagram,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-instagram {
+    transform: rotate(4deg) scale(1.05);
+  }
+
+  /* Social — LinkedIn */
+  .brkta-icon-motion-linkedin:hover,
+  .brkta-icon-motion-linkedin:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-linkedin,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-linkedin,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-linkedin,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-linkedin {
+    transform: translateY(-1px) scale(1.08);
+  }
+
+  /* Social — TikTok */
+  .brkta-icon-motion-tiktok:hover,
+  .brkta-icon-motion-tiktok:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-tiktok,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-tiktok,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-tiktok,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-tiktok {
+    transform: translateY(-1px) scale(1.08);
+  }
+
+  /* Wave 4B — Bar Chart */
+  .brkta-icon-motion-bar-chart:hover,
+  .brkta-icon-motion-bar-chart:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-bar-chart,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-bar-chart,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-bar-chart,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-bar-chart {
+    transform: scaleY(1.1);
+  }
+
+  /* Public-site menu and theme controls */
+  .brkta-icon-motion-menu:hover,
+  .brkta-icon-motion-menu:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-menu,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-menu {
+    transform: rotate(8deg) scale(1.06);
+  }
+
+  .brkta-icon-motion-close:hover,
+  .brkta-icon-motion-close:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-close,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-close {
+    transform: rotate(90deg) scale(0.94);
+  }
+
+  .brkta-icon-motion-theme:hover,
+  .brkta-icon-motion-theme:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-theme,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-theme {
+    transform: rotate(16deg) scale(1.08);
+  }
+
+  .brkta-icon-motion-sun:hover,
+  .brkta-icon-motion-sun:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-sun,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-sun,
+  [data-brkta-toggle]:hover .brkta-icon-motion-sun,
+  [data-brkta-toggle]:focus-visible .brkta-icon-motion-sun {
+    transform: rotate(16deg) scale(1.08);
+  }
+
+  .brkta-icon-motion-moon:hover,
+  .brkta-icon-motion-moon:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-moon,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-moon,
+  [data-brkta-toggle]:hover .brkta-icon-motion-moon,
+  [data-brkta-toggle]:focus-visible .brkta-icon-motion-moon {
+    transform: rotate(-16deg) scale(1.08);
+  }
+
+  .brkta-icon-motion-monitor:hover,
+  .brkta-icon-motion-monitor:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-monitor,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-monitor,
+  [data-brkta-toggle]:hover .brkta-icon-motion-monitor,
+  [data-brkta-toggle]:focus-visible .brkta-icon-motion-monitor {
+    transform: scale(1.08);
+  }
+
+  /* Eye */
+  .brkta-icon-motion-eye:hover,
+  .brkta-icon-motion-eye:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-eye,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-eye,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-eye,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-eye {
+    transform: scale(1.08);
+  }
+
+  /* Eye off */
+  .brkta-icon-motion-eye-off:hover,
+  .brkta-icon-motion-eye-off:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-eye-off,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-eye-off,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-eye-off,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-eye-off {
+    transform: scale(1.08);
+  }
+
+  /* Navigation — Log out */
+  .brkta-icon-motion-log-out:hover,
+  .brkta-icon-motion-log-out:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-log-out,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-log-out,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-log-out,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-log-out,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-log-out,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-log-out {
+    transform: translateX(2px);
+  }
+
+  /* Navigation — Panel left */
+  .brkta-icon-motion-panel-left:hover,
+  .brkta-icon-motion-panel-left:focus-visible,
+   [data-brkta-button]:hover .brkta-icon-motion-panel-left,
+   [data-brkta-button]:focus-visible .brkta-icon-motion-panel-left,
+   [data-brkta-sidebar-item]:hover .brkta-icon-motion-panel-left,
+   [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-panel-left,
+   [data-brkta-sidebar-toggle]:hover .brkta-icon-motion-panel-left,
+   [data-brkta-sidebar-toggle]:focus-visible .brkta-icon-motion-panel-left,
+   .brkta-icon-motion-trigger:hover .brkta-icon-motion-panel-left,
+   .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-panel-left {
+    transform: translateX(-2px);
+  }
+
+  /* Navigation — Building 2 */
+  .brkta-icon-motion-building-2:hover,
+  .brkta-icon-motion-building-2:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-building-2,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-building-2,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-building-2,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-building-2,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-building-2,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-building-2 {
+    transform: translateY(-1px) scale(1.04);
+  }
+
+  /* Navigation — Paperclip */
+  .brkta-icon-motion-paperclip:hover,
+  .brkta-icon-motion-paperclip:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-paperclip,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-paperclip,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-paperclip,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-paperclip,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-paperclip,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-paperclip {
+    transform: rotate(-12deg) translateY(-1px);
+  }
+
+  /* Upload */
+  .brkta-icon-motion-upload:hover,
+  .brkta-icon-motion-upload:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-upload,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-upload,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-upload,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-upload {
+    transform: translateY(-2px);
+  }
+
+  /* Navigation — Calculator */
+  .brkta-icon-motion-calculator:hover,
+  .brkta-icon-motion-calculator:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-calculator,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-calculator,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-calculator,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-calculator,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-calculator,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-calculator {
+    transform: translateY(-1px) scale(1.04);
+  }
+
+  /* Navigation — Palette */
+  .brkta-icon-motion-palette:hover,
+  .brkta-icon-motion-palette:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-palette,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-palette,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-palette,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-palette,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-palette,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-palette {
+    transform: rotate(-12deg) scale(1.06);
+  }
+
+  /* Navigation — List filter */
+  .brkta-icon-motion-list-filter:hover,
+  .brkta-icon-motion-list-filter:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-list-filter,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-list-filter,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-list-filter,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-list-filter,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-list-filter,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-list-filter {
+    transform: translateY(-1px) scale(1.06);
+  }
+
+  /* Navigation — History */
+  .brkta-icon-motion-history:hover,
+  .brkta-icon-motion-history:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-history,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-history,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-history,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-history,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-history,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-history {
+    transform: rotate(-20deg);
+  }
+
+  /* Navigation — File text */
+  .brkta-icon-motion-file-text:hover,
+  .brkta-icon-motion-file-text:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-file-text,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-file-text,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-file-text,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-file-text,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-file-text,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-file-text {
+    transform: translateY(-1px) scale(1.04);
+  }
+
+  /* Navigation — Credit card */
+  .brkta-icon-motion-credit-card:hover,
+  .brkta-icon-motion-credit-card:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-credit-card,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-credit-card,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-credit-card,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-credit-card,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-credit-card,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-credit-card {
+    transform: translateX(2px);
+  }
+
+  /* Navigation — Book open */
+  .brkta-icon-motion-book-open:hover,
+  .brkta-icon-motion-book-open:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-book-open,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-book-open,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-book-open,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-book-open,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-book-open,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-book-open {
+    transform: scale(1.08);
+  }
+
+  /* Navigation — Bar chart 3 */
+  .brkta-icon-motion-bar-chart-3:hover,
+  .brkta-icon-motion-bar-chart-3:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion-bar-chart-3,
+  [data-brkta-button]:focus-visible .brkta-icon-motion-bar-chart-3,
+  [data-brkta-sidebar-item]:hover .brkta-icon-motion-bar-chart-3,
+  [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion-bar-chart-3,
+  .brkta-icon-motion-trigger:hover .brkta-icon-motion-bar-chart-3,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion-bar-chart-3 {
+    transform: scaleY(1.1);
+  }
+}
+
+:dir(rtl) .brkta-icon-motion-arrow {
+  transform: scaleX(-1);
+}
+
+:dir(rtl) .brkta-icon-motion-arrow-left {
+  transform: scaleX(-1);
+}
+
+/* ─── Bell shake keyframes ─────────────────────── */
+
+@keyframes brkta-shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(-5deg);
+  }
+  80% {
+    transform: rotate(5deg);
+  }
+}
+
+/* ─── Reduced motion ───────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .brkta-icon-motion {
+    transition: none;
+  }
+
+  .brkta-icon-motion:hover,
+  .brkta-icon-motion:focus-visible,
+  [data-brkta-button]:hover .brkta-icon-motion,
+  [data-brkta-button]:focus-visible .brkta-icon-motion,
+  [data-brkta-dropdown-menu-item]:hover .brkta-icon-motion,
+  [data-brkta-dropdown-menu-item]:focus-visible .brkta-icon-motion,
+   [data-brkta-sidebar-item]:hover .brkta-icon-motion,
+   [data-brkta-sidebar-item]:focus-visible .brkta-icon-motion,
+   [data-brkta-sidebar-toggle]:hover .brkta-icon-motion-panel-left,
+   [data-brkta-sidebar-toggle]:focus-visible .brkta-icon-motion-panel-left,
+   .brkta-icon-motion-trigger:hover .brkta-icon-motion,
+  .brkta-icon-motion-trigger:focus-visible .brkta-icon-motion {
+    transform: none !important;
+    animation: none !important;
+  }
+}

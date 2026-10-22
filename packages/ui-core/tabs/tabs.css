@@ -1,0 +1,140 @@
+/* tabs.css — BRKTA Tabs with moving indicator */
+
+/* Root */
+[data-brkta-tabs] { display: flex; flex-direction: column; }
+
+/* Tab list */
+[data-brkta-tabs-list] {
+  display: inline-flex;
+  border-bottom: 1px solid var(--border);
+  gap: 0;
+  position: relative;
+}
+
+/* Tab trigger */
+[data-brkta-tabs-trigger] {
+  min-block-size: var(--height-md);
+  min-inline-size: var(--height-md);
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out);
+  position: relative;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+[data-brkta-tabs-trigger]:hover { color: var(--foreground); }
+[data-brkta-tabs-trigger][data-active="true"] { color: var(--foreground); }
+[data-brkta-tabs-trigger][data-disabled="true"] { opacity: 0.4; cursor: not-allowed; }
+[data-brkta-tabs-trigger][data-disabled="true"]:hover { color: var(--muted-foreground); }
+[data-brkta-tabs-trigger]:focus-visible { outline: 2px solid var(--ring); outline-offset: -2px; }
+
+/* Panel */
+[data-brkta-tabs-panel] { padding: 1rem 0; font-size: var(--font-size-sm); color: var(--foreground); }
+
+/* ---- Moving indicator ---- */
+[data-brkta-tabs-indicator] {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  transition:
+    left var(--duration-fast) var(--ease-out),
+    top var(--duration-fast) var(--ease-out),
+    width var(--duration-fast) var(--ease-out),
+    height var(--duration-fast) var(--ease-out);
+}
+
+/* Default horizontal: underline */
+[data-brkta-tabs]:not([data-variant="segmented"])[data-orientation]:not([data-orientation="vertical"]) [data-brkta-tabs-indicator],
+[data-brkta-tabs]:not([data-variant="segmented"]):not([data-orientation]) [data-brkta-tabs-indicator] {
+  bottom: 0;
+  left: var(--tabs-indicator-x, 0);
+  width: var(--tabs-indicator-width, 0);
+  height: 2px;
+  background-color: var(--primary);
+}
+
+/* Default vertical: right vertical line */
+[data-brkta-tabs]:not([data-variant="segmented"])[data-orientation="vertical"] [data-brkta-tabs-indicator] {
+  right: 0;
+  top: var(--tabs-indicator-y, 0);
+  width: 2px;
+  height: var(--tabs-indicator-height, 0);
+  background-color: var(--primary);
+}
+
+/* Segmented horizontal: raised pill */
+[data-brkta-tabs][data-variant="segmented"][data-orientation]:not([data-orientation="vertical"]) [data-brkta-tabs-indicator],
+[data-brkta-tabs][data-variant="segmented"]:not([data-orientation]) [data-brkta-tabs-indicator] {
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: var(--tabs-indicator-x, 0.25rem);
+  width: var(--tabs-indicator-width, 0);
+  border-radius: calc(var(--radius-lg) - 2px);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Segmented vertical: raised pill */
+[data-brkta-tabs][data-variant="segmented"][data-orientation="vertical"] [data-brkta-tabs-indicator] {
+  left: 0.25rem;
+  right: 0.25rem;
+  top: var(--tabs-indicator-y, 0.25rem);
+  height: var(--tabs-indicator-height, 0);
+  border-radius: calc(var(--radius-lg) - 2px);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ---- Segmented variant rail ---- */
+[data-brkta-tabs][data-variant="segmented"] [data-brkta-tabs-list] {
+  display: inline-flex;
+  border-bottom: none;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.25rem;
+  gap: 0.125rem;
+  width: fit-content;
+}
+
+[data-brkta-tabs][data-variant="segmented"] [data-brkta-tabs-trigger] {
+  padding: 0.375rem 0.75rem;
+  border-radius: calc(var(--radius-lg) - 2px);
+}
+
+[data-brkta-tabs][data-variant="segmented"] [data-brkta-tabs-trigger][data-active="true"] {
+  color: var(--foreground);
+}
+
+/* ---- Vertical orientation ---- */
+[data-brkta-tabs][data-orientation="vertical"] {
+  flex-direction: row;
+}
+
+[data-brkta-tabs][data-orientation="vertical"] [data-brkta-tabs-list] {
+  flex-direction: column;
+  border-bottom: none;
+  border-right: 1px solid var(--border);
+}
+
+[data-brkta-tabs][data-orientation="vertical"][data-variant="segmented"] [data-brkta-tabs-list] {
+  border-right: none;
+}
+
+[data-brkta-tabs][data-orientation="vertical"] [data-brkta-tabs-panel] {
+  padding: 0 0 0 1rem;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-tabs-trigger] { transition: none; }
+  [data-brkta-tabs-indicator] { transition: none; }
+}

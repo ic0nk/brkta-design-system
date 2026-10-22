@@ -1,0 +1,124 @@
+/* Accordion — Wave 4B */
+/* @brkta/ui-core/accordion/accordion.css */
+
+[data-brkta-accordion] {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+[data-brkta-accordion-item] {
+  border-bottom: 1px solid var(--border);
+}
+
+[data-brkta-accordion-item]:first-child {
+  border-top: 1px solid var(--border);
+}
+
+[data-brkta-accordion-trigger] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  min-height: 44px;
+  gap: var(--space-2);
+}
+
+[data-brkta-accordion-trigger]:hover {
+  background-color: var(--muted);
+}
+
+[data-brkta-accordion-trigger]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
+  border-radius: var(--radius-sm);
+}
+
+[data-brkta-accordion-trigger][data-disabled] {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+[data-brkta-accordion-trigger][data-disabled]:hover {
+  background-color: transparent;
+}
+
+/* Chevron icon via CSS — animated rotation */
+[data-brkta-accordion-chevron] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+[data-brkta-accordion-chevron]::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--muted-foreground);
+  border-bottom: 2px solid var(--muted-foreground);
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+[data-brkta-accordion-trigger][aria-expanded="true"] [data-brkta-accordion-chevron] {
+  transform: rotate(180deg);
+}
+
+[data-brkta-accordion-trigger]:hover [data-brkta-accordion-chevron]::after {
+  border-color: var(--foreground);
+}
+
+/* Content panel */
+[data-brkta-accordion-panel] {
+  overflow: hidden;
+}
+
+[data-brkta-accordion-content] {
+  padding: var(--space-3) var(--space-4);
+  padding-top: 0;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Animation: height-based open/close */
+[data-brkta-accordion-panel] {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-normal) var(--ease-out);
+}
+
+[data-brkta-accordion-panel][data-open] {
+  grid-template-rows: 1fr;
+}
+
+[data-brkta-accordion-panel] > * {
+  overflow: hidden;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-accordion-panel] {
+    transition: none;
+  }
+
+  [data-brkta-accordion-chevron] {
+    transition: none;
+  }
+}

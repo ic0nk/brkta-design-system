@@ -1,0 +1,93 @@
+/* ======================================================================
+ * avatar.css — BRKTA Avatar visual recipe
+ *
+ * Circular user/entity avatar with optional image, fallback initials,
+ * and status indicator. Uses --radius-full because avatar is an
+ * approved circular semantic exception.
+ * Targeting: [data-brkta-avatar] attribute selector
+ * ====================================================================== */
+
+[data-brkta-avatar] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  border-radius: var(--radius-full);
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-medium);
+  flex-shrink: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+[data-brkta-avatar] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+}
+
+/* ---- Sizes ---- */
+
+[data-brkta-avatar][data-size="sm"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: var(--font-size-xs);
+}
+
+[data-brkta-avatar][data-size="md"] {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--font-size-sm);
+}
+
+[data-brkta-avatar][data-size="lg"] {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: var(--font-size-base);
+}
+
+/* ---- Status indicator ---- */
+
+[data-brkta-avatar] [data-brkta-avatar-status] {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--background);
+  pointer-events: none;
+}
+
+[data-brkta-avatar][data-size="lg"] [data-brkta-avatar-status] {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+[data-brkta-avatar-status][data-status="online"] {
+  background-color: var(--success);
+}
+
+[data-brkta-avatar-status][data-status="away"] {
+  background-color: var(--warning);
+}
+
+[data-brkta-avatar-status][data-status="busy"] {
+  background-color: var(--destructive);
+}
+
+[data-brkta-avatar-status][data-status="offline"] {
+  background-color: var(--muted-foreground);
+}
+
+/* ---- Fallback text ---- */
+
+[data-brkta-avatar] [data-brkta-avatar-fallback] {
+  font-size: inherit;
+  line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
+}

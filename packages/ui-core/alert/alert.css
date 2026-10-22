@@ -1,0 +1,85 @@
+/* ======================================================================
+ * alert.css — BRKTA Alert visual recipe
+ *
+ * Inline feedback messages for information, success, warning, and
+ * destructive states. Not for transient notifications (see Toast).
+ * Targeting: [data-brkta-alert] attribute selector
+ * ====================================================================== */
+
+[data-brkta-alert] {
+  --brkta-alert-color: var(--information);
+
+  display: flex;
+  /* Title and description are siblings here, not children of a content column, so without
+     wrapping they become columns of a row and a long title collapses to a few characters per
+     line. The title's own margin-bottom says stacked was always the intent. */
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid;
+  background-color: color-mix(in oklch, var(--brkta-alert-color) 14%, transparent);
+  border-color: color-mix(in oklch, var(--brkta-alert-color) 28%, transparent);
+  color: var(--foreground);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+/* ---- Variants ---- */
+
+[data-brkta-alert][data-variant="information"] {
+  --brkta-alert-color: var(--information);
+}
+
+[data-brkta-alert][data-variant="success"] {
+  --brkta-alert-color: var(--success);
+}
+
+[data-brkta-alert][data-variant="warning"] {
+  --brkta-alert-color: var(--warning);
+}
+
+[data-brkta-alert][data-variant="destructive"] {
+  --brkta-alert-color: var(--destructive);
+}
+
+/* ---- Parts ---- */
+
+[data-brkta-alert] [data-brkta-alert-icon] {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 1px;
+  color: inherit;
+}
+
+[data-brkta-alert] [data-brkta-alert-content] {
+  flex: 1;
+  min-width: 0;
+}
+
+[data-brkta-alert] [data-brkta-alert-title] {
+  /* Owns its line, so the description starts beneath it rather than beside it. */
+  flex: 1 0 100%;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  margin-bottom: 0.25rem;
+}
+
+[data-brkta-alert] [data-brkta-alert-description] {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--font-size-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-normal);
+}
+
+[data-brkta-alert] [data-brkta-alert-action] {
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-left: auto;
+  margin-top: -0.125rem;
+  margin-right: -0.25rem;
+}

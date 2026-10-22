@@ -1,0 +1,676 @@
+/*
+ * BRKTA — Design Tokens
+ * ========================================================================
+ *
+ * This file is the SINGLE source of truth for every visual token used
+ * across the BRKTA platform (Angular dashboard & Next.js website).
+ *
+ * ── Colour Space ──────────────────────────────────────────────────────
+ * All colours are defined in the OKLCH colour space, which provides
+ * perceptually-uniform lightness and broader gamut than sRGB.
+ *
+ * ── Creamy Neutral Foundation ─────────────────────────────────────────
+ * BRKTA uses a warm, creamy neutral foundation rather than a cold
+ * zero-chroma gray or a pure-white / pure-black scheme.
+ *
+ *   Connecting cream:  #F4F1EA  →  oklch(0.9585 0.0098 87.5)
+ *
+ *   Light mode:  #F4F1EA is the main application background.
+ *   Dark mode:   #F4F1EA is the principal high-emphasis text and icon
+ *                foreground.
+ *
+ * This is a neutral identity decision, NOT the corporate primary colour.
+ *
+ * ── Theming Strategy ──────────────────────────────────────────────────
+ * The `:root` block holds the light palette. The `.dark` selector
+ * overrides tokens for dark mode.
+ *
+ * ── Tailwind v4 Integration ──────────────────────────────────────────
+ * The `@theme inline` block at the bottom maps every CSS custom property
+ * to a Tailwind utility so you can write e.g.
+ *   bg-background   →  background: var(--background)
+ *   text-foreground →  color: var(--foreground)
+ *
+ * ── Usage ────────────────────────────────────────────────────────────
+ *   @import "@brkta/design-tokens/theme.css";
+ *
+ * ========================================================================
+ */
+
+/* =========================================================================
+   LIGHT THEME (default)
+   =========================================================================
+   `.light` carries the same palette so a subtree can be forced light inside a
+   dark document — the branding preview renders the scheme being edited, not
+   the scheme the dashboard happens to be in. Declarations that match the
+   element itself beat values inherited from a `.dark` ancestor, so no ordering
+   or specificity juggling against `.dark` is needed.
+   ========================================================================= */
+:root,
+.light {
+  /*
+   * ── Creamy Neutral Foundation ───────────────────────────────────────────
+   *   Connecting cream:  #F4F1EA  →  oklch(0.9585 0.0098 87.5)
+   *
+   *   Light mode uses a warm cream-to-off-white surface hierarchy.
+   *   Dark mode uses a warm charcoal hierarchy.
+   *
+   *   Utility white (#FFFFFF) is reserved for exceptional cases only.
+   */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     SURFACE HIERARCHY
+     ═══════════════════════════════════════════════════════════════════════
+     The surface levels step from the cream canvas up through increasingly
+     lighter off-white surfaces — card, then popover — so each level is
+     visibly distinct.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* ── Application Canvas ──────────────────────────────────────────────── */
+  --background: oklch(0.9585 0.0098 87.5);   /* #F4F1EA — cream page canvas */
+  --foreground: oklch(0.2042 0.0079 95.4);   /* #181713 — warm near-black text */
+  --heading: var(--foreground);
+
+  /* ── Surface (sidebars, grouped sections) ────────────────────────────── */
+  --surface: oklch(0.9705 0.0098 87.5);       /* #F8F5EE */
+  --surface-foreground: oklch(0.2042 0.0079 95.4);
+
+  /* ── Card ────────────────────────────────────────────────────────────── */
+  --card: oklch(0.9920 0.0073 80.7);          /* #FFFCF7 */
+  --card-foreground: oklch(0.2042 0.0079 95.4);
+
+  /* ── Popover (menus, dropdowns, tooltips, dialogs) ──────────────────── */
+  --popover: oklch(0.9945 0.0057 84.6);       /* #FFFDF9 */
+  --popover-foreground: oklch(0.2042 0.0079 95.4);
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     NEUTRAL CONTAINERS
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* ── Muted / Disabled Regions ────────────────────────────────────────── */
+  --muted: oklch(0.9352 0.0144 84.6);         /* #EEE9DF */
+  --muted-foreground: oklch(0.5044 0.0134 84.6); /* #68645C */
+  --divider: var(--border);
+
+  /* ── Secondary Controls ──────────────────────────────────────────────── */
+  --secondary: oklch(0.9200 0.0145 84.6);     /* #E9E4DA */
+  --secondary-foreground: oklch(0.3572 0.0109 84.6); /* #3F3C36 */
+
+  /* ── Input / Form Controls ───────────────────────────────────────────── */
+  --input: oklch(0.9768 0.0086 84.6);         /* #FAF7F1 */
+
+  /* ── Borders & Dividers ──────────────────────────────────────────────── */
+  --border: oklch(0.8758 0.0197 80.1);        /* #DDD5C8 */
+
+  /* ── Focus Ring ──────────────────────────────────────────────────────── */
+  --ring: oklch(0.2042 0.0079 95.4);          /* #181713 — matches foreground */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     PRIMARY / ACCENT (NEUTRAL & BRAND)
+     ═══════════════════════════════════════════════════════════════════════
+     --primary is a neutral interaction colour (NOT lime, NOT a corporate
+     brand colour). It uses the warm near-black for light-mode buttons
+     and the approved cream for dark-mode buttons.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* ── Primary ──────────────────────────────────────────────────────────── */
+  --primary: oklch(0.2042 0.0079 95.4);       /* #181713 — warm near-black */
+  --primary-foreground: oklch(0.9585 0.0098 87.5); /* #F4F1EA — cream */
+  --link: var(--primary);
+  --navigation-active: var(--primary);
+  --navigation-active-foreground: var(--primary-foreground);
+
+  /* ── Accent (brand lime) ──────────────────────────────────────────────── */
+  --accent: oklch(0.92 0.3 120);              /* #D7FF3F — brand lime */
+  --accent-foreground: oklch(0.2 0.01 120);   /* near-black text on lime */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     STATUS COLOURS
+     ═══════════════════════════════════════════════════════════════════════
+     These remain semantic state colours and are NOT part of the creamy
+     neutral foundation. Foregrounds use cream only when contrast allows.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* ── Destructive ──────────────────────────────────────────────────────── */
+  --destructive: oklch(0.577 0.245 27.33);    /* red */
+  --destructive-foreground: oklch(0.9585 0.0098 87.5); /* cream */
+
+  /* ── Success ──────────────────────────────────────────────────────────── */
+  --success: oklch(0.72 0.2 150);             /* green */
+  --success-foreground: oklch(0.9585 0.0098 87.5); /* cream */
+
+  /* ── Warning ──────────────────────────────────────────────────────────── */
+  --warning: oklch(0.85 0.2 85);              /* amber */
+  --warning-foreground: oklch(0.2 0.01 120); /* near-black on amber */
+
+  /* ── Information ──────────────────────────────────────────────────────── */
+  --information: oklch(0.7 0.15 240);         /* blue */
+  --information-foreground: oklch(0.9585 0.0098 87.5); /* cream */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     UTILITY TOKENS
+     ═══════════════════════════════════════════════════════════════════════
+     Pure white and pure black are restricted to exceptional use cases
+     only (print, export, external artwork, documented exceptions).
+     ═══════════════════════════════════════════════════════════════════ */
+
+  --utility-white: oklch(1 0 0);              /* #FFFFFF — restricted */
+  --utility-black: oklch(0 0 0);              /* #000000 — restricted */
+
+  /* ── Subtle Foreground (low emphasis / placeholders) ─────────────────── */
+  --subtle-foreground: oklch(0.5911 0.0161 84.6); /* #827D73 */
+
+  /*
+   * ── Radius (Little Curve) ───────────────────────────────────────────────
+   *
+   * BRKTA uses a "little curve" visual language — modest, precise radii
+   * that communicate professionalism and efficiency, not playfulness.
+   *
+   * Scale:
+   *   --radius-sm:   6px (small badges, tags, compact indicators)
+   *   --radius-md:   8px (compact internal elements, secondary indicators)
+   *   --radius-lg:  10px (default buttons, controls, cards, panels)
+   *   --radius-xl:  14px (larger containers, modals, sheets)
+   *   --radius-2xl: 18px (special surfaces, marketing containers)
+   *   --radius-full: 9999px (ONLY for circular/status exceptions)
+   *
+   * Rules:
+   *   - Reusable UI components must use --radius-* tokens, NOT hardcoded
+   *     values or pill shapes.
+   *   - Default interactive controls (buttons, inputs, selects) use
+   *     --radius-lg (10px) for a visible, modest professional curve.
+   *   - --radius-md (8px) is for compact internal elements where space is
+   *     tight — e.g. small table badges, dense tag lists.
+   *   - border-radius: 9999px (--radius-full) is RESTRICTED to:
+   *     avatars, status dots, circular icons, progress indicators,
+   *     and explicitly documented badge/chip exceptions.
+   *   - Do NOT use --radius-full for normal buttons or controls.
+   *   - Marketing page containers may use --radius-xl / --radius-2xl
+   *     for visual containers, but NOT for interactive controls.
+   *   - Cards should use --radius-lg (10px) or less.
+   */
+  --radius: 0.625rem;
+
+  /*
+   * ── Chart Colours ──────────────────────────────────────────────────────
+   * Used by charting libraries (Chart.js, Recharts, etc.).
+   */
+  --chart-1: oklch(0.646 0.222 41.12);
+  --chart-2: oklch(0.6 0.12 175);
+  --chart-3: oklch(0.398 0.07 227);
+  --chart-4: oklch(0.828 0.189 84.43);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  /*
+   * ── Sidebar ────────────────────────────────────────────────────────────
+   * Navigation sidebar tokens — use the surface hierarchy level.
+   */
+  --sidebar: oklch(0.9705 0.0098 87.5);       /* #F8F5EE — same as surface */
+  --sidebar-foreground: oklch(0.2042 0.0079 95.4);
+  --sidebar-primary: oklch(0.2042 0.0079 95.4);
+  --sidebar-primary-foreground: oklch(0.9585 0.0098 87.5);
+  --sidebar-accent: oklch(0.92 0.3 120);
+  --sidebar-accent-foreground: oklch(0.2 0.01 120);
+  --sidebar-border: oklch(0.8758 0.0197 80.1); /* #DDD5C8 — same as border */
+  --sidebar-ring: oklch(0.2042 0.0079 95.4);
+
+  /*
+   * ── Selection ──────────────────────────────────────────────────────────
+   */
+  --selection: oklch(0.8758 0.0197 80.1 / 0.3); /* border colour at low alpha */
+
+  /*
+   * ── Overlay ──────────────────────────────────────────────────────────
+   */
+  --overlay: oklch(0.1776 0.0062 91.7 / 0.4); /* warm dark at low alpha */
+
+  /*
+   * ── Disabled / Skeleton ──────────────────────────────────────────────
+   */
+  --disabled: oklch(0.9352 0.0144 84.6);       /* #EEE9DF — same as muted */
+  --disabled-foreground: oklch(0.5911 0.0161 84.6); /* #827D73 */
+  --skeleton: oklch(0.9352 0.0144 84.6 / 0.5); /* muted at half alpha */
+
+  /*
+   * ── Table ────────────────────────────────────────────────────────────
+   */
+  --table-header: oklch(0.9705 0.0098 87.5);  /* #F8F5EE — same as surface */
+
+  /*
+   * ── Typography ─────────────────────────────────────────────────────────
+   *
+   * Family tokens (--font-family-*) hold the raw font-family strings.
+   * Usage tokens (--font-sans, --font-mono, etc.) reference the family
+   * tokens. This avoids circular self-reference problems in Tailwind v4's
+   * @theme inline block.
+   *
+   * Geist Variable   →  Primary UI font
+   * Geist Mono       →  Code/data monospace font
+   * Noto Sans Arabic →  Arabic UI companion (fallback; exact UI variant TBD)
+   * Geist Pixel      →  Planned display/accent font (not yet self-hosted)
+   */
+  --font-family-sans: 'Geist Variable', 'Geist', 'Noto Sans Arabic Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-family-arabic: 'Noto Sans Arabic Variable', 'Noto Sans Arabic', sans-serif;
+  --font-family-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, 'SFMono-Regular', 'Cascadia Code', Consolas, monospace;
+  --font-family-pixel: 'Geist Pixel Square', 'Geist Pixel', var(--font-family-sans);
+
+  --font-sans: var(--font-family-sans);
+  --font-arabic: var(--font-family-arabic);
+  --font-mono: var(--font-family-mono);
+  --font-pixel: var(--font-family-pixel);
+
+  /* Fluid type scale using clamp(min, preferred, max) */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);
+  --font-size-sm: clamp(0.8125rem, 0.75rem + 0.3125vw, 0.875rem);
+  --font-size-base: clamp(0.875rem, 0.8125rem + 0.375vw, 1rem);
+  --font-size-lg: clamp(1rem, 0.9375rem + 0.5vw, 1.125rem);
+  --font-size-xl: clamp(1.125rem, 1rem + 0.75vw, 1.25rem);
+  --font-size-2xl: clamp(1.25rem, 1rem + 1.25vw, 1.5rem);
+  --font-size-3xl: clamp(1.5rem, 1.125rem + 1.875vw, 1.875rem);
+  --font-size-4xl: clamp(1.875rem, 1.3125rem + 2.8125vw, 2.25rem);
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /*
+   * ── Spacing Scale ──────────────────────────────────────────────────────
+   * Tailwind-inspired spacing as CSS custom properties.
+   */
+  --space-0: 0rem;
+  --space-0\.5: 0.125rem;
+  --space-1: 0.25rem;
+  --space-1\.5: 0.375rem;
+  --space-2: 0.5rem;
+  --space-2\.5: 0.625rem;
+  --space-3: 0.75rem;
+  --space-3\.5: 0.875rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-9: 2.25rem;
+  --space-10: 2.5rem;
+  --space-11: 2.75rem;
+  --space-12: 3rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-28: 7rem;
+  --space-32: 8rem;
+  --space-36: 9rem;
+  --space-40: 10rem;
+  --space-44: 11rem;
+  --space-48: 12rem;
+  --space-52: 13rem;
+  --space-56: 14rem;
+  --space-60: 15rem;
+  --space-64: 16rem;
+  --space-72: 18rem;
+  --space-80: 20rem;
+  --space-96: 24rem;
+
+  /*
+   * ── Radii (Little Curve scale) ─────────────────────────────────────────
+   * Base --radius = 0.625rem (10px).
+   *   sm = 6px  (badges, tags, compact indicators)
+   *   md = 8px  (compact internal elements, secondary indicators)
+   *   lg = 10px (default buttons, controls, cards, panels)
+   *   xl = 14px (larger containers)
+   *   2xl = 18px (special surfaces)
+   *
+   * --radius-full (9999px) is restricted to semantic circular elements:
+   * avatars, status dots, circular icons, progress indicators.
+   * Do NOT use --radius-full for buttons or normal controls.
+   */
+  --radius-sm: calc(var(--radius) - 4px);  /* 6px — badges, tags */
+  --radius-md: calc(var(--radius) - 2px);  /* 8px — compact internal */
+  --radius-lg: var(--radius);              /* 10px — buttons, cards */
+  --radius-xl: calc(var(--radius) + 4px);  /* 14px — containers, modals */
+  --radius-2xl: calc(var(--radius) + 8px); /* 18px — special surfaces */
+  --radius-full: 9999px;                   /* RESTRICTED — see rules above */
+
+  /*
+   * ── Shadows (warm neutral) ─────────────────────────────────────────────
+   * Light-theme shadows use the warm near-black with varying alpha so they
+   * feel soft and warm rather than cold gray.
+   */
+  --shadow-xs: 0 1px 2px oklch(0.2042 0.0079 95.4 / 0.04);
+  --shadow-sm: 0 1px 3px oklch(0.2042 0.0079 95.4 / 0.06), 0 1px 2px oklch(0.2042 0.0079 95.4 / 0.04);
+  --shadow-md: 0 4px 6px oklch(0.2042 0.0079 95.4 / 0.05), 0 2px 4px oklch(0.2042 0.0079 95.4 / 0.04);
+  --shadow-lg:
+    0 10px 15px oklch(0.2042 0.0079 95.4 / 0.06), 0 4px 6px oklch(0.2042 0.0079 95.4 / 0.04);
+  --shadow-xl:
+    0 20px 25px oklch(0.2042 0.0079 95.4 / 0.08), 0 8px 10px oklch(0.2042 0.0079 95.4 / 0.04);
+  --shadow-2xl:
+    0 25px 50px oklch(0.2042 0.0079 95.4 / 0.12);
+
+  /*
+   * ── Elevation (z-index layers for physical depth) ──────────────────────
+   */
+  --elevation-1: 1;
+  --elevation-2: 10;
+  --elevation-3: 100;
+  --elevation-4: 1000;
+  --elevation-5: 10000;
+
+  /*
+   * ── Focus Ring ─────────────────────────────────────────────────────────
+   */
+  --ring-offset: 2px;
+  --ring-width: 2px;
+  --ring-color: var(--ring);
+
+  /*
+   * ── Component Heights ──────────────────────────────────────────────────
+   * Minimum 44px for default (WCAG touch target).
+   */
+  --height-sm: 2rem;     /* 32 px — compact */
+  --height-md: 2.75rem;  /* 44 px — default, accessible touch target */
+  --height-lg: 3.5rem;   /* 56 px — comfortable */
+
+  /*
+   * ── Icon Sizes ─────────────────────────────────────────────────────────
+   */
+  --icon-size-sm: 1rem;    /* 16 px */
+  --icon-size-md: 1.25rem; /* 20 px */
+  --icon-size-lg: 1.5rem;  /* 24 px */
+
+  /*
+   * ── Motion ─────────────────────────────────────────────────────────────
+   */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /*
+   * ── Z-Index Scale ──────────────────────────────────────────────────────
+   */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-toast: 800;
+
+  /*
+   * ── Opacity ────────────────────────────────────────────────────────────
+   */
+  --opacity-disabled: 0.5;
+  --opacity-muted: 0.4;
+  --opacity-subtle: 0.08;
+  --opacity-hover: 0.08;
+}
+
+/* =========================================================================
+   DARK THEME
+   ========================================================================= */
+.dark {
+  /*
+   * ── Creamy Neutral Foundation (Dark) ─────────────────────────────────────
+   * Dark mode uses a warm charcoal surface hierarchy rather than pure black
+   * or cold blue-gray. The approved cream (#F4F1EA) becomes the principal
+   * text and icon foreground.
+   */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     SURFACE HIERARCHY — DARK
+     ═══════════════════════════════════════════════════════════════════════
+     Dark surfaces step from deep charcoal up through progressively lighter
+     warm surfaces — card, then popover — to create visible separation.
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* ── Application Canvas ──────────────────────────────────────────────── */
+  --background: oklch(0.1776 0.0062 91.7);   /* #12110E — warm charcoal canvas */
+  --foreground: oklch(0.9585 0.0098 87.5);   /* #F4F1EA — cream text & icons */
+  --heading: var(--foreground);
+
+  /* ── Surface (sidebars, grouped sections) ────────────────────────────── */
+  --surface: oklch(0.2083 0.0097 97.8);       /* #191813 */
+  --surface-foreground: oklch(0.9585 0.0098 87.5);
+
+  /* ── Card ────────────────────────────────────────────────────────────── */
+  --card: oklch(0.2397 0.0097 88.8);          /* #211F1A */
+  --card-foreground: oklch(0.9585 0.0098 87.5);
+
+  /* ── Popover (menus, dropdowns, tooltips, dialogs) ──────────────────── */
+  --popover: oklch(0.2694 0.0133 87.6);       /* #29261F */
+  --popover-foreground: oklch(0.9585 0.0098 87.5);
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     NEUTRAL CONTAINERS — DARK
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* ── Muted / Disabled Regions ────────────────────────────────────────── */
+  --muted: oklch(0.2979 0.0130 87.6);         /* #302D26 */
+  --muted-foreground: oklch(0.7182 0.0176 79.3); /* #AAA398 */
+  --divider: var(--border);
+
+  /* ── Secondary Controls ──────────────────────────────────────────────── */
+  --secondary: oklch(0.3265 0.0148 84.6);     /* #38342C */
+  --secondary-foreground: oklch(0.8655 0.0164 82.8); /* #D8D2C7 */
+
+  /* ── Input / Form Controls ───────────────────────────────────────────── */
+  --input: oklch(0.2269 0.0099 88.8);         /* #1E1C17 */
+
+  /* ── Borders & Dividers ──────────────────────────────────────────────── */
+  --border: oklch(0.3809 0.0178 84.6);        /* #474238 */
+
+  /* ── Focus Ring ──────────────────────────────────────────────────────── */
+  --ring: oklch(0.9585 0.0098 87.5);          /* #F4F1EA — cream */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     PRIMARY / ACCENT — DARK
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* ── Primary (neutral interaction colour) ─────────────────────────────── */
+  --primary: oklch(0.9585 0.0098 87.5);       /* #F4F1EA — cream primary bg */
+  --primary-foreground: oklch(0.2042 0.0079 95.4); /* #181713 — warm dark text on cream */
+  --link: var(--primary);
+  --navigation-active: var(--primary);
+  --navigation-active-foreground: var(--primary-foreground);
+
+  /* ── Accent (brand lime, darker for dark mode) ────────────────────────── */
+  --accent: oklch(0.82 0.25 120);             /* darker lime */
+  --accent-foreground: oklch(0.9585 0.0098 87.5); /* cream on lime */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     STATUS COLOURS — DARK
+     ═══════════════════════════════════════════════════════════════════ */
+
+  /* ── Destructive ──────────────────────────────────────────────────────── */
+  --destructive: oklch(0.577 0.245 27.33);    /* same red */
+  --destructive-foreground: oklch(0.9585 0.0098 87.5); /* cream */
+
+  /* ── Success ──────────────────────────────────────────────────────────── */
+  --success: oklch(0.62 0.2 150);             /* slightly darker green */
+  --success-foreground: oklch(0.9585 0.0098 87.5); /* cream */
+
+  /* ── Warning ──────────────────────────────────────────────────────────── */
+  --warning: oklch(0.75 0.2 85);              /* darker amber */
+  --warning-foreground: oklch(0.2 0.01 120); /* near-black on amber */
+
+  /* ── Information ──────────────────────────────────────────────────────── */
+  --information: oklch(0.6 0.15 240);         /* darker blue */
+  --information-foreground: oklch(0.9585 0.0098 87.5); /* cream */
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     UTILITY TOKENS — DARK remain the same (absolute values)
+     ═══════════════════════════════════════════════════════════════════ */
+  /* --utility-white and --utility-black are theme-independent absolute values */
+  --subtle-foreground: oklch(0.6229 0.0182 79.3); /* #8D867B */
+
+  /*
+   * ── Chart Colours (dark) ────────────────────────────────────────────
+   */
+  --chart-1: oklch(0.769 0.188 70.08);
+  --chart-2: oklch(0.627 0.265 38.21);
+  --chart-3: oklch(0.6 0.12 175);
+  --chart-4: oklch(0.398 0.07 227);
+  --chart-5: oklch(0.828 0.189 84.43);
+
+  /*
+   * ── Sidebar (dark) ──────────────────────────────────────────────────
+   */
+  --sidebar: oklch(0.2083 0.0097 97.8);       /* #191813 — same as dark surface */
+  --sidebar-foreground: oklch(0.9585 0.0098 87.5);
+  --sidebar-primary: oklch(0.9585 0.0098 87.5);
+  --sidebar-primary-foreground: oklch(0.2042 0.0079 95.4);
+  --sidebar-accent: oklch(0.82 0.25 120);
+  --sidebar-accent-foreground: oklch(0.9585 0.0098 87.5);
+  --sidebar-border: oklch(0.3809 0.0178 84.6); /* #474238 — same as dark border */
+  --sidebar-ring: oklch(0.9585 0.0098 87.5);
+
+  /*
+   * ── Selection / Overlay / Disabled / Skeleton — DARK ────────────────
+   */
+  --selection: oklch(0.3809 0.0178 84.6 / 0.3); /* border colour at low alpha */
+  --overlay: oklch(0.1776 0.0062 91.7 / 0.6);  /* darker overlay for dark mode */
+  --disabled: oklch(0.2979 0.0130 87.6);       /* #302D26 — same as dark muted */
+  --disabled-foreground: oklch(0.6229 0.0182 79.3); /* #8D867B */
+  --skeleton: oklch(0.2979 0.0130 87.6 / 0.5); /* dark muted at half alpha */
+  --table-header: oklch(0.2083 0.0097 97.8);   /* #191813 — same as dark surface */
+
+  /*
+   * ── Shadows (dark) ──────────────────────────────────────────────────
+   * Dark shadows use the warm near-black foreground with high alpha for
+   * depth, avoiding pure black.
+   */
+  --shadow-xs: 0 1px 2px oklch(0.2042 0.0079 95.4 / 0.5);
+  --shadow-sm: 0 1px 3px oklch(0.2042 0.0079 95.4 / 0.5), 0 1px 2px oklch(0.2042 0.0079 95.4 / 0.4);
+  --shadow-md: 0 4px 6px oklch(0.2042 0.0079 95.4 / 0.5), 0 2px 4px oklch(0.2042 0.0079 95.4 / 0.4);
+  --shadow-lg:
+    0 10px 15px oklch(0.2042 0.0079 95.4 / 0.5), 0 4px 6px oklch(0.2042 0.0079 95.4 / 0.4);
+  --shadow-xl:
+    0 20px 25px oklch(0.2042 0.0079 95.4 / 0.6), 0 8px 10px oklch(0.2042 0.0079 95.4 / 0.4);
+  --shadow-2xl:
+    0 25px 50px oklch(0.2042 0.0079 95.4 / 0.7);
+
+  /* ── Focus ring colour overridden via --ring ────────────────────────── */
+  --ring-color: var(--ring);
+}
+
+/* =========================================================================
+   TAILWIND v4 THEME MAPPING
+   =========================================================================
+   This `@theme inline` block teaches Tailwind about every CSS custom
+   property so you can use utility classes like:
+     bg-background    text-foreground    border-border
+     shadow-md        rounded-lg         font-sans
+   ========================================================================= */
+/* Shared semantic typography and rules. Explicit component styling may refine
+   these roles, but customer-controlled heading and divider colours remain
+   available consistently in both framework adapters. */
+:where(h1, h2, h3, h4, h5, h6) { color: var(--heading); }
+:where(hr) { border-color: var(--divider); }
+
+@theme inline {
+  /* ── Semantic Colours ─────────────────────────────────────────────── */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-link: var(--link);
+  --color-navigation-active: var(--navigation-active);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-divider: var(--divider);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-information: var(--information);
+  --color-information-foreground: var(--information-foreground);
+
+  /* ── Utility White / Black ──────────────────────────────────────────── */
+  --color-utility-white: var(--utility-white);
+  --color-utility-black: var(--utility-black);
+
+  /* ── Border / Input / Ring ────────────────────────────────────────── */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* ── Subtle ──────────────────────────────────────────────────────────── */
+  --color-subtle-foreground: var(--subtle-foreground);
+
+  /* ── Chart Colours ────────────────────────────────────────────────── */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* ── Sidebar Colours ──────────────────────────────────────────────── */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ── Typography ───────────────────────────────────────────────────── */
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+  --font-arabic: var(--font-family-arabic);
+  --font-pixel: var(--font-family-pixel);
+
+  /* ── Radius ───────────────────────────────────────────────────────── */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  /* NOTE: --radius-full (9999px) intentionally OMITTED from the mapping.
+     Including it would expose `rounded-full` as a Tailwind utility,
+     encouraging misuse on buttons and normal controls. The restricted
+     pill/circle exceptions (avatars, status dots, badges, chips) must
+     use the CSS variable directly and document why. */
+
+  /* ── Shadows ──────────────────────────────────────────────────────── */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+}
+
+/* =========================================================================
+   BREAKPOINT REFERENCE (for documentation only — Tailwind handles these)
+   =========================================================================
+   sm:  640px
+   md:  768px
+   lg:  1024px
+   xl:  1280px
+   2xl: 1536px
+   ========================================================================= */

@@ -1,0 +1,94 @@
+/* ======================================================================
+ * toast.css — BRKTA Toast notification visual recipe
+ *
+ * Fixed-position notification panel with stacking support.
+ * ====================================================================== */
+
+[data-brkta-toast-viewport] {
+  position: fixed;
+  bottom: 1rem;
+  inset-inline-end: 1rem;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 24rem;
+  width: 100%;
+  pointer-events: none;
+}
+
+[data-brkta-toast] {
+  --brkta-toast-color: var(--border);
+
+  pointer-events: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  color: var(--foreground);
+  animation: brkta-toast-in var(--duration-normal) var(--ease-out);
+}
+
+[data-brkta-toast][data-closing] {
+  animation: brkta-toast-out var(--duration-fast) var(--ease-out) both;
+  pointer-events: none;
+}
+
+[data-brkta-toast-title] {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+[data-brkta-toast-description] {
+  font-size: var(--font-size-sm);
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+
+[data-brkta-toast-close] {
+  margin-inline-start: auto;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted-foreground);
+  padding: 0.125rem;
+  border-radius: var(--radius-sm);
+}
+
+[data-brkta-toast-close]:hover { color: var(--foreground); }
+
+/* Variants retain the elevated glass surface and add a semantic colour wash. */
+[data-brkta-toast][data-variant="success"] {
+  --brkta-toast-color: var(--success);
+  background-color: color-mix(in oklch, var(--brkta-toast-color) 24%, var(--brkta-glass-elevated-background));
+  border-color: color-mix(in oklch, var(--brkta-toast-color) 52%, var(--brkta-glass-elevated-border-color));
+}
+[data-brkta-toast][data-variant="warning"] {
+  --brkta-toast-color: var(--warning);
+  background-color: color-mix(in oklch, var(--brkta-toast-color) 24%, var(--brkta-glass-elevated-background));
+  border-color: color-mix(in oklch, var(--brkta-toast-color) 52%, var(--brkta-glass-elevated-border-color));
+}
+[data-brkta-toast][data-variant="destructive"] {
+  --brkta-toast-color: var(--destructive);
+  background-color: color-mix(in oklch, var(--brkta-toast-color) 24%, var(--brkta-glass-elevated-background));
+  border-color: color-mix(in oklch, var(--brkta-toast-color) 52%, var(--brkta-glass-elevated-border-color));
+}
+
+@keyframes brkta-toast-in {
+  from { opacity: 0; transform: translateX(1rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes brkta-toast-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(1rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-toast] { animation: none; }
+  [data-brkta-toast][data-closing] { animation: none; }
+}

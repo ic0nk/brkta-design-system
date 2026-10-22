@@ -1,0 +1,56 @@
+/* Input OTP — Wave 5 */
+/* @brkta/ui-core/input-otp/input-otp.css */
+
+[data-brkta-input-otp] {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+[data-brkta-input-otp-slot] {
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  caret-color: var(--primary);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-input-otp-slot]:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+[data-brkta-input-otp-slot][data-invalid] {
+  border-color: var(--destructive);
+}
+
+[data-brkta-input-otp-slot][data-invalid]:focus {
+  box-shadow: 0 0 0 1px var(--destructive);
+}
+
+[data-brkta-input-otp-slot]:disabled,
+[data-brkta-input-otp][data-disabled] [data-brkta-input-otp-slot] {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+[data-brkta-input-otp-slot]::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-input-otp-slot] {
+    transition: none;
+  }
+}

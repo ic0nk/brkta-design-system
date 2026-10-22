@@ -1,0 +1,13 @@
+/* ======================================================================
+ * field-help.css — BRKTA Field Help Text visual recipe
+ *
+ * Helper text displayed below a form field.
+ * Targeting: [data-brkta-field-help] attribute selector
+ * ====================================================================== */
+
+[data-brkta-field-help] {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--muted-foreground);
+  margin-top: 0.125rem;
+}

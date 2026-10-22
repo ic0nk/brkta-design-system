@@ -1,0 +1,539 @@
+{
+  "name": "@brkta/ui-core",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/types/variant.js",
+  "types": "./dist/types/variant.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node ../../scripts/copy-package-assets.mjs ui-core"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/variant.d.ts",
+      "default": "./dist/types/variant.js"
+    },
+    "./types/variant": {
+      "types": "./dist/types/variant.d.ts",
+      "default": "./dist/types/variant.js"
+    },
+    "./button/button-contract": {
+      "types": "./dist/button/button-contract.d.ts",
+      "default": "./dist/button/button-contract.js"
+    },
+    "./button/button.css": {
+      "style": "./dist/button/button.css",
+      "default": "./dist/button/button.css"
+    },
+    "./icon-motion/icon-motion.css": {
+      "style": "./dist/icon-motion/icon-motion.css",
+      "default": "./dist/icon-motion/icon-motion.css"
+    },
+    "./styles/components.css": {
+      "style": "./dist/styles/components.css",
+      "default": "./dist/styles/components.css"
+    },
+    "./badge/badge-contract": {
+      "types": "./dist/badge/badge-contract.d.ts",
+      "default": "./dist/badge/badge-contract.js"
+    },
+    "./badge/badge.css": {
+      "style": "./dist/badge/badge.css",
+      "default": "./dist/badge/badge.css"
+    },
+    "./card/card-contract": {
+      "types": "./dist/card/card-contract.d.ts",
+      "default": "./dist/card/card-contract.js"
+    },
+    "./card/card.css": {
+      "style": "./dist/card/card.css",
+      "default": "./dist/card/card.css"
+    },
+    "./consent-banner/consent-banner-story-messages": {
+      "types": "./dist/consent-banner/consent-banner-story-messages.d.ts",
+      "default": "./dist/consent-banner/consent-banner-story-messages.js"
+    },
+    "./consent-banner/consent-banner-contract": {
+      "types": "./dist/consent-banner/consent-banner-contract.d.ts",
+      "default": "./dist/consent-banner/consent-banner-contract.js"
+    },
+    "./consent-banner/consent-banner.css": {
+      "style": "./dist/consent-banner/consent-banner.css",
+      "default": "./dist/consent-banner/consent-banner.css"
+    },
+    "./alert/alert-contract": {
+      "types": "./dist/alert/alert-contract.d.ts",
+      "default": "./dist/alert/alert-contract.js"
+    },
+    "./alert/alert.css": {
+      "style": "./dist/alert/alert.css",
+      "default": "./dist/alert/alert.css"
+    },
+    "./avatar/avatar-contract": {
+      "types": "./dist/avatar/avatar-contract.d.ts",
+      "default": "./dist/avatar/avatar-contract.js"
+    },
+    "./avatar/avatar.css": {
+      "style": "./dist/avatar/avatar.css",
+      "default": "./dist/avatar/avatar.css"
+    },
+    "./separator/separator-contract": {
+      "types": "./dist/separator/separator-contract.d.ts",
+      "default": "./dist/separator/separator-contract.js"
+    },
+    "./separator/separator.css": {
+      "style": "./dist/separator/separator.css",
+      "default": "./dist/separator/separator.css"
+    },
+    "./skeleton/skeleton-contract": {
+      "types": "./dist/skeleton/skeleton-contract.d.ts",
+      "default": "./dist/skeleton/skeleton-contract.js"
+    },
+    "./skeleton/skeleton.css": {
+      "style": "./dist/skeleton/skeleton.css",
+      "default": "./dist/skeleton/skeleton.css"
+    },
+    "./spinner/spinner-contract": {
+      "types": "./dist/spinner/spinner-contract.d.ts",
+      "default": "./dist/spinner/spinner-contract.js"
+    },
+    "./spinner/spinner.css": {
+      "style": "./dist/spinner/spinner.css",
+      "default": "./dist/spinner/spinner.css"
+    },
+    "./progress/progress-contract": {
+      "types": "./dist/progress/progress-contract.d.ts",
+      "default": "./dist/progress/progress-contract.js"
+    },
+    "./progress/progress.css": {
+      "style": "./dist/progress/progress.css",
+      "default": "./dist/progress/progress.css"
+    },
+    "./password-strength/password-strength-contract": {
+      "types": "./dist/password-strength/password-strength-contract.d.ts",
+      "default": "./dist/password-strength/password-strength-contract.js"
+    },
+    "./password-strength/password-strength.css": {
+      "style": "./dist/password-strength/password-strength.css",
+      "default": "./dist/password-strength/password-strength.css"
+    },
+    "./flow-geometry": {
+      "types": "./dist/flow-geometry/flow-geometry.d.ts",
+      "default": "./dist/flow-geometry/flow-geometry.js"
+    },
+    "./flow-tree/flow-tree-contract": {
+      "types": "./dist/flow-tree/flow-tree-contract.d.ts",
+      "default": "./dist/flow-tree/flow-tree-contract.js"
+    },
+    "./flow-tree/flow-tree.css": {
+      "style": "./dist/flow-tree/flow-tree.css",
+      "default": "./dist/flow-tree/flow-tree.css"
+    },
+    "./brik/brik-contract": {
+      "types": "./dist/brik/brik-contract.d.ts",
+      "default": "./dist/brik/brik-contract.js"
+    },
+    "./brik/brik.css": {
+      "style": "./dist/brik/brik.css",
+      "default": "./dist/brik/brik.css"
+    },
+    "./kbd/kbd-contract": {
+      "types": "./dist/kbd/kbd-contract.d.ts",
+      "default": "./dist/kbd/kbd-contract.js"
+    },
+    "./kbd/kbd.css": {
+      "style": "./dist/kbd/kbd.css",
+      "default": "./dist/kbd/kbd.css"
+    },
+    "./select/select-contract": {
+      "types": "./dist/select/select-contract.d.ts",
+      "default": "./dist/select/select-contract.js"
+    },
+    "./select/select.css": {
+      "style": "./dist/select/select.css",
+      "default": "./dist/select/select.css"
+    },
+    "./dropdown-menu/dropdown-menu-contract": {
+      "types": "./dist/dropdown-menu/dropdown-menu-contract.d.ts",
+      "default": "./dist/dropdown-menu/dropdown-menu-contract.js"
+    },
+    "./dropdown-menu/dropdown-menu.css": {
+      "style": "./dist/dropdown-menu/dropdown-menu.css",
+      "default": "./dist/dropdown-menu/dropdown-menu.css"
+    },
+    "./popover/popover-contract": {
+      "types": "./dist/popover/popover-contract.d.ts",
+      "default": "./dist/popover/popover-contract.js"
+    },
+    "./popover/popover.css": {
+      "style": "./dist/popover/popover.css",
+      "default": "./dist/popover/popover.css"
+    },
+    "./tooltip/tooltip-contract": {
+      "types": "./dist/tooltip/tooltip-contract.d.ts",
+      "default": "./dist/tooltip/tooltip-contract.js"
+    },
+    "./tooltip/tooltip.css": {
+      "style": "./dist/tooltip/tooltip.css",
+      "default": "./dist/tooltip/tooltip.css"
+    },
+    "./dialog/dialog-contract": {
+      "types": "./dist/dialog/dialog-contract.d.ts",
+      "default": "./dist/dialog/dialog-contract.js"
+    },
+    "./dialog/dialog.css": {
+      "style": "./dist/dialog/dialog.css",
+      "default": "./dist/dialog/dialog.css"
+    },
+    "./alert-dialog/alert-dialog-contract": {
+      "types": "./dist/alert-dialog/alert-dialog-contract.d.ts",
+      "default": "./dist/alert-dialog/alert-dialog-contract.js"
+    },
+    "./alert-dialog/alert-dialog.css": {
+      "style": "./dist/alert-dialog/alert-dialog.css",
+      "default": "./dist/alert-dialog/alert-dialog.css"
+    },
+    "./sheet/sheet-contract": {
+      "types": "./dist/sheet/sheet-contract.d.ts",
+      "default": "./dist/sheet/sheet-contract.js"
+    },
+    "./sheet/sheet.css": {
+      "style": "./dist/sheet/sheet.css",
+      "default": "./dist/sheet/sheet.css"
+    },
+    "./toast/toast-contract": {
+      "types": "./dist/toast/toast-contract.d.ts",
+      "default": "./dist/toast/toast-contract.js"
+    },
+    "./toast/toast.css": {
+      "style": "./dist/toast/toast.css",
+      "default": "./dist/toast/toast.css"
+    },
+    "./breadcrumb/breadcrumb-contract": {
+      "types": "./dist/breadcrumb/breadcrumb-contract.d.ts",
+      "default": "./dist/breadcrumb/breadcrumb-contract.js"
+    },
+    "./breadcrumb/breadcrumb.css": {
+      "style": "./dist/breadcrumb/breadcrumb.css",
+      "default": "./dist/breadcrumb/breadcrumb.css"
+    },
+    "./tabs/tabs-contract": {
+      "types": "./dist/tabs/tabs-contract.d.ts",
+      "default": "./dist/tabs/tabs-contract.js"
+    },
+    "./tabs/tabs.css": {
+      "style": "./dist/tabs/tabs.css",
+      "default": "./dist/tabs/tabs.css"
+    },
+    "./pagination/pagination-contract": {
+      "types": "./dist/pagination/pagination-contract.d.ts",
+      "default": "./dist/pagination/pagination-contract.js"
+    },
+    "./pagination/pagination.css": {
+      "style": "./dist/pagination/pagination.css",
+      "default": "./dist/pagination/pagination.css"
+    },
+    "./table/table-contract": {
+      "types": "./dist/table/table-contract.d.ts",
+      "default": "./dist/table/table-contract.js"
+    },
+    "./table/table.css": {
+      "style": "./dist/table/table.css",
+      "default": "./dist/table/table.css"
+    },
+    "./empty-state/empty-state-contract": {
+      "types": "./dist/empty-state/empty-state-contract.d.ts",
+      "default": "./dist/empty-state/empty-state-contract.js"
+    },
+    "./empty-state/empty-state.css": {
+      "style": "./dist/empty-state/empty-state.css",
+      "default": "./dist/empty-state/empty-state.css"
+    },
+    "./accordion/accordion-contract": {
+      "types": "./dist/accordion/accordion-contract.d.ts",
+      "default": "./dist/accordion/accordion-contract.js"
+    },
+    "./accordion/accordion.css": {
+      "style": "./dist/accordion/accordion.css",
+      "default": "./dist/accordion/accordion.css"
+    },
+    "./collapsible/collapsible-contract": {
+      "types": "./dist/collapsible/collapsible-contract.d.ts",
+      "default": "./dist/collapsible/collapsible-contract.js"
+    },
+    "./collapsible/collapsible.css": {
+      "style": "./dist/collapsible/collapsible.css",
+      "default": "./dist/collapsible/collapsible.css"
+    },
+    "./button-group/button-group-contract": {
+      "types": "./dist/button-group/button-group-contract.d.ts",
+      "default": "./dist/button-group/button-group-contract.js"
+    },
+    "./button-group/button-group.css": {
+      "style": "./dist/button-group/button-group.css",
+      "default": "./dist/button-group/button-group.css"
+    },
+    "./scroll-area/scroll-area-contract": {
+      "types": "./dist/scroll-area/scroll-area-contract.d.ts",
+      "default": "./dist/scroll-area/scroll-area-contract.js"
+    },
+    "./scroll-area/scroll-area.css": {
+      "style": "./dist/scroll-area/scroll-area.css",
+      "default": "./dist/scroll-area/scroll-area.css"
+    },
+    "./sidebar/sidebar-contract": {
+      "types": "./dist/sidebar/sidebar-contract.d.ts",
+      "default": "./dist/sidebar/sidebar-contract.js"
+    },
+    "./sidebar/sidebar.css": {
+      "style": "./dist/sidebar/sidebar.css",
+      "default": "./dist/sidebar/sidebar.css"
+    },
+    "./resizable/resizable-contract": {
+      "types": "./dist/resizable/resizable-contract.d.ts",
+      "default": "./dist/resizable/resizable-contract.js"
+    },
+    "./resizable/resizable.css": {
+      "style": "./dist/resizable/resizable.css",
+      "default": "./dist/resizable/resizable.css"
+    },
+    "./slider/slider-contract": {
+      "types": "./dist/slider/slider-contract.d.ts",
+      "default": "./dist/slider/slider-contract.js"
+    },
+    "./slider/slider.css": {
+      "style": "./dist/slider/slider.css",
+      "default": "./dist/slider/slider.css"
+    },
+    "./input-otp/input-otp-contract": {
+      "types": "./dist/input-otp/input-otp-contract.d.ts",
+      "default": "./dist/input-otp/input-otp-contract.js"
+    },
+    "./input-otp/input-otp.css": {
+      "style": "./dist/input-otp/input-otp.css",
+      "default": "./dist/input-otp/input-otp.css"
+    },
+    "./calendar/calendar-contract": {
+      "types": "./dist/calendar/calendar-contract.d.ts",
+      "default": "./dist/calendar/calendar-contract.js"
+    },
+    "./calendar/calendar.css": {
+      "style": "./dist/calendar/calendar.css",
+      "default": "./dist/calendar/calendar.css"
+    },
+    "./date-picker/date-picker-contract": {
+      "types": "./dist/date-picker/date-picker-contract.d.ts",
+      "default": "./dist/date-picker/date-picker-contract.js"
+    },
+    "./date-picker/date-picker.css": {
+      "style": "./dist/date-picker/date-picker.css",
+      "default": "./dist/date-picker/date-picker.css"
+    },
+    "./color-picker/color-picker-contract": {
+      "types": "./dist/color-picker/color-picker-contract.d.ts",
+      "default": "./dist/color-picker/color-picker-contract.js"
+    },
+    "./color-picker/color-picker.css": {
+      "style": "./dist/color-picker/color-picker.css",
+      "default": "./dist/color-picker/color-picker.css"
+    },
+    "./combobox/combobox-contract": {
+      "types": "./dist/combobox/combobox-contract.d.ts",
+      "default": "./dist/combobox/combobox-contract.js"
+    },
+    "./combobox/combobox.css": {
+      "style": "./dist/combobox/combobox.css",
+      "default": "./dist/combobox/combobox.css"
+    },
+    "./data-table/data-table-contract": {
+      "types": "./dist/data-table/data-table-contract.d.ts",
+      "default": "./dist/data-table/data-table-contract.js"
+    },
+    "./data-table/data-table.css": {
+      "style": "./dist/data-table/data-table.css",
+      "default": "./dist/data-table/data-table.css"
+    },
+    "./chart/chart-contract": {
+      "types": "./dist/chart/chart-contract.d.ts",
+      "default": "./dist/chart/chart-contract.js"
+    },
+    "./chart/chart.css": {
+      "style": "./dist/chart/chart.css",
+      "default": "./dist/chart/chart.css"
+    },
+    "./command/command-contract": {
+      "types": "./dist/command/command-contract.d.ts",
+      "default": "./dist/command/command-contract.js"
+    },
+    "./command/command.css": {
+      "style": "./dist/command/command.css",
+      "default": "./dist/command/command.css"
+    },
+    "./context-menu/context-menu-contract": {
+      "types": "./dist/context-menu/context-menu-contract.d.ts",
+      "default": "./dist/context-menu/context-menu-contract.js"
+    },
+    "./context-menu/context-menu.css": {
+      "style": "./dist/context-menu/context-menu.css",
+      "default": "./dist/context-menu/context-menu.css"
+    },
+    "./menubar/menubar-contract": {
+      "types": "./dist/menubar/menubar-contract.d.ts",
+      "default": "./dist/menubar/menubar-contract.js"
+    },
+    "./menubar/menubar.css": {
+      "style": "./dist/menubar/menubar.css",
+      "default": "./dist/menubar/menubar.css"
+    },
+    "./attachment/attachment-contract": {
+      "types": "./dist/attachment/attachment-contract.d.ts",
+      "default": "./dist/attachment/attachment-contract.js"
+    },
+    "./attachment/attachment.css": {
+      "style": "./dist/attachment/attachment.css",
+      "default": "./dist/attachment/attachment.css"
+    },
+    "./file-upload/file-upload-contract": {
+      "types": "./dist/file-upload/file-upload-contract.d.ts",
+      "default": "./dist/file-upload/file-upload-contract.js"
+    },
+    "./file-upload/file-accept": {
+      "types": "./dist/file-upload/file-accept.d.ts",
+      "default": "./dist/file-upload/file-accept.js"
+    },
+    "./file-upload/file-upload.css": {
+      "style": "./dist/file-upload/file-upload.css",
+      "default": "./dist/file-upload/file-upload.css"
+    },
+    "./bubble/bubble-contract": {
+      "types": "./dist/bubble/bubble-contract.d.ts",
+      "default": "./dist/bubble/bubble-contract.js"
+    },
+    "./bubble/bubble.css": {
+      "style": "./dist/bubble/bubble.css",
+      "default": "./dist/bubble/bubble.css"
+    },
+    "./message/message-contract": {
+      "types": "./dist/message/message-contract.d.ts",
+      "default": "./dist/message/message-contract.js"
+    },
+    "./message/message.css": {
+      "style": "./dist/message/message.css",
+      "default": "./dist/message/message.css"
+    },
+    "./message-scroller/message-scroller-contract": {
+      "types": "./dist/message-scroller/message-scroller-contract.d.ts",
+      "default": "./dist/message-scroller/message-scroller-contract.js"
+    },
+    "./message-scroller/message-scroller.css": {
+      "style": "./dist/message-scroller/message-scroller.css",
+      "default": "./dist/message-scroller/message-scroller.css"
+    },
+    "./marker/marker-contract": {
+      "types": "./dist/marker/marker-contract.d.ts",
+      "default": "./dist/marker/marker-contract.js"
+    },
+    "./marker/marker.css": {
+      "style": "./dist/marker/marker.css",
+      "default": "./dist/marker/marker.css"
+    },
+    "./aspect-ratio/aspect-ratio-contract": {
+      "types": "./dist/aspect-ratio/aspect-ratio-contract.d.ts",
+      "default": "./dist/aspect-ratio/aspect-ratio-contract.js"
+    },
+    "./aspect-ratio/aspect-ratio.css": {
+      "style": "./dist/aspect-ratio/aspect-ratio.css",
+      "default": "./dist/aspect-ratio/aspect-ratio.css"
+    },
+    "./input-group/input-group-contract": {
+      "types": "./dist/input-group/input-group-contract.d.ts",
+      "default": "./dist/input-group/input-group-contract.js"
+    },
+    "./input-group/input-group.css": {
+      "style": "./dist/input-group/input-group.css",
+      "default": "./dist/input-group/input-group.css"
+    },
+    "./item/item-contract": {
+      "types": "./dist/item/item-contract.d.ts",
+      "default": "./dist/item/item-contract.js"
+    },
+    "./item/item.css": {
+      "style": "./dist/item/item.css",
+      "default": "./dist/item/item.css"
+    },
+    "./toggle/toggle-contract": {
+      "types": "./dist/toggle/toggle-contract.d.ts",
+      "default": "./dist/toggle/toggle-contract.js"
+    },
+    "./toggle/toggle.css": {
+      "style": "./dist/toggle/toggle.css",
+      "default": "./dist/toggle/toggle.css"
+    },
+    "./theme-toggle/theme-toggle-contract": {
+      "types": "./dist/theme-toggle/theme-toggle-contract.d.ts",
+      "default": "./dist/theme-toggle/theme-toggle-contract.js"
+    },
+    "./theme-toggle/theme-toggle.css": {
+      "style": "./dist/theme-toggle/theme-toggle.css",
+      "default": "./dist/theme-toggle/theme-toggle.css"
+    },
+    "./toggle-group/toggle-group-contract": {
+      "types": "./dist/toggle-group/toggle-group-contract.d.ts",
+      "default": "./dist/toggle-group/toggle-group-contract.js"
+    },
+    "./toggle-group/toggle-group.css": {
+      "style": "./dist/toggle-group/toggle-group.css",
+      "default": "./dist/toggle-group/toggle-group.css"
+    },
+    "./direction/direction-contract": {
+      "types": "./dist/direction/direction-contract.d.ts",
+      "default": "./dist/direction/direction-contract.js"
+    },
+    "./direction/direction.css": {
+      "style": "./dist/direction/direction.css",
+      "default": "./dist/direction/direction.css"
+    },
+    "./carousel/carousel-contract": {
+      "types": "./dist/carousel/carousel-contract.d.ts",
+      "default": "./dist/carousel/carousel-contract.js"
+    },
+    "./carousel/carousel.css": {
+      "style": "./dist/carousel/carousel.css",
+      "default": "./dist/carousel/carousel.css"
+    },
+    "./hover-card/hover-card-contract": {
+      "types": "./dist/hover-card/hover-card-contract.d.ts",
+      "default": "./dist/hover-card/hover-card-contract.js"
+    },
+    "./hover-card/hover-card.css": {
+      "style": "./dist/hover-card/hover-card.css",
+      "default": "./dist/hover-card/hover-card.css"
+    },
+    "./scrollbar/floating-scrollbar": {
+      "types": "./dist/scrollbar/floating-scrollbar.d.ts",
+      "default": "./dist/scrollbar/floating-scrollbar.js"
+    },
+    "./scrollbar/floating-scrollbar.css": {
+      "style": "./dist/scrollbar/floating-scrollbar.css",
+      "default": "./dist/scrollbar/floating-scrollbar.css"
+    },
+    "./styles/*": "./dist/styles/*"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ic0nk/brkta-design-system.git",
+    "directory": "packages/ui-core"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@brkta/design-tokens": "workspace:^"
+  }
+}

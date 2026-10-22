@@ -1,0 +1,1 @@
+export interface ToggleGroupContract { items?: {value:string;label:string;disabled?:boolean}[]; value?: string; defaultValue?: string; multiple?: boolean; onValueChange?: (value: string|string[]) => void; }

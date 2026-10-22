@@ -1,0 +1,86 @@
+/*
+ * BRKTA — Floating scrollbar
+ *
+ * A native scrollbar reserves layout width on Windows and Linux, and no CSS
+ * turns the root one into an overlay — Chrome removed `overflow: overlay`. So
+ * the only way to have a scrollbar that takes no space is to hide the native
+ * one and draw it ourselves. That is what this is.
+ *
+ * The native scrollbar is hidden only once the script has mounted and set
+ * data-brkta-floating-scrollbar="on". A page whose JS never runs therefore
+ * keeps a real, usable scrollbar instead of none at all.
+ *
+ * Geometry and colour come from the same variables as the native styling in
+ * @brkta/design-tokens/base.css, so the two stay in sync from one place.
+ */
+
+[data-brkta-floating-scrollbar="on"] {
+  scrollbar-width: none;
+}
+
+[data-brkta-floating-scrollbar="on"]::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.brkta-scrollbar {
+  position: fixed;
+  z-index: 2147483000;
+  top: 0;
+  bottom: 0;
+  right: var(--scrollbar-rail-inset, 5px);
+  width: var(--scrollbar-rail-width, 2px);
+  background-color: var(--scrollbar-rail);
+  border-radius: 9999px;
+  opacity: 0;
+  /* The rail is decoration; only the thumb takes input. */
+  pointer-events: none;
+  transition: opacity var(--duration-normal, 0.2s) var(--ease-out, ease);
+}
+
+.brkta-scrollbar[data-visible="true"] {
+  opacity: 1;
+}
+
+[dir="rtl"] .brkta-scrollbar {
+  right: auto;
+  left: var(--scrollbar-rail-inset, 5px);
+}
+
+.brkta-scrollbar-thumb {
+  position: absolute;
+  left: 50%;
+  width: var(--scrollbar-thumb-width, 6px);
+  min-height: 32px;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background-color: var(--scrollbar-thumb);
+  pointer-events: auto;
+  transition:
+    width var(--duration-fast, 0.15s) var(--ease-out, ease),
+    background-color var(--duration-fast, 0.15s) var(--ease-out, ease);
+}
+
+/*
+ * A 6px-wide drag target is unusably thin, so the hit box reaches well past
+ * the paint on both sides without changing how it looks.
+ */
+.brkta-scrollbar-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0 -8px;
+}
+
+.brkta-scrollbar-thumb:hover,
+.brkta-scrollbar[data-dragging="true"] .brkta-scrollbar-thumb {
+  width: var(--scrollbar-thumb-width-hover, 9px);
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brkta-scrollbar,
+  .brkta-scrollbar-thumb {
+    transition: none;
+  }
+}

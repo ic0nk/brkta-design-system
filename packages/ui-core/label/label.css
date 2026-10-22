@@ -1,0 +1,35 @@
+/* ======================================================================
+ * label.css — BRKTA Label visual recipe
+ *
+ * Form field label with optional required asterisk and disabled state.
+ * Targeting: [data-brkta-label] attribute selector
+ * ====================================================================== */
+
+[data-brkta-label] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--foreground);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ---- Required indicator ---- */
+
+[data-brkta-label][data-required="true"]::after {
+  content: '*';
+  color: var(--destructive);
+  font-weight: var(--font-weight-bold);
+  margin-left: 0.125rem;
+}
+
+/* ---- Disabled ---- */
+
+[data-brkta-label][data-disabled="true"] {
+  color: var(--muted-foreground);
+  cursor: not-allowed;
+  opacity: 0.5;
+}

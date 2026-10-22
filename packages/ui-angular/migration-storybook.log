@@ -1,0 +1,108 @@
+🔎 checking possible migrations..
+
+⚠️  failed to check fix angular-builders-multiproject
+
+SB_CLI_INIT_0002 (MissingAngularJsonError): An angular.json file was not found in the current working directory: C:\Users\waeli\Documents\Web Files\BRKTA-OS\packages\ui-angular\angular.json
+Storybook needs it to work properly, so please rerun the command at the root of your project, where the angular.json file is located.
+
+More info: https://storybook.js.org/docs/faq#error-no-angularjson-file-found
+
+    at new AngularJSON (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\core\dist\cli\index.cjs:20404:13)
+    at Object.check (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:189:1235)
+    at async runFixes (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:595:3107)
+    at async automigrate (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:595:1807)
+    at async doAutomigrate (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:595:453)
+    at async Command.<anonymous> (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:665:2892)
+
+⚠️  failed to check fix angular-builders
+
+SB_CLI_INIT_0002 (MissingAngularJsonError): An angular.json file was not found in the current working directory: C:\Users\waeli\Documents\Web Files\BRKTA-OS\packages\ui-angular\angular.json
+Storybook needs it to work properly, so please rerun the command at the root of your project, where the angular.json file is located.
+
+More info: https://storybook.js.org/docs/faq#error-no-angularjson-file-found
+
+    at new AngularJSON (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\core\dist\cli\index.cjs:20404:13)
+    at Object.check (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:181:568)
+    at async runFixes (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:595:3107)
+    at async automigrate (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:595:1807)
+    at async doAutomigrate (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:595:453)
+    at async Command.<anonymous> (C:\Users\waeli\AppData\Local\npm-cache\_npx\d873a1183b5f96ff\node_modules\@storybook\cli\dist\bin\index.cjs:665:2892)
+
+🔎 found a 'visual-tests-addon' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────╮
+│                                                                              │
+│   New to Storybook 8: Storybook's Visual Tests addon helps you catch         │
+│   unintentional changes/bugs in your stories. The addon is powered by        │
+│   Chromatic, a cloud-based testing tool developed by Storybook's core        │
+│   team.                                                                      │
+│                                                                              │
+│   Learn more: https://storybook.js.org/docs/writing-tests/visual-testing     │
+│                                                                              │
+│   Install Visual Tests addon in your project?                                │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+✅ Adding "@chromatic-com/storybook" addon
+✅ ran visual-tests-addon migration
+
+🔎 found a 'autodocs-tags' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────╮
+│                                                                              │
+│   The docs.autodocs setting in .storybook\main.ts is deprecated.             │
+│                                                                              │
+│   Learn more: https://github.com/storybookjs/storybook/blob/next/MIGRATION   │
+│   .md#mainjs-docsautodocs-is-deprecated                                      │
+│                                                                              │
+│   Remove docs.autodocs and update .storybook\preview.ts?                     │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+✅ Adding "autodocs" tag to .storybook\preview.ts
+✅ Removing "docs.autodocs" from .storybook\main.ts
+✅ ran autodocs-tags migration
+
+╭ Migration check ran with failures ───────────────────────────────────────────╮
+│                                                                              │
+│   Successful migrations:                                                     │
+│                                                                              │
+│   visual-tests-addon, autodocs-tags                                          │
+│                                                                              │
+│   Failed migrations:                                                         │
+│                                                                              │
+│   angular-builders-multiproject:                                             │
+│   An angular.json file was not found in the current working directory:       │
+│   C:\Users\waeli\Documents\Web                                               │
+│   Files\BRKTA-OS\packages\ui-angular\angular.json                            │
+│   Storybook needs it to work properly, so please rerun the command at the    │
+│   root of your project, where the angular.json file is located.              │
+│                                                                              │
+│   More info:                                                                 │
+│   https://storybook.js.org/docs/faq#error-no-angularjson-file-found          │
+│                                                                              │
+│   angular-builders:                                                          │
+│   An angular.json file was not found in the current working directory:       │
+│   C:\Users\waeli\Documents\Web                                               │
+│   Files\BRKTA-OS\packages\ui-angular\angular.json                            │
+│   Storybook needs it to work properly, so please rerun the command at the    │
+│   root of your project, where the angular.json file is located.              │
+│                                                                              │
+│   More info:                                                                 │
+│   https://storybook.js.org/docs/faq#error-no-angularjson-file-found          │
+│                                                                              │
+│                                                                              │
+│   You can find the full logs in C:\Users\waeli\Documents\Web                 │
+│   Files\BRKTA-OS\packages\ui-angular\migration-storybook.log                 │
+│                                                                              │
+│   ─────────────────────────────────────────────────                          │
+│                                                                              │
+│   If you'd like to run the migrations again, you can do so by running 'npx   │
+│   storybook automigrate'                                                     │
+│                                                                              │
+│   The automigrations try to migrate common patterns in your project, but     │
+│   might not contain everything needed to migrate to the latest version of    │
+│   Storybook.                                                                 │
+│                                                                              │
+│   Please check the changelog and migration guide for manual migrations and   │
+│   more information: https://storybook.js.org/docs/migration-guide            │
+│   And reach out on Discord if you need help: https://discord.gg/storybook    │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+

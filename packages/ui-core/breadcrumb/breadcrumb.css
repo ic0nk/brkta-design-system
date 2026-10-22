@@ -1,0 +1,7 @@
+/* breadcrumb.css — BRKTA Breadcrumb */
+[data-brkta-breadcrumb] { display: flex; align-items: center; gap: 0.25rem; padding: 0.5rem 0; font-size: var(--font-size-sm); color: var(--muted-foreground); }
+[data-brkta-breadcrumb-item] { display: flex; align-items: center; gap: 0.25rem; }
+[data-brkta-breadcrumb-item] a { color: var(--muted-foreground); text-decoration: none; }
+[data-brkta-breadcrumb-item] a:hover { color: var(--foreground); text-decoration: underline; }
+[data-brkta-breadcrumb-item][data-current="true"] { color: var(--foreground); font-weight: var(--font-weight-medium); }
+[data-brkta-breadcrumb-separator] { color: var(--border); flex-shrink: 0; }

@@ -1,0 +1,10 @@
+/* Item — Wave 7B */
+[data-brkta-item] { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out); }
+[data-brkta-item]:hover { background-color: var(--muted); }
+[data-brkta-item][data-selected] { background-color: var(--muted); }
+[data-brkta-item][data-disabled] { opacity: 0.4; pointer-events: none; }
+[data-brkta-item-leading] { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--muted); color: var(--muted-foreground); flex-shrink: 0; font-size: 0.875rem; }
+[data-brkta-item-body] { flex: 1; min-width: 0; }
+[data-brkta-item-title] { font-size: 0.875rem; font-weight: 500; color: var(--foreground); }
+[data-brkta-item-description] { font-size: 0.75rem; color: var(--muted-foreground); margin-top: 2px; }
+[data-brkta-item-trailing] { display: flex; align-items: center; gap: var(--space-2); color: var(--muted-foreground); font-size: 0.75rem; }

@@ -1,0 +1,92 @@
+/* Resizable — Wave 4B */
+/* @brkta/ui-core/resizable/resizable.css */
+
+[data-brkta-resizable] {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+[data-brkta-resizable][data-direction="vertical"] {
+  flex-direction: column;
+}
+
+[data-brkta-resizable-panel] {
+  overflow: auto;
+  flex-shrink: 0;
+}
+
+/* Handle */
+[data-brkta-resizable-handle] {
+  position: relative;
+  flex-shrink: 0;
+  background-color: transparent;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  z-index: 1;
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+}
+
+[data-brkta-resizable][data-direction="vertical"] [data-brkta-resizable-handle] {
+  cursor: row-resize;
+}
+
+[data-brkta-resizable-handle]:hover,
+[data-brkta-resizable-handle][data-dragging] {
+  background-color: var(--primary);
+}
+
+/* Horizontal handle */
+[data-brkta-resizable]:not([data-direction="vertical"]) > [data-brkta-resizable-handle] {
+  width: 4px;
+}
+
+[data-brkta-resizable]:not([data-direction="vertical"]) > [data-brkta-resizable-handle]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background-color: var(--border);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-resizable]:not([data-direction="vertical"]) > [data-brkta-resizable-handle]:hover::after,
+[data-brkta-resizable]:not([data-direction="vertical"]) > [data-brkta-resizable-handle][data-dragging]::after {
+  background-color: var(--primary-foreground);
+}
+
+/* Vertical handle */
+[data-brkta-resizable][data-direction="vertical"] > [data-brkta-resizable-handle] {
+  height: 4px;
+}
+
+[data-brkta-resizable][data-direction="vertical"] > [data-brkta-resizable-handle]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 6px;
+  border-radius: var(--radius-sm);
+  background-color: var(--border);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-resizable][data-direction="vertical"] > [data-brkta-resizable-handle]:hover::after,
+[data-brkta-resizable][data-direction="vertical"] > [data-brkta-resizable-handle][data-dragging]::after {
+  background-color: var(--primary-foreground);
+}
+
+/* Handle is focusable for keyboard */
+[data-brkta-resizable-handle]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  background-color: var(--primary);
+}

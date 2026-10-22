@@ -1,0 +1,18 @@
+/* ======================================================================
+ * field.css — BRKTA Field layout recipe
+ *
+ * Layout wrapper for label + control + help/error/description text.
+ * Targeting: [data-brkta-field] attribute selector
+ * ====================================================================== */
+
+[data-brkta-field] {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* ---- Disabled ---- */
+
+[data-brkta-field][data-disabled="true"] {
+  opacity: 0.5;
+}

@@ -1,0 +1,104 @@
+/* ======================================================================
+ * components.css — BRKTA Design System aggregate component styles
+ *
+ * Import this single file to get all shared component CSS recipes.
+ * Both apps import this via their global CSS file.
+ *
+ * Order: foundations first (button, motion), then primitives alphabetically.
+ * ====================================================================== */
+
+/* Button + icon motion (existing) */
+@import "../button/button.css";
+@import "../icon-motion/icon-motion.css";
+@import "../site-shell/site-shell.css";
+
+/* Phase 1 — Primitives */
+@import "../badge/badge.css";
+@import "../card/card.css";
+@import "../alert/alert.css";
+@import "../avatar/avatar.css";
+@import "../separator/separator.css";
+@import "../skeleton/skeleton.css";
+@import "../spinner/spinner.css";
+@import "../progress/progress.css";
+@import "../password-strength/password-strength.css";
+@import "../flow-tree/flow-tree.css";
+@import "../kbd/kbd.css";
+@import "../brik/brik.css";
+
+/* Wave 2 — Forms Foundation */
+@import "../label/label.css";
+@import "../input/input.css";
+@import "../textarea/textarea.css";
+@import "../field/field.css";
+@import "../field-help/field-help.css";
+@import "../field-error/field-error.css";
+@import "../field-description/field-description.css";
+@import "../native-select/native-select.css";
+@import "../select/select.css";
+@import "../checkbox/checkbox.css";
+@import "../radio-group/radio-group.css";
+@import "../switch/switch.css";
+
+/* Wave 3 — Overlay + Menu Foundation */
+@import "../dropdown-menu/dropdown-menu.css";
+@import "../popover/popover.css";
+@import "../tooltip/tooltip.css";
+
+/* Wave 3B — Modal + Feedback Overlay Foundation */
+@import "../dialog/dialog.css";
+@import "../alert-dialog/alert-dialog.css";
+@import "../sheet/sheet.css";
+@import "../toast/toast.css";
+
+/* Wave 4 — Navigation + Data Display Foundation */
+@import "../breadcrumb/breadcrumb.css";
+@import "../tabs/tabs.css";
+@import "../pagination/pagination.css";
+@import "../table/table.css";
+@import "../empty-state/empty-state.css";
+
+/* Wave 4B — Advanced Navigation + Layout Utilities */
+@import "../accordion/accordion.css";
+@import "../collapsible/collapsible.css";
+@import "../button-group/button-group.css";
+@import "../scroll-area/scroll-area.css";
+@import "../sidebar/sidebar.css";
+@import "../resizable/resizable.css";
+
+/* Wave 5 — Advanced Inputs + Pickers */
+@import "../slider/slider.css";
+@import "../input-otp/input-otp.css";
+@import "../calendar/calendar.css";
+@import "../date-picker/date-picker.css";
+@import "../color-picker/color-picker.css";
+@import "../combobox/combobox.css";
+
+/* Wave 6 — Data + Operational Components */
+@import "../data-table/data-table.css";
+@import "../chart/chart.css";
+@import "../command/command.css";
+@import "../context-menu/context-menu.css";
+@import "../menubar/menubar.css";
+
+/* Wave 7A — Communication */
+@import "../attachment/attachment.css";
+@import "../file-upload/file-upload.css";
+@import "../bubble/bubble.css";
+@import "../message/message.css";
+@import "../message-scroller/message-scroller.css";
+@import "../marker/marker.css";
+
+/* Wave 7B — Utility + Layout */
+@import "../aspect-ratio/aspect-ratio.css";
+@import "../input-group/input-group.css";
+@import "../item/item.css";
+@import "../toggle/toggle.css";
+@import "../theme-toggle/theme-toggle.css";
+@import "../toggle-group/toggle-group.css";
+@import "../direction/direction.css";
+
+/* Wave 7C — Complex Interactive */
+@import "../carousel/carousel.css";
+@import "../hover-card/hover-card.css";
+@import "../consent-banner/consent-banner.css";

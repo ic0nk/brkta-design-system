@@ -1,0 +1,13 @@
+/* ======================================================================
+ * field-error.css — BRKTA Field Error Text visual recipe
+ *
+ * Validation error text displayed below a form field.
+ * Targeting: [data-brkta-field-error] attribute selector
+ * ====================================================================== */
+
+[data-brkta-field-error] {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--destructive);
+  margin-top: 0.125rem;
+}

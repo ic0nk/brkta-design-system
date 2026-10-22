@@ -1,0 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/angular';import { DataTableComponent } from './data-table.component';
+import { BadgeComponent } from '../badge/badge.component';
+import { moduleMetadata } from '@storybook/angular';
+const meta:Meta<DataTableComponent>={title:'Components/DataTable',component:DataTableComponent,tags:['autodocs']};export default meta;type Story=StoryObj<DataTableComponent>;
+export const Default:Story={args:{columns:[{key:'name',label:'Name',sortable:true},{key:'role',label:'Role'}],rows:[{name:'Alice',role:'Admin'},{name:'Bob',role:'Editor'},{name:'Carol',role:'Viewer'}]}};
+export const CellTemplates:Story={decorators:[moduleMetadata({imports:[BadgeComponent]})],render:()=>({props:{columns:[{key:'name',label:'Name'},{key:'status',label:'Status'}],rows:[{name:'Alice',status:'Active'}]},template:'<ng-template #status let-value="value"><brkta-badge>{{value}}</brkta-badge></ng-template><brkta-data-table [columns]="columns" [rows]="rows" [cellTemplates]="{status:status}" />'})};
+export const HeaderSurface:Story={args:{columns:[{key:'name',label:'Name'},{key:'role',label:'Role'}],rows:[{name:'Alice',role:'Admin'},{name:'Bob',role:'Editor'}]}};
+export const Selectable:Story={args:{columns:[{key:'name',label:'Name'}],rows:[{name:'Alice'},{name:'Bob'}],selectable:true}};
+export const WithActions:Story={args:{columns:[{key:'name',label:'Name'}],rows:[{name:'Alice'},{name:'Bob'}],rowActionLabel:'Edit'}};
+export const WithMultipleGovernedActions:Story={args:{columns:[{key:'name',label:'Name'},{key:'status',label:'Status'}],rows:[{name:'Alice',status:'Active'},{name:'Bob',status:'Inactive'}],rowActions:[{id:'edit',label:'Edit',variant:'ghost'},{id:'archive',label:'Archive',variant:'destructive',visible:(row)=>row['status']==='Active'}],rowActionsLabel:'Actions'}};
+export const Empty:Story={args:{columns:[{key:'name',label:'Name'}],rows:[],emptyText:'No records'}};
+export const Loading:Story={args:{columns:[{key:'name',label:'Name'}],rows:[],loading:true}};

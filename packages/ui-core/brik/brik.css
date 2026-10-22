@@ -1,0 +1,372 @@
+/* ======================================================================
+ * Brik — the BRKTA companion
+ *
+ * Colours come from tokens and can be re-pointed per context:
+ *   --brik-ink        brackets, eyes, mouth   (default: --foreground)
+ *   --brik-accent     cheeks, fist, confetti  (default: --accent)
+ *   --brik-highlight  eye glint               (default: --background)
+ *   --brik-cheek-opacity                      (default: 1)
+ * Motion is one CSS loop per data-state; prefers-reduced-motion freezes it.
+ * ====================================================================== */
+
+[data-brkta-brik] {
+  display: block;
+  overflow: visible;
+  width: 100%;
+  height: auto;
+}
+
+[data-brkta-brik] .brkta-brik-ink {
+  fill: var(--brik-ink, var(--foreground));
+}
+
+[data-brkta-brik] .brkta-brik-accent {
+  fill: var(--brik-accent, var(--accent));
+}
+
+[data-brkta-brik] .brkta-brik-cheek {
+  opacity: var(--brik-cheek-opacity, 1);
+}
+
+[data-brkta-brik] .brkta-brik-highlight {
+  fill: var(--brik-highlight, var(--background));
+}
+
+[data-brkta-brik]
+  :is(
+    .brkta-brik-all,
+    .brkta-brik-body,
+    .brkta-brik-eyes,
+    .brkta-brik-arm,
+    .brkta-brik-face
+  ) {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+[data-brkta-brik] .brkta-brik-eyes {
+  transform-origin: 50% 50%;
+}
+
+[data-brkta-brik]
+  :is(
+    .brkta-brik-lids,
+    .brkta-brik-smile,
+    .brkta-brik-mouth,
+    .brkta-brik-sleep,
+    .brkta-brik-confetti
+  ) {
+  opacity: 0;
+}
+
+[data-brkta-brik] .brkta-brik-arm {
+  opacity: 0;
+  transform-origin: 0% 100%;
+}
+
+[data-brkta-brik] .brkta-brik-z {
+  fill: var(--muted-foreground);
+  font-family: var(--font-pixel, monospace);
+  font-size: 12px;
+}
+
+/* idle — breathe, blink, glance */
+[data-brkta-brik][data-state="idle"] .brkta-brik-body {
+  animation: brkta-brik-breathe 3.2s ease-in-out infinite;
+}
+
+[data-brkta-brik][data-state="idle"] .brkta-brik-eyes {
+  animation:
+    brkta-brik-blink 4.2s steps(1) infinite,
+    brkta-brik-glance 8s steps(1) infinite;
+}
+
+/* look — eyes travel as if following the pointer */
+[data-brkta-brik][data-state="look"] .brkta-brik-eyes {
+  animation: brkta-brik-look 4s ease-in-out infinite;
+}
+
+/* wave — hello: pixel arm, smile, small hop */
+[data-brkta-brik][data-state="wave"] .brkta-brik-arm {
+  opacity: 1;
+  animation: brkta-brik-wave 0.9s ease-in-out infinite;
+}
+
+[data-brkta-brik][data-state="wave"] .brkta-brik-smile {
+  opacity: 1;
+}
+
+[data-brkta-brik][data-state="wave"] .brkta-brik-body {
+  animation: brkta-brik-hop 1.8s ease-in-out infinite;
+}
+
+/* peek — rises from an edge */
+[data-brkta-brik][data-state="peek"] .brkta-brik-all {
+  animation: brkta-brik-peek 3.4s cubic-bezier(0.3, 1.4, 0.5, 1) infinite;
+}
+
+[data-brkta-brik][data-state="peek"] .brkta-brik-eyes {
+  translate: 0 -3px;
+}
+
+/* sleep — lids down, slow breath, floating z */
+[data-brkta-brik][data-state="sleep"] .brkta-brik-eyes {
+  opacity: 0;
+}
+
+[data-brkta-brik][data-state="sleep"] .brkta-brik-cheek {
+  opacity: 0.5;
+}
+
+[data-brkta-brik][data-state="sleep"] :is(.brkta-brik-lids, .brkta-brik-sleep) {
+  opacity: 1;
+}
+
+[data-brkta-brik][data-state="sleep"] .brkta-brik-body {
+  animation: brkta-brik-breathe 4.5s ease-in-out infinite;
+}
+
+[data-brkta-brik][data-state="sleep"] .brkta-brik-z {
+  opacity: 0;
+  animation: brkta-brik-float 3.6s linear infinite;
+}
+
+[data-brkta-brik][data-state="sleep"] .brkta-brik-z:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+[data-brkta-brik][data-state="sleep"] .brkta-brik-z:nth-child(3) {
+  animation-delay: 2.4s;
+}
+
+/* think — looks up, tilts, cheeks blink like a loader */
+[data-brkta-brik][data-state="think"] .brkta-brik-eyes {
+  translate: 3px -3px;
+}
+
+[data-brkta-brik][data-state="think"] .brkta-brik-body {
+  animation: brkta-brik-tilt 2.4s ease-in-out infinite;
+}
+
+[data-brkta-brik][data-state="think"] .brkta-brik-cheek {
+  animation: brkta-brik-dots 1.2s steps(1) infinite;
+}
+
+[data-brkta-brik][data-state="think"] .brkta-brik-cheek:last-of-type {
+  animation-delay: 0.6s;
+}
+
+/* party — jump, open mouth, confetti */
+[data-brkta-brik][data-state="party"]
+  :is(.brkta-brik-mouth, .brkta-brik-confetti) {
+  opacity: 1;
+}
+
+[data-brkta-brik][data-state="party"] .brkta-brik-body {
+  animation: brkta-brik-jump 1.2s cubic-bezier(0.3, 0, 0.3, 1) infinite;
+}
+
+[data-brkta-brik][data-state="party"] .brkta-brik-eyes {
+  transform: scaleY(0.5);
+}
+
+[data-brkta-brik][data-state="party"] .brkta-brik-bit {
+  animation: brkta-brik-burst 1.2s ease-out infinite;
+}
+
+[data-brkta-brik][data-state="party"] .brkta-brik-bit:nth-child(odd) {
+  animation-delay: 0.3s;
+}
+
+/* oops — worried shake */
+[data-brkta-brik][data-state="oops"] .brkta-brik-eyes {
+  transform: scaleY(0.5) translateY(4px);
+}
+
+[data-brkta-brik][data-state="oops"] .brkta-brik-mouth {
+  opacity: 1;
+}
+
+[data-brkta-brik][data-state="oops"] .brkta-brik-all {
+  animation: brkta-brik-shake 2.4s ease-in-out infinite;
+}
+
+@keyframes brkta-brik-breathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.96);
+  }
+}
+
+@keyframes brkta-brik-blink {
+  0%,
+  93%,
+  100% {
+    transform: scaleY(1);
+  }
+  95%,
+  97% {
+    transform: scaleY(0.15);
+  }
+}
+
+@keyframes brkta-brik-glance {
+  0%,
+  30%,
+  100% {
+    translate: 0 0;
+  }
+  35%,
+  55% {
+    translate: -4px 0;
+  }
+  60%,
+  80% {
+    translate: 4px 0;
+  }
+}
+
+@keyframes brkta-brik-look {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  25% {
+    translate: -4px -3px;
+  }
+  50% {
+    translate: 4px -3px;
+  }
+  75% {
+    translate: 3px 3px;
+  }
+}
+
+@keyframes brkta-brik-wave {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  50% {
+    rotate: -28deg;
+  }
+}
+
+@keyframes brkta-brik-hop {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-6px);
+  }
+  80% {
+    transform: translateY(0) scaleY(0.94);
+  }
+}
+
+@keyframes brkta-brik-peek {
+  0%,
+  15% {
+    transform: translateY(70%);
+  }
+  35%,
+  75% {
+    transform: translateY(28%);
+  }
+  90%,
+  100% {
+    transform: translateY(70%);
+  }
+}
+
+@keyframes brkta-brik-float {
+  0% {
+    opacity: 0;
+    translate: 0 6px;
+  }
+  20%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: 4px -8px;
+  }
+}
+
+@keyframes brkta-brik-tilt {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+  50% {
+    rotate: -4deg;
+  }
+}
+
+@keyframes brkta-brik-dots {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes brkta-brik-jump {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  15% {
+    transform: translateY(0) scaleY(0.88);
+  }
+  45% {
+    transform: translateY(-16px) scaleY(1.04);
+  }
+  75% {
+    transform: translateY(0) scaleY(0.94);
+  }
+}
+
+@keyframes brkta-brik-burst {
+  0% {
+    opacity: 0;
+    translate: 0 6px;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: 0 -10px;
+  }
+}
+
+@keyframes brkta-brik-shake {
+  0%,
+  70%,
+  100% {
+    translate: 0 0;
+  }
+  74%,
+  82% {
+    translate: -3px 0;
+  }
+  78%,
+  86% {
+    translate: 3px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-brik] * {
+    animation: none !important;
+  }
+}

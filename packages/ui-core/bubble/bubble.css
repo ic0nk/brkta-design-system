@@ -1,0 +1,7 @@
+/* Bubble — Wave 7A */
+[data-brkta-bubble] { display: flex; flex-direction: column; max-width: 70%; padding: var(--space-3); border-radius: var(--radius-lg); font-size: 0.875rem; position: relative; }
+[data-brkta-bubble][data-variant="outgoing"] { align-self: flex-end; background: var(--primary); color: var(--primary-foreground); border-bottom-right-radius: var(--radius-sm); margin-left: auto; }
+[data-brkta-bubble][data-variant="incoming"] { align-self: flex-start; background: var(--muted); color: var(--foreground); border-bottom-left-radius: var(--radius-sm); margin-right: auto; }
+[data-brkta-bubble][data-variant="system"] { align-self: center; background: transparent; color: var(--muted-foreground); font-size: 0.75rem; text-align: center; max-width: 100%; padding: var(--space-2); }
+[data-brkta-bubble-time] { font-size: 0.6875rem; opacity: 0.7; margin-top: var(--space-1); text-align: right; }
+[data-brkta-bubble-status] { font-size: 0.6875rem; opacity: 0.7; margin-top: 2px; }

@@ -1,0 +1,6 @@
+/* pagination.css — BRKTA Pagination */
+[data-brkta-pagination] { display: flex; align-items: center; gap: 0.25rem; }
+[data-brkta-pagination-item] { display: flex; align-items: center; justify-content: center; min-width: 2.25rem; height: 2.25rem; padding: 0 0.5rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--background); font-size: var(--font-size-sm); color: var(--foreground); cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out); }
+[data-brkta-pagination-item]:hover:not([data-disabled="true"]) { background-color: var(--muted); }
+[data-brkta-pagination-item][data-active="true"] { background-color: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+[data-brkta-pagination-item][data-disabled="true"] { opacity: 0.4; cursor: not-allowed; }

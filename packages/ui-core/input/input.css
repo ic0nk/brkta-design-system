@@ -1,0 +1,207 @@
+/* ======================================================================
+ * input.css — BRKTA Input visual recipe
+ *
+ * Text input with variants, sizes, and states.
+ * Targeting: [data-brkta-input] attribute selector
+ * Tokens:   CSS custom properties from @brkta/design-tokens
+ * ====================================================================== */
+
+[data-brkta-input] {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  outline: none;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-input]::placeholder {
+  color: var(--muted-foreground);
+  opacity: 0.6;
+}
+
+/* ---- Sizes ---- */
+
+[data-brkta-input][data-size="sm"] {
+  padding-inline: 0.5rem;
+  height: 2rem;
+  font-size: var(--font-size-xs);
+  line-height: 1.25rem;
+}
+
+[data-brkta-input][data-size="md"] {
+  padding-inline: 0.75rem;
+  height: 2.75rem;
+  font-size: var(--font-size-sm);
+  line-height: 1.5rem;
+}
+
+[data-brkta-input][data-size="lg"] {
+  padding-inline: 1rem;
+  height: 3.5rem;
+  font-size: var(--font-size-base);
+  line-height: 1.75rem;
+}
+
+/* ---- Variants ---- */
+
+[data-brkta-input][data-variant="default"] {
+  background-color: var(--background);
+  border-color: var(--input);
+}
+
+[data-brkta-input][data-variant="filled"] {
+  background-color: var(--muted);
+  border-color: transparent;
+}
+
+[data-brkta-input][data-variant="ghost"] {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+/* ---- Hover ---- */
+
+[data-brkta-input][data-variant="default"]:hover {
+  border-color: var(--foreground);
+}
+
+[data-brkta-input][data-variant="filled"]:hover {
+  background-color: color-mix(in oklch, var(--muted), var(--foreground) 5%);
+}
+
+[data-brkta-input][data-variant="ghost"]:hover {
+  background-color: var(--muted);
+}
+
+/* ---- Focus-visible ---- */
+
+[data-brkta-input]:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+}
+
+[data-brkta-input][data-variant="filled"]:focus-visible {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+[data-brkta-input][data-variant="ghost"]:focus-visible {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+/* ---- Disabled ---- */
+
+[data-brkta-input][data-disabled="true"],
+[data-brkta-input]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---- Invalid ---- */
+
+[data-brkta-input][data-invalid="true"] {
+  border-color: var(--destructive);
+}
+
+[data-brkta-input][data-invalid="true"]:focus-visible {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 2px var(--destructive), 0 0 0 4px var(--background);
+}
+
+/* ---- Suffix / adornment slot ---- */
+
+[data-brkta-input-container] {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+[data-brkta-input-container][data-size="sm"] { height: 2rem; }
+[data-brkta-input-container][data-size="md"] { height: 2.75rem; }
+[data-brkta-input-container][data-size="lg"] { height: 3.5rem; }
+
+[data-brkta-input-container][data-variant="filled"] {
+  background-color: var(--muted);
+  border-color: transparent;
+}
+
+[data-brkta-input-container][data-variant="ghost"] {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+[data-brkta-input-container]:hover {
+  border-color: var(--foreground);
+}
+
+[data-brkta-input-container][data-variant="filled"]:hover {
+  background-color: color-mix(in oklch, var(--muted), var(--foreground) 5%);
+  border-color: transparent;
+}
+
+[data-brkta-input-container][data-variant="ghost"]:hover {
+  background-color: var(--muted);
+  border-color: transparent;
+}
+
+[data-brkta-input-container]:focus-within {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+}
+
+[data-brkta-input-container][data-variant="filled"]:focus-within,
+[data-brkta-input-container][data-variant="ghost"]:focus-within {
+  background-color: var(--background);
+  border-color: var(--ring);
+}
+
+[data-brkta-input-container] [data-brkta-input] {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+[data-brkta-input-container] [data-brkta-input]:hover,
+[data-brkta-input-container] [data-brkta-input]:focus-visible {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+[data-brkta-input-container][data-invalid="true"] {
+  border-color: var(--destructive);
+}
+
+[data-brkta-input-container][data-invalid="true"]:focus-within {
+  border-color: var(--destructive);
+  box-shadow: 0 0 0 2px var(--destructive), 0 0 0 4px var(--background);
+}
+
+[data-brkta-input-container][data-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+[data-brkta-input-suffix] {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  padding-inline-end: var(--space-2);
+}

@@ -1,0 +1,57 @@
+/*
+ * BRKTA — Typography Font Faces
+ * ========================================================================
+ *
+ * This file loads all self-hosted font faces used by the BRKTA
+ * typography system. It is consumed by both the Angular dashboard and
+ * the Next.js website via the shared @brkta/design-tokens package.
+ *
+ * Font families loaded here:
+ *   - Geist Variable       →  Main UI font (sans-serif)
+ *   - Geist Mono Variable  →  Code/data font (monospace)
+ *   - Noto Sans Arabic Variable  →  Arabic UI fallback
+ *   - Geist Pixel Square   →  Restricted brand-accent display face
+ *
+ * Fonts are self-hosted via @fontsource-variable packages rather than
+ * loaded from Google Fonts or other external CDNs.
+ *
+ * Usage in app CSS entry files:
+ *   @import "@brkta/design-tokens/fonts.css";
+ *   @import "@brkta/design-tokens/base.css";
+ *   @import "@brkta/design-tokens/theme.css";
+ *   …
+ *
+ * ========================================================================
+ */
+
+/* ── Geist Variable (primary UI sans-serif) ────────────────────────────── */
+@import "@fontsource-variable/geist/index.css";
+
+/* ── Geist Mono Variable (code/data monospace) ─────────────────────────── */
+@import "@fontsource-variable/geist-mono/index.css";
+
+/* ── Noto Sans Arabic Variable (Arabic UI fallback) ────────────────────── */
+/*
+ * Preferred: Noto Sans Arabic UI (exact UI variant).
+ * Fallback used: Noto Sans Arabic Variable — the exact "UI" variant is not
+ * available as a clean self-hosted npm package at this time.
+ * If a future `@fontsource-variable/noto-sans-arabic-ui` package becomes
+ * available, switch to that and update the --font-family-arabic token.
+ */
+@import "@fontsource-variable/noto-sans-arabic/index.css";
+
+/*
+ * ── Geist Pixel Square (restricted display accent) ───────────────────────
+ *
+ * A rare brand-accent face: one highlighted word or a short index number,
+ * never body copy or controls. Self-hosted from this package so the Angular
+ * dashboard and the Next.js website resolve the same file. Consumed through
+ * the --font-pixel token in theme.css.
+ */
+@font-face {
+  font-family: "Geist Pixel Square";
+  src: url("./fonts/GeistPixel-Square.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}

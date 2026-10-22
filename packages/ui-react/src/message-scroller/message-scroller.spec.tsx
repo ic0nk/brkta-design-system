@@ -1,0 +1,2 @@
+import { describe,it,expect } from 'vitest';import { render } from '@testing-library/react';import { MessageScroller } from './message-scroller';
+describe('MessageScroller',()=>{it('renders children',()=>{const{container}=render(<MessageScroller><div>Msg 1</div></MessageScroller>);expect(container.textContent).toContain('Msg 1');});it('has data attribute',()=>{const{container}=render(<MessageScroller><div>x</div></MessageScroller>);expect(container.querySelector('[data-brkta-message-scroller]')).toBeTruthy();});});

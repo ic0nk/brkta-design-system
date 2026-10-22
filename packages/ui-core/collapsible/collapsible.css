@@ -1,0 +1,180 @@
+/* Collapsible — Wave 4B */
+/* @brkta/ui-core/collapsible/collapsible.css */
+
+[data-brkta-collapsible] {
+  width: 100%;
+}
+
+[data-brkta-collapsible-trigger] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  min-height: 44px;
+  gap: var(--space-2);
+}
+
+[data-brkta-collapsible-trigger]:hover {
+  background-color: var(--muted);
+}
+
+[data-brkta-collapsible-trigger]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+[data-brkta-collapsible-trigger][data-disabled] {
+  opacity: var(--opacity-disabled);
+  cursor: not-allowed;
+}
+
+[data-brkta-collapsible-trigger][data-disabled]:hover {
+  background-color: transparent;
+}
+
+/* Chevron icon via CSS */
+[data-brkta-collapsible-chevron] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+[data-brkta-collapsible-chevron]::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--muted-foreground);
+  border-bottom: 2px solid var(--muted-foreground);
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+[data-brkta-collapsible-trigger][aria-expanded="true"] [data-brkta-collapsible-chevron] {
+  transform: rotate(180deg);
+}
+
+[data-brkta-collapsible-trigger]:hover [data-brkta-collapsible-chevron]::after {
+  border-color: var(--foreground);
+}
+
+/* Content panel */
+[data-brkta-collapsible-panel] {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+[data-brkta-collapsible-content] {
+  padding: var(--space-3) var(--space-4);
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Animation */
+[data-brkta-collapsible-panel] {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-normal) var(--ease-out);
+}
+
+[data-brkta-collapsible-panel][data-open] {
+  grid-template-rows: 1fr;
+}
+
+[data-brkta-collapsible-panel] > * {
+  overflow: hidden;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-brkta-collapsible-panel] {
+    transition: none;
+  }
+
+  [data-brkta-collapsible-chevron] {
+    transition: none;
+  }
+}
+
+/*
+ * Compact variant — a small chevron + short-label trigger that sits inline
+ * with other controls, while the expanded panel still uses the full
+ * available width of the container. The root becomes a wrapping flex
+ * container: the trigger is sized to its content (`flex: 0 0 auto`) and the
+ * panel is forced onto its own full-width row (`flex: 1 1 100%`).
+ */
+[data-brkta-collapsible][data-compact] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: auto;
+}
+
+[data-brkta-collapsible][data-compact] [data-brkta-collapsible-trigger] {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  flex: 0 0 auto;
+  padding: var(--space-1) var(--space-2);
+  min-height: 0;
+  gap: var(--space-1);
+  font-size: 0.8125rem;
+}
+
+/*
+ * Invisible touch target at least 44x44px, centered on the compact trigger.
+ * Same technique as the slider thumb (packages/ui-core/slider/slider.css):
+ * pointer/tap events landing in this generated-content box are hit-tested
+ * as part of the originating element (the trigger button), so this enlarges
+ * the effective hit area without growing the trigger's visual padding.
+ */
+[data-brkta-collapsible][data-compact] [data-brkta-collapsible-trigger]::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  min-width: 44px;
+  min-height: 44px;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+[data-brkta-collapsible][data-compact] [data-brkta-collapsible-chevron] {
+  width: 16px;
+  height: 16px;
+}
+
+[data-brkta-collapsible][data-compact] [data-brkta-collapsible-chevron]::after {
+  width: 6px;
+  height: 6px;
+}
+
+/*
+ * Compact mode is an inline disclosure inside an existing surface, so the panel drops the
+ * card-like border it carries in standalone mode; the host surface already provides one.
+ */
+[data-brkta-collapsible][data-compact] [data-brkta-collapsible-panel] {
+  flex: 1 1 100%;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+}

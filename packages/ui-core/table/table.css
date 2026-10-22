@@ -1,0 +1,10 @@
+/* table.css — BRKTA Table */
+[data-brkta-table] { width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); }
+[data-brkta-table-header] { background-color: var(--muted); }
+[data-brkta-table-header] [data-brkta-table-cell] { font-weight: var(--font-weight-semibold); color: var(--muted-foreground); text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+[data-brkta-table-body] [data-brkta-table-row] { border-bottom: 1px solid var(--border); }
+[data-brkta-table-body] [data-brkta-table-row]:hover { background-color: var(--muted); }
+[data-brkta-table-body] [data-brkta-table-cell] { padding: 0.75rem 1rem; color: var(--foreground); }
+/* Variants */
+[data-brkta-table][data-variant="dense"] [data-brkta-table-cell] { padding: 0.5rem 0.75rem; }
+[data-brkta-table][data-variant="bordered"] { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }

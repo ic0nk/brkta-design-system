@@ -1,0 +1,26 @@
+{
+  "name": "@brkta/icons",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'icons: static SVG assets, no compilation required'"
+  },
+  "exports": {
+    "./*": "./*"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ic0nk/brkta-design-system.git",
+    "directory": "packages/icons"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "**/*"
+  ]
+}

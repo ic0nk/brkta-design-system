@@ -1,0 +1,1566 @@
+/* Shared public-site shell: intro, header, mobile navigation, and footer. */
+
+:root {
+  /* The unscrolled header height reserved by public pages. */
+  --brkta-site-header-reserved-height: calc(
+    var(--space-16) + var(--space-3) + var(--space-3)
+  );
+}
+
+.brkta-site-experience {
+  min-height: 100%;
+}
+
+.brkta-site-experience-content[inert] {
+  pointer-events: none;
+  user-select: none;
+}
+
+.brkta-site-intro {
+  --brkta-intro-background: var(--foreground);
+  --brkta-intro-foreground: var(--background);
+  --brkta-intro-muted: color-mix(
+    in oklch,
+    var(--brkta-intro-foreground) 58%,
+    transparent
+  );
+  --brkta-intro-line: color-mix(
+    in oklch,
+    var(--brkta-intro-foreground) 10%,
+    transparent
+  );
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space-8);
+  padding: var(--space-8) 5vw var(--space-6);
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--brkta-intro-background),
+    color-mix(in oklch, var(--brkta-intro-background) 88%, var(--background))
+  );
+  color: var(--brkta-intro-foreground);
+  clip-path: inset(0);
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+/*
+ * Once the intro is done it must stop intercepting the mouse. It animates out
+ * visually but is never unmounted, so without this it keeps covering the whole
+ * page at z-index 500 and every hover and click below it is swallowed — the
+ * page looks finished and is completely inert.
+ */
+[data-intro-active="false"] .brkta-site-intro {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.brkta-site-intro-grid {
+  position: absolute;
+  inset: -8%;
+  pointer-events: none;
+}
+
+.brkta-site-intro-grid-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform-origin: center;
+  background: var(--brkta-intro-line);
+}
+
+.brkta-site-intro[data-brkta-site-intro-state="running"]
+  .brkta-site-intro-grid-line {
+  will-change: transform;
+}
+
+/* Keep animated content from painting in its final state before GSAP mounts. */
+.brkta-site-intro[data-brkta-site-intro-state="pending"]
+  .brkta-site-intro-logo {
+  opacity: 0;
+  transform: translateY(16px) scale(0.9);
+}
+
+.brkta-site-intro[data-brkta-site-intro-state="pending"]
+  .brkta-site-intro-kicker {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.brkta-site-intro[data-brkta-site-intro-state="pending"]
+  .brkta-site-intro-line {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.brkta-site-intro-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-4);
+  color: var(--brkta-intro-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brkta-site-intro-bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  color: var(--brkta-intro-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brkta-site-intro-content {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  max-width: 64rem;
+}
+
+.brkta-site-intro-logo-stage {
+  position: relative;
+  display: block;
+  width: min(18rem, 68vw);
+  height: auto;
+  margin-bottom: var(--space-8);
+}
+
+.brkta-site-intro-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.brkta-site-intro-logo-handoff {
+  position: fixed;
+  z-index: calc(var(--z-modal) + 1);
+  display: block;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.brkta-site-intro-logo-handoff-intro,
+.brkta-site-intro-logo-handoff-header {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brkta-site-intro-logo-handoff-header {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.brkta-site-intro-kicker {
+  margin: 0 0 var(--space-5);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.brkta-site-intro-message {
+  max-width: 60rem;
+  margin: 0;
+  font-size: clamp(2rem, 5.2vw, 5.25rem);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.brkta-site-intro-line {
+  display: block;
+}
+
+.brkta-site-intro-progress {
+  display: block;
+  width: min(18rem, 42vw);
+  height: 2px;
+  overflow: hidden;
+  background: color-mix(
+    in oklch,
+    var(--brkta-intro-foreground) 18%,
+    transparent
+  );
+}
+
+.brkta-site-intro-progress-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--accent);
+}
+
+/*
+ * Docking to the route.
+ *
+ * --route-rail-x is published by whatever owns the page route, from the same
+ * measurement the line itself uses — never re-derived here, or the two would
+ * drift apart the moment the gutter rule changed. Unset (every other app, and
+ * this one before the route measures) it falls back to 5vw and the header
+ * behaves exactly as it always did.
+ *
+ * Applied in both states on purpose. Docking only on scroll slid the header
+ * 24px left, and the route starts at the brand mark — so the line tore away
+ * from its own origin the instant the header changed state. Sitting on the
+ * rail permanently keeps the mark still and the seam intact.
+ */
+.brkta-site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-fixed);
+  padding: var(--space-3) 5vw;
+  padding-left: var(--route-rail-x, 5vw);
+  pointer-events: none;
+  transition: padding var(--duration-normal) var(--ease-out);
+}
+
+.brkta-site-header[data-ready="false"] {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.brkta-site-header-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+  width: min(100%, 120rem);
+  min-height: var(--space-16);
+  /* Left-aligned, not centred: its left edge is what sits on the rail. */
+  margin: 0 auto 0 0;
+  transition: padding var(--duration-normal) var(--ease-out);
+}
+
+/*
+ * No panel on scroll. The bar keeps no border, background, shadow or blur —
+ * the route's own hairline underneath is the only chrome it needs, and a
+ * floating pill was the one part of this header that looked like every other
+ * site's. It just tightens vertically.
+ */
+.brkta-site-header[data-scrolled="true"] .brkta-site-header-inner {
+  padding: var(--space-2) 0;
+}
+
+/*
+ * A hairline of the route under the bar, filling as you travel the page. Same
+ * accent and weight as the line itself, so it reads as the same stroke rather
+ * than as a generic progress bar.
+ */
+.brkta-site-header-progress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  overflow: hidden;
+  height: 1.6px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.brkta-site-header[data-scrolled="true"] .brkta-site-header-progress {
+  opacity: 1;
+}
+
+.brkta-site-header-progress > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: color-mix(in oklch, var(--accent) 82%, transparent);
+}
+
+.brkta-site-header-brand,
+.brkta-site-header-nav a,
+.brkta-site-header-action,
+.brkta-site-theme-control,
+.brkta-site-header-menu-toggle,
+.brkta-site-header-menu-link,
+.brkta-site-header-menu-action,
+.brkta-site-header-menu-theme {
+  pointer-events: auto;
+}
+
+.brkta-site-header-brand {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.brkta-site-header-logo {
+  display: block;
+  width: min(11.5rem, 36vw);
+  height: auto;
+}
+
+.brkta-site-header-logo-stack {
+  position: relative;
+  display: block;
+  width: min(11.5rem, 36vw);
+}
+
+.brkta-site-header-logo-stack .brkta-site-header-logo {
+  width: 100%;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.brkta-site-header-logo-stack .brkta-site-header-logo--normal {
+  position: relative;
+  z-index: 1;
+}
+
+.brkta-site-header-logo-stack .brkta-site-header-logo--opposite {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.brkta-site-header-logo-stack[data-inverted="true"]
+  .brkta-site-header-logo--normal {
+  opacity: 0;
+}
+
+.brkta-site-header-logo-stack[data-inverted="true"]
+  .brkta-site-header-logo--opposite {
+  z-index: 1;
+  opacity: 1;
+}
+
+.brkta-site-header-nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.brkta-site-header-nav a,
+.brkta-site-header-menu-link {
+  position: relative;
+}
+
+/*
+ * The route's own marker, not an underline. Every stop on the page is called
+ * out with this square; the nav is a legend for the line rather than generic
+ * chrome, and an underline is the one nav treatment every other site uses.
+ */
+.brkta-site-header-nav a::before {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 0.55rem;
+  content: "";
+  vertical-align: 0.08em;
+  border: 1px solid currentColor;
+  background: transparent;
+  opacity: 0.45;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header-nav a:hover::before {
+    opacity: 1;
+  }
+}
+
+.brkta-site-header-nav a:focus-visible::before {
+  opacity: 1;
+}
+
+/* The stop you are standing in is the one that is filled. */
+.brkta-site-header-nav a[data-active="true"]::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  opacity: 1;
+}
+
+.brkta-site-header-nav a:focus-visible,
+.brkta-site-header-nav a[data-active="true"] {
+  color: var(--foreground);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header-nav a:hover {
+    color: var(--foreground);
+  }
+}
+
+.brkta-site-header-nav a[data-active="true"] {
+  color: var(--foreground);
+}
+
+.brkta-site-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: var(--space-3);
+}
+
+.brkta-site-header-nav a:focus-visible,
+.brkta-site-header-menu-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+.brkta-site-header-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  align-content: center;
+  gap: var(--space-6);
+  padding: var(--space-12) 8vw var(--space-8);
+  overflow: auto;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--foreground);
+  color: var(--background);
+  pointer-events: none;
+}
+
+.brkta-site-header-menu[data-open="true"] {
+  /* Keep the open panel above header content while leaving rail controls on top. */
+  z-index: var(--z-dropdown);
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.brkta-site-header:not([data-layout="rail"]):has(
+    .brkta-site-header-menu[data-open="true"]
+  )
+  .brkta-site-header-menu-toggle {
+  position: relative;
+  z-index: var(--z-fixed);
+}
+
+.brkta-site-header-menu nav {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.brkta-site-header-menu-list,
+.brkta-site-header-menu-children {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brkta-site-header-menu-list {
+  gap: var(--space-3);
+}
+
+.brkta-site-header-menu-item {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.brkta-site-header-menu-children {
+  gap: var(--space-1);
+  padding-inline-start: var(--space-6);
+  border-inline-start: 1px solid
+    color-mix(in oklch, var(--background) 28%, transparent);
+}
+
+.brkta-site-header-menu-contact {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.brkta-site-header-menu-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: var(--height-md);
+}
+
+.brkta-site-header-menu-contact a {
+  display: inline-flex;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--background);
+  border-radius: var(--radius-sm);
+  color: var(--background);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header-menu-contact a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+}
+
+.brkta-site-header-menu-contact a:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.brkta-site-header-menu-contact a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+.brkta-site-header-menu-contact svg {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+  flex-shrink: 0;
+}
+
+.brkta-site-header-menu-link {
+  width: fit-content;
+  font-size: clamp(2rem, 9vw, 4.5rem);
+  font-weight: 650;
+  line-height: 0.98;
+}
+
+.brkta-site-header[data-layout="rail"] .brkta-site-header-menu-link::before {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 0.55rem;
+  content: "";
+  vertical-align: 0.08em;
+  border: 1px solid currentColor;
+  background: transparent;
+  opacity: 0.45;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header[data-layout="rail"]
+    .brkta-site-header-menu-link:hover::before {
+    opacity: 1;
+  }
+}
+
+.brkta-site-header[data-layout="rail"]
+  .brkta-site-header-menu-link:focus-visible::before {
+  opacity: 1;
+}
+
+.brkta-site-header[data-layout="rail"]
+  .brkta-site-header-menu-link[data-active="true"]::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  opacity: 1;
+}
+
+.brkta-site-header-menu-link[data-active="true"] {
+  color: var(--accent);
+}
+
+.brkta-site-header-menu-link:focus-visible {
+  color: var(--accent);
+}
+
+.brkta-site-header-menu-child-link {
+  color: color-mix(in oklch, var(--background) 72%, transparent);
+  font-size: clamp(1.15rem, 5vw, 2.25rem);
+  font-weight: 550;
+  line-height: 1.05;
+}
+
+.brkta-site-header[data-layout="rail"]
+  .brkta-site-header-menu-child-link::before {
+  width: 4px;
+  height: 4px;
+  opacity: 0.65;
+}
+
+.brkta-site-header-menu-child-link[data-active="true"] {
+  color: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header-menu-link:hover {
+    color: var(--accent);
+  }
+}
+
+.brkta-site-header-menu-action {
+  width: fit-content;
+}
+
+.brkta-site-header-menu-theme[data-brkta-button] {
+  margin-inline-start: auto;
+  flex: 0 0 var(--height-md);
+  width: var(--height-md);
+  height: var(--height-md);
+  padding: 0;
+  border: 1px solid color-mix(in oklch, var(--background) 42%, transparent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--background);
+}
+
+.brkta-site-header-menu-theme[data-brkta-button]:hover:not(:disabled),
+.brkta-site-header-menu-theme[data-brkta-button]:focus-visible {
+  background: transparent;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.brkta-site-header[data-layout="rail"] .brkta-site-header-menu-action {
+  border: 1px solid var(--background);
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.brkta-site-header[data-layout="rail"]
+  .brkta-site-header-menu-action:focus-visible {
+  border-color: var(--background);
+  background: var(--foreground);
+  color: var(--background);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-action:hover {
+    border-color: var(--background);
+    background: var(--foreground);
+    color: var(--background);
+  }
+}
+
+.brkta-site-footer {
+  position: relative;
+  overflow: clip;
+  padding: var(--space-20) 5vw var(--space-6);
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/*
+ * Decoration layer behind the content — route tree, falling letters. Content
+ * stacks above it, so nothing drawn here can touch legibility or clicks.
+ */
+.brkta-site-footer-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.brkta-site-footer-grid,
+.brkta-site-footer-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+/* Compact: a sign-off, not a second pitch — small brand, links, legal. */
+.brkta-site-footer[data-variant="compact"] {
+  padding-top: var(--space-12);
+}
+
+.brkta-site-footer[data-variant="compact"] .brkta-site-footer-brand {
+  width: min(8.5rem, 40vw);
+  margin-bottom: 0;
+}
+
+.brkta-site-footer[data-variant="compact"] .brkta-site-footer-bottom {
+  margin-top: var(--space-12);
+}
+
+.brkta-site-footer-grid {
+  display: grid;
+  gap: var(--space-16);
+  width: min(100%, 120rem);
+  margin: 0 auto;
+}
+
+.brkta-site-footer-intro {
+  max-width: 38rem;
+}
+
+.brkta-site-footer-brand {
+  display: block;
+  width: min(14rem, 62vw);
+  height: auto;
+  margin-bottom: var(--space-8);
+}
+
+.brkta-site-footer-copy {
+  max-width: 30rem;
+  margin: 0;
+  color: color-mix(in oklch, var(--background) 72%, transparent);
+  font-size: clamp(1.35rem, 2.4vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.brkta-site-footer-action[data-brkta-button] {
+  margin-top: var(--space-8);
+  border-color: var(--background);
+  background: transparent;
+  color: var(--background);
+}
+
+.brkta-site-footer-action[data-brkta-button]:focus-visible {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-footer-action[data-brkta-button]:hover {
+    background: var(--background);
+    color: var(--foreground);
+  }
+}
+
+.brkta-site-footer-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-10) var(--space-6);
+}
+
+.brkta-site-footer-group > p {
+  margin: 0 0 var(--space-4);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.brkta-site-footer-group nav {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.brkta-site-footer-group a,
+.brkta-site-footer-bottom a {
+  width: fit-content;
+  color: color-mix(in oklch, var(--background) 74%, transparent);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.brkta-site-footer-group a:focus-visible,
+.brkta-site-footer-bottom a:focus-visible {
+  color: var(--background);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-footer-group a:hover,
+  .brkta-site-footer-bottom a:hover {
+    color: var(--background);
+  }
+}
+
+.brkta-site-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  justify-content: space-between;
+  margin-top: var(--space-20);
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in oklch, var(--background) 22%, transparent);
+  color: color-mix(in oklch, var(--background) 56%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.brkta-site-footer-bottom nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/* Mobile footer layout: opt-in via data-mobile-layout="compact" (SiteFooter `mobile` prop). */
+.brkta-site-footer-mobile {
+  display: none;
+}
+
+@media (max-width: 40rem) {
+  .brkta-site-footer[data-mobile-layout="compact"] .brkta-site-footer-groups {
+    display: none;
+  }
+
+  .brkta-site-footer-mobile {
+    position: relative;
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .brkta-site-footer-mobile .fm-card {
+    display: grid;
+    gap: var(--space-8);
+    padding: var(--space-5);
+    border: 1px solid color-mix(in oklch, currentColor 28%, transparent);
+    border-radius: var(--radius-xl);
+    background: transparent;
+    color: inherit;
+  }
+
+  .brkta-site-footer-mobile .fm-card-label,
+  .brkta-site-footer-mobile .fm-col p {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .brkta-site-footer-mobile .fm-col p {
+    margin-bottom: var(--space-2);
+  }
+
+  .brkta-site-footer-mobile .fm-card-link {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+    width: auto;
+    color: inherit;
+    font-size: 2rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  .brkta-site-footer-mobile .fm-card-arrow,
+  .brkta-site-footer-mobile .fm-card-icons a {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    color: #12110e;
+  }
+
+  .brkta-site-footer-mobile .fm-card-arrow {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .brkta-site-footer-mobile .fm-card-icons {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .brkta-site-footer-mobile .fm-card-icons a {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .brkta-site-footer-mobile .fm-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6) var(--space-4);
+  }
+
+  .brkta-site-footer-mobile .fm-col nav {
+    display: grid;
+  }
+
+  .brkta-site-footer-mobile .fm-col a {
+    display: flex;
+    width: auto;
+    min-height: 2.5rem;
+    align-items: center;
+    color: inherit;
+    font-size: var(--font-size-base);
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 901px) {
+  .brkta-site-header-inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .brkta-site-header-nav {
+    display: flex;
+  }
+
+  .brkta-site-header:not([data-layout="rail"]) .brkta-site-header-menu-toggle,
+  .brkta-site-header:not([data-layout="rail"]) .brkta-site-header-menu {
+    display: none;
+  }
+
+  .brkta-site-footer-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(22rem, 0.8fr);
+    gap: var(--space-20);
+  }
+
+  .brkta-site-footer-groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .brkta-site-intro {
+    padding: var(--space-6) var(--space-6) var(--space-5);
+  }
+
+  .brkta-site-intro-message {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+  }
+
+  .brkta-site-intro-grid-line:nth-child(4n + 2),
+  .brkta-site-intro-grid-line:nth-child(4n + 3),
+  .brkta-site-intro-grid-line:nth-child(4n + 4) {
+    display: none;
+  }
+
+  .brkta-site-header {
+    padding: var(--space-3) var(--space-6);
+  }
+
+  :root {
+    --brkta-site-header-reserved-height: calc(
+      var(--space-14) + var(--space-3) + var(--space-3)
+    );
+  }
+
+  .brkta-site-header-inner {
+    min-height: var(--space-14);
+  }
+
+  .brkta-site-header-action {
+    display: none;
+  }
+
+  .brkta-site-header[data-scrolled="true"] .brkta-site-header-inner {
+    padding-inline: var(--space-3);
+  }
+
+  .brkta-site-footer {
+    padding-right: var(--space-6);
+    padding-left: var(--space-6);
+  }
+
+  .brkta-site-footer-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-3);
+  }
+
+  .brkta-site-footer-group a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .brkta-site-footer-bottom {
+    display: grid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brkta-site-header,
+  .brkta-site-header-inner,
+  .brkta-site-header-nav a::before,
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-link::before,
+  .brkta-site-header-logo-stack .brkta-site-header-logo,
+  .brkta-site-header-progress,
+  .brkta-site-header-rail-icon span {
+    transition: none;
+  }
+}
+
+/*
+ * Rail layout.
+ *
+ * The page route owns the left gutter, so navigation takes the right edge:
+ * two vertical edges with distinct jobs rather than a bar competing with the
+ * line. Only the mark stays at the top-left, as an anchor opposite the rail.
+ *
+ * Scoped to [data-layout="rail"] so every other app keeps the horizontal bar.
+ */
+.brkta-site-header[data-layout="rail"] .brkta-site-header-nav,
+.brkta-site-header[data-layout="rail"] .brkta-site-header-actions,
+.brkta-site-header[data-layout="rail"] .brkta-site-header-progress {
+  display: none;
+}
+
+.brkta-site-header[data-layout="rail"] .brkta-site-header-inner {
+  grid-template-columns: auto;
+  min-height: 0;
+}
+
+.brkta-site-header[data-layout="rail"] .brkta-site-header-menu,
+.brkta-site-header[data-layout="rail"] .brkta-site-header-rail-toggle,
+.brkta-site-header[data-layout="rail"] .brkta-site-header-rail-action {
+  border-radius: 0;
+  border-bottom-left-radius: var(--radius-sm);
+}
+
+.brkta-site-header-rail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  display: flex;
+  /* Two vertical strips side by side, the accent one hard against the edge. */
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  pointer-events: none;
+}
+
+.brkta-site-header-rail-toggle,
+.brkta-site-header-rail-action {
+  pointer-events: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.brkta-site-header-rail-toggle:focus-visible,
+.brkta-site-header-rail-action:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 4px;
+}
+
+/*
+ * The strip stays upright and lays its two parts out horizontally; only the
+ * word itself is turned. Rotating the whole button instead dragged the icon
+ * round with it, which is why the icon needed cancelling out before.
+ */
+.brkta-site-header-rail-toggle {
+  display: flex;
+  /* Word above, squares below — stacked down the strip, not across it. */
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.brkta-site-header-rail-label {
+  /* Reads bottom-to-top, so it runs with the page rather than against it. */
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  rotate: 180deg;
+}
+
+/*
+ * The block stays upright and only the word turns — same as the menu strip.
+ * Rotating the block itself put its transform into a flipped coordinate
+ * space, so translateY(-100%) sent it down the screen instead of up.
+ */
+.brkta-site-header-rail-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Two bars rather than a glyph, so it can be turned and scaled cleanly. */
+.brkta-site-header-rail-plus {
+  position: relative;
+  width: 12px;
+  height: 12px;
+}
+
+.brkta-site-header-rail-plus::before,
+.brkta-site-header-rail-plus::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: "";
+  background: currentColor;
+  translate: -50% -50%;
+}
+
+.brkta-site-header-rail-plus::before {
+  width: 12px;
+  height: 2px;
+}
+
+.brkta-site-header-rail-plus::after {
+  width: 2px;
+  height: 12px;
+}
+
+/* Its own block, inverted against the accent one beside it. */
+.brkta-site-header-rail-toggle {
+  padding: var(--space-6) var(--space-4);
+  border: 0;
+  background: var(--foreground);
+  color: var(--background);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out);
+}
+
+.brkta-site-header-rail-toggle[data-inverted="true"] {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/*
+ * The new colour grows out of the cursor rather than switching in one step: a
+ * circle behind the content, centred on where the pointer entered and scaled
+ * from nothing. It sits at z-index -1 inside the block's own stacking context,
+ * so it covers the base background but stays under the label and icon.
+ */
+.brkta-site-header-rail-toggle,
+.brkta-site-header-rail-action {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.brkta-site-header-rail-toggle::before,
+.brkta-site-header-rail-action::before {
+  position: absolute;
+  top: var(--rail-fill-y, 50%);
+  left: var(--rail-fill-x, 50%);
+  /*
+   * Above the block's own background, below its content. Sitting this at -1
+   * relied on negative stack levels painting after the background, which is
+   * fragile — the label and icon are lifted instead so the order is explicit.
+   */
+  z-index: 0;
+  width: var(--rail-fill-size, 320px);
+  height: var(--rail-fill-size, 320px);
+  content: "";
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.brkta-site-header-rail-toggle::before {
+  background: var(--accent);
+}
+
+.brkta-site-header-rail-action::before {
+  background: var(--foreground);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header-rail-toggle:hover::before,
+  .brkta-site-header-rail-action:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.brkta-site-header-rail-toggle:focus-visible::before,
+.brkta-site-header-rail-action:focus-visible::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.brkta-site-header-rail-toggle:focus-visible {
+  color: var(--accent-foreground);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header-rail-toggle:hover {
+    color: var(--accent-foreground);
+  }
+}
+
+/* Content rides above the fill. */
+.brkta-site-header-rail-label,
+.brkta-site-header-rail-icon,
+.brkta-site-header-rail-plus {
+  position: relative;
+  z-index: 1;
+}
+
+/* The marks answer the hover too: turned and drawn in a little. */
+.brkta-site-header-rail-icon,
+.brkta-site-header-rail-plus {
+  transition:
+    rotate var(--duration-normal) var(--ease-out),
+    scale var(--duration-normal) var(--ease-out);
+}
+
+.brkta-site-header-rail-toggle:focus-visible .brkta-site-header-rail-icon {
+  rotate: 45deg;
+  scale: 0.72;
+}
+
+.brkta-site-header-rail-action:focus-visible .brkta-site-header-rail-plus {
+  rotate: 90deg;
+  scale: 0.78;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header-rail-toggle:hover .brkta-site-header-rail-icon {
+    rotate: 45deg;
+    scale: 0.72;
+  }
+
+  .brkta-site-header-rail-action:hover .brkta-site-header-rail-plus {
+    rotate: 90deg;
+    scale: 0.78;
+  }
+}
+
+/* Four squares, the same mark the route uses, arranged two by two. */
+.brkta-site-header-rail-icon {
+  display: grid;
+  grid-template-columns: repeat(2, 5px);
+  gap: 3px;
+}
+
+.brkta-site-header-rail-icon span {
+  width: 5px;
+  height: 5px;
+  background: currentColor;
+  transition: background-color var(--duration-normal) var(--ease-out);
+}
+
+/* The call to action, squared off rather than a tab. */
+.brkta-site-header-rail-action {
+  padding: var(--space-4) var(--space-4);
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.brkta-site-header-rail-action:focus-visible {
+  color: var(--background);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brkta-site-header-rail-action:hover {
+    color: var(--background);
+  }
+}
+
+/* Held above the frame until the intro finishes and GSAP drops them in. */
+@media (min-width: 901px) {
+  .brkta-site-header[data-layout="rail"][data-ready="false"]
+    .brkta-site-header-rail-toggle,
+  .brkta-site-header[data-layout="rail"][data-ready="false"]
+    .brkta-site-header-rail-action {
+    transform: translateY(-100%);
+  }
+}
+
+/*
+ * Whichever block you are not on retreats up out of the frame, leaving the one
+ * you are on alone at the corner. :has() lets a hover on one strip drive its
+ * sibling without any JavaScript.
+ */
+@media (min-width: 901px) {
+  .brkta-site-header-rail-toggle,
+  .brkta-site-header-rail-action {
+    transition:
+      transform var(--duration-normal) var(--ease-out),
+      background-color var(--duration-normal) var(--ease-out),
+      color var(--duration-normal) var(--ease-out);
+  }
+
+  .brkta-site-header-rail:has(.brkta-site-header-rail-toggle:focus-visible)
+    .brkta-site-header-rail-action,
+  .brkta-site-header-rail:has(.brkta-site-header-rail-action:focus-visible)
+    .brkta-site-header-rail-toggle {
+    transform: translateY(-100%);
+  }
+}
+
+@media (min-width: 901px) and (hover: hover) and (pointer: fine) {
+  .brkta-site-header-rail:has(.brkta-site-header-rail-toggle:hover)
+    .brkta-site-header-rail-action,
+  .brkta-site-header-rail:has(.brkta-site-header-rail-action:hover)
+    .brkta-site-header-rail-toggle {
+    transform: translateY(-100%);
+  }
+}
+
+/* Colour still changes; only the retreat is dropped. */
+@media (prefers-reduced-motion: reduce) {
+  .brkta-site-header-rail-toggle,
+  .brkta-site-header-rail-action,
+  .brkta-site-header-rail-toggle::before,
+  .brkta-site-header-rail-action::before,
+  .brkta-site-header-rail-icon,
+  .brkta-site-header-rail-icon span,
+  .brkta-site-header-rail-plus {
+    transition: none;
+  }
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: reduce) {
+  .brkta-site-header-rail:has(.brkta-site-header-rail-toggle:focus-visible)
+    .brkta-site-header-rail-action,
+  .brkta-site-header-rail:has(.brkta-site-header-rail-action:focus-visible)
+    .brkta-site-header-rail-toggle {
+    transform: none;
+  }
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: reduce) and (hover: hover) and (pointer: fine) {
+  .brkta-site-header-rail:has(.brkta-site-header-rail-toggle:hover)
+    .brkta-site-header-rail-action,
+  .brkta-site-header-rail:has(.brkta-site-header-rail-action:hover)
+    .brkta-site-header-rail-toggle {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .brkta-site-header-menu {
+    gap: var(--space-2);
+    padding: var(--space-8) var(--space-4) var(--space-6);
+  }
+
+  .brkta-site-header-menu-list {
+    gap: var(--space-1);
+  }
+
+  .brkta-site-header-menu-item {
+    gap: 0;
+  }
+
+  .brkta-site-header-menu-children {
+    gap: 0;
+  }
+
+  .brkta-site-header-menu-footer {
+    gap: var(--space-2);
+  }
+
+  .brkta-site-header-menu-contact {
+    gap: var(--space-1);
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-rail {
+    position: absolute;
+    top: 50%;
+    right: var(--space-2);
+    transform: translateY(-50%);
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-child-link {
+    font-size: clamp(1.05rem, 4.5vw, 1.75rem);
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-rail-action {
+    padding-block: var(--space-3);
+  }
+}
+
+/* Rail navigation is a compact dropdown on desktop; the bar stays untouched. */
+@media (min-width: 901px) {
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu {
+    position: fixed;
+    inset: 0 0 auto auto;
+    z-index: var(--z-dropdown);
+    display: grid;
+    align-content: start;
+    width: min(30rem, calc(100vw - var(--space-8)));
+    max-width: 100vw;
+    max-height: min(42rem, calc(100dvh - var(--space-8)));
+    box-sizing: border-box;
+    gap: var(--space-5);
+    padding: var(--space-8) var(--space-8) var(--space-6);
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu nav {
+    gap: var(--space-3);
+    min-width: 0;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-link {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-size: clamp(1.35rem, 2.2vw, 2.15rem);
+    line-height: 1.05;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-list {
+    gap: var(--space-3);
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-item {
+    gap: var(--space-2);
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-children {
+    gap: var(--space-1);
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-child-link {
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-contact {
+    gap: var(--space-3);
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-action {
+    display: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* The rail remains above the dropdown, so the MENU block stays readable. */
+  .brkta-site-header[data-layout="rail"]:has(
+      .brkta-site-header-menu[data-open="true"]
+    )
+    .brkta-site-header-rail-toggle {
+    background: var(--foreground);
+    color: var(--background);
+  }
+
+  .brkta-site-header[data-layout="rail"]
+    .brkta-site-header-rail-toggle[aria-expanded="true"]
+    .brkta-site-header-rail-icon {
+    rotate: 45deg;
+    scale: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Mobile keeps the full-screen menu as the only CTA location. */
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-rail-action {
+    display: none;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-rail-toggle {
+    display: inline-flex;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    color: var(--foreground);
+    font-size: 0;
+    letter-spacing: 0;
+    isolation: auto;
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  .brkta-site-header[data-layout="rail"]
+    .brkta-site-header-rail-toggle::before {
+    display: none;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-rail-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    rotate: none;
+  }
+
+  .brkta-site-header[data-layout="rail"]
+    .brkta-site-header-rail-toggle:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
+  }
+
+  .brkta-site-header[data-layout="rail"]
+    .brkta-site-header-rail-toggle[aria-expanded="true"] {
+    background: transparent;
+    color: var(--accent);
+  }
+
+  .brkta-site-header[data-layout="rail"]
+    .brkta-site-header-rail-toggle[data-inverted="true"] {
+    background: transparent;
+    color: var(--background);
+  }
+
+  .brkta-site-header[data-layout="rail"]
+    .brkta-site-header-rail-toggle[aria-expanded="true"]
+    .brkta-site-header-rail-icon {
+    rotate: 45deg;
+    scale: 1;
+  }
+
+  .brkta-site-header[data-layout="rail"][data-ready="false"]
+    .brkta-site-header-rail-toggle {
+    transform: none;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu-contact {
+    max-width: 100%;
+  }
+
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-menu {
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brkta-site-header-menu,
+  .brkta-site-header-menu-contact a,
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-rail-toggle,
+  .brkta-site-header[data-layout="rail"] .brkta-site-header-rail-icon {
+    transition: none;
+  }
+}

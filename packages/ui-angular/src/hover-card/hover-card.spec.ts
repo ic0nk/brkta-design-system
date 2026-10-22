@@ -1,0 +1,2 @@
+import { describe,it,expect,beforeEach } from 'vitest';import { ComponentFixture,TestBed } from '@angular/core/testing';import { HoverCardComponent } from './hover-card.component';
+describe('HoverCardComponent',()=>{let f:ComponentFixture<HoverCardComponent>;beforeEach(async()=>{await TestBed.configureTestingModule({imports:[HoverCardComponent]}).compileComponents();f=TestBed.createComponent(HoverCardComponent);f.detectChanges();});it('renders',()=>{expect(f.nativeElement.hasAttribute('data-brkta-hover-card')).toBe(true);});});
