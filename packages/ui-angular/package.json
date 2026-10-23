@@ -1,6 +1,6 @@
 {
   "name": "@brkta/ui-angular",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "license": "MIT",
   "main": "./dist/fesm2022/brkta-ui-angular.mjs",
