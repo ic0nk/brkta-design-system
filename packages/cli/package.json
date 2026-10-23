@@ -1,0 +1,16 @@
+{
+  "name": "@brkta/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": { "brkta": "./dist/bin.js" },
+  "files": ["dist"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node scripts/build-manifest.mjs",
+    "test": "vitest run",
+    "typecheck": "node --check src/index.js && node --check scripts/build-manifest.mjs"
+  },
+  "devDependencies": { "vitest": "4.1.10" },
+  "publishConfig": { "registry": "https://npm.pkg.github.com", "access": "restricted" },
+  "repository": { "type": "git", "url": "https://github.com/ic0nk/brkta-design-system.git", "directory": "packages/cli" }
+}

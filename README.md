@@ -2,6 +2,17 @@
 
 Standalone pnpm monorepo for BRKTA tokens, shared UI contracts/styles, React and Angular components, platform primitives, and governed icons. Packages publish privately to GitHub Packages under `@brkta`.
 
+## Quick start with the CLI
+
+Run the setup wizard from an Angular or React/Next.js project:
+
+```sh
+pnpm dlx @brkta/cli init
+pnpm dlx @brkta/cli add button
+```
+
+The CLI detects the framework and package manager, configures the GitHub Packages registry without embedding credentials, and adds design-system styles. Set `GITHUB_TOKEN` to a classic GitHub PAT with `read:packages` before installing. Use `--css minimal` to add component CSS only as components are selected, and `pnpm dlx @brkta/cli update` to update installed BRKTA packages. The manual setup below remains available as a fallback.
+
 ## Consumer setup
 
 Configure the consuming project’s `.npmrc` (use a classic GitHub PAT with `read:packages`; never commit the token):

@@ -4,7 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
-const packages = ['design-tokens', 'ui-core', 'ui-react', 'ui-angular', 'icons', 'platform-core'];
+const packages = ['design-tokens', 'ui-core', 'ui-react', 'ui-angular', 'icons', 'platform-core', 'cli'];
 const temp = await mkdtemp(path.join(os.tmpdir(), 'brkta-pack-'));
 const packed = path.join(temp, 'packed');
 const unpacked = path.join(temp, 'unpacked');
@@ -64,6 +64,10 @@ try {
     await mkdir(path.dirname(dest), { recursive: true });
     await cp(source, dest, { recursive: true, dereference: true });
   }
+  const cliHelp = spawnSync(process.execPath, [path.join(paths.cli, 'dist/bin.js'), '--help'], { cwd: smokeRoot, stdio: 'inherit' });
+  if (cliHelp.status !== 0) throw new Error('Packed CLI --help failed');
+  const cliList = spawnSync(process.execPath, [path.join(paths.cli, 'dist/bin.js'), 'list'], { cwd: smokeRoot, stdio: 'inherit' });
+  if (cliList.status !== 0) throw new Error('Packed CLI list failed');
   const smoke = `import { DATA_ATTRS } from '@brkta/ui-core/types/variant';\nimport { formatDateTime } from '@brkta/platform-core/date-time';\nimport { Button } from '@brkta/ui-react/button';\nconsole.log('smoke exports', DATA_ATTRS.button, typeof formatDateTime, typeof Button);\nconsole.log('css resolution', import.meta.resolve('@brkta/ui-core/styles/components.css'), import.meta.resolve('@brkta/ui-core/button/button.css'));\n`;
   await writeFile(path.join(smokeRoot, 'smoke.mjs'), smoke);
   const run = spawnSync(process.execPath, [path.join(smokeRoot, 'smoke.mjs')], { cwd: smokeRoot, stdio: 'inherit' });
