@@ -4,12 +4,6 @@
   "type": "module",
   "main": "./dist/fesm2022/brkta-ui-angular.mjs",
   "types": "./dist/types/brkta-ui-angular.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/types/brkta-ui-angular.d.ts",
-      "default": "./dist/fesm2022/brkta-ui-angular.mjs"
-    }
-  },
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
     "build:watch": "ng-packagr -p ng-package.json --watch",
@@ -30,26 +24,27 @@
     "@angular/core": "^22.0.0"
   },
   "devDependencies": {
-    "@angular/build": "^22.0.8",
-    "@angular/cli": "^22.0.8",
-    "@angular/common": "^22.0.0",
-    "@angular/compiler": "^22.0.0",
-    "@angular/compiler-cli": "^22.0.0",
-    "@angular/core": "^22.0.0",
-    "@angular/platform-browser": "^22.0.0",
-    "@angular/platform-browser-dynamic": "^22.0.0",
-    "@chromatic-com/storybook": "^3.2.7",
-    "@storybook/addon-a11y": "^8.6.18",
-    "@storybook/addon-essentials": "^8.6.18",
-    "@storybook/angular": "^8",
-    "@storybook/test": "^8.6.18",
+    "@angular/build": "22.0.8",
+    "@angular/cli": "22.0.8",
+    "@angular/common": "22.0.8",
+    "@angular/compiler": "22.0.8",
+    "@angular/compiler-cli": "22.0.8",
+    "@angular/core": "22.0.8",
+    "@angular/platform-browser": "22.0.8",
+    "@angular/platform-browser-dynamic": "22.0.8",
+    "@chromatic-com/storybook": "3.2.7",
+    "@storybook/addon-a11y": "8.6.18",
+    "@storybook/addon-essentials": "8.6.18",
+    "@storybook/angular": "8.6.18",
+    "@storybook/test": "8.6.18",
     "@types/jasmine": "^6.0.0",
-    "jsdom": "^28",
-    "ng-packagr": "^22.0.2",
-    "storybook": "^8",
+    "jsdom": "28.1.0",
+    "ng-packagr": "22.0.2",
+    "storybook": "8.6.18",
     "typescript": "~6.0.2",
-    "vitest": "^4",
-    "zone.js": "^0.16.2"
+    "vitest": "4.1.10",
+    "vite": "7.3.6",
+    "zone.js": "0.16.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",

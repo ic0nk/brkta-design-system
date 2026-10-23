@@ -531,9 +531,14 @@
     "**/*.css"
   ],
   "files": [
-    "dist"
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "dist/**/*.css"
   ],
   "dependencies": {
     "@brkta/design-tokens": "workspace:^"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
   }
 }

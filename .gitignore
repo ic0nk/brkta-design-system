@@ -2,6 +2,7 @@ node_modules
 dist
 storybook-static
 *.tgz
+*.log
 .env*
 .smoke
 .pnpm-store

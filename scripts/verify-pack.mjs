@@ -30,8 +30,9 @@ try {
       for (const file of targets) {
         const clean = file.replace(/^\.\//, '').replace(/\*.*$/, '');
         if (file.includes('*')) {
-          const dir = path.join(paths[name], clean);
-          const matches = await readdir(path.dirname(dir)).catch(() => []);
+          const star = file.indexOf('*');
+          const directory = path.join(paths[name], file.slice(2, star));
+          const matches = await readdir(directory).catch(() => []);
           if (!matches.length) throw new Error(`${manifest.name} export target has no files: ${file}`);
         } else {
           await readFile(path.join(paths[name], clean)).catch(() => { throw new Error(`${manifest.name} missing export target: ${file}`); });
@@ -44,19 +45,26 @@ try {
     }
     const all = await readdir(paths[name], { recursive: true });
     if (all.some((f) => /(^|\/)(\.env[^/]*|node_modules|storybook-static)(\/|$)|(?<!\.d)\.ts$/.test(String(f)))) throw new Error(`${manifest.name} contains a forbidden source/secret/dependency file`);
+    if (name === 'ui-core' && all.some((f) => ['dist/package.json', 'dist/tsconfig.build.json'].includes(String(f).replaceAll('\\', '/')))) throw new Error(`${manifest.name} includes build-only metadata`);
+    if (name === 'ui-react' && all.some((f) => /(^|\/)dist\/src\/(stories\/|.*\.(spec|stories)\.)/.test(String(f).replaceAll('\\', '/')))) throw new Error(`${manifest.name} includes tests or stories`);
     console.log(`verified ${manifest.name} (${tgz})`);
   }
-  const smokeRoot = path.join(root, '.smoke');
+  const smokeParent = path.join(root, '.smoke');
+  await mkdir(smokeParent, { recursive: true });
+  const smokeRoot = await mkdtemp(path.join(smokeParent, 'packed-consumer-'));
   const scoped = path.join(smokeRoot, 'node_modules', '@brkta');
   await mkdir(scoped, { recursive: true });
-  for (const name of ['ui-core', 'platform-core']) {
-    const manifest = JSON.parse(await readFile(path.join(paths[name], 'package.json'), 'utf8'));
+  for (const name of ['design-tokens', 'ui-core', 'platform-core', 'ui-react']) {
     const dest = path.join(scoped, name);
-    await rm(dest, { recursive: true, force: true });
-    await mkdir(dest, { recursive: true });
     await cp(paths[name], dest, { recursive: true });
   }
-  const smoke = `import { buttonVariants } from '@brkta/ui-core/types/variant';\nimport { formatDateTime } from '@brkta/platform-core/date-time';\nconsole.log('smoke resolved', typeof buttonVariants, typeof formatDateTime);\n`;
+  for (const name of ['react', 'gsap', 'lucide-react']) {
+    const source = path.join(root, 'packages', 'ui-react', 'node_modules', name);
+    const dest = path.join(smokeRoot, 'node_modules', name);
+    await mkdir(path.dirname(dest), { recursive: true });
+    await cp(source, dest, { recursive: true, dereference: true });
+  }
+  const smoke = `import { DATA_ATTRS } from '@brkta/ui-core/types/variant';\nimport { formatDateTime } from '@brkta/platform-core/date-time';\nimport { Button } from '@brkta/ui-react/button';\nconsole.log('smoke exports', DATA_ATTRS.button, typeof formatDateTime, typeof Button);\nconsole.log('css resolution', import.meta.resolve('@brkta/ui-core/styles/components.css'), import.meta.resolve('@brkta/ui-core/button/button.css'));\n`;
   await writeFile(path.join(smokeRoot, 'smoke.mjs'), smoke);
   const run = spawnSync(process.execPath, [path.join(smokeRoot, 'smoke.mjs')], { cwd: smokeRoot, stdio: 'inherit' });
   if (run.status !== 0) throw new Error('Packed consumer smoke test failed');
