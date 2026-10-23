@@ -22,6 +22,7 @@
             "configDir": ".storybook",
             "compodoc": false,
             "styles": [
+              "@brkta/design-tokens/fonts.css",
               "@brkta/design-tokens/theme.css",
               "@brkta/design-tokens/base.css",
               "@brkta/design-tokens/glass.css",
@@ -37,6 +38,7 @@
             "outputDir": "storybook-static",
             "compodoc": false,
             "styles": [
+              "@brkta/design-tokens/fonts.css",
               "@brkta/design-tokens/theme.css",
               "@brkta/design-tokens/base.css",
               "@brkta/design-tokens/glass.css",

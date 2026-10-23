@@ -1,6 +1,6 @@
 # Aspect Ratio
 
-> A container wrapper that preserves a fixed width-to-height ratio without layout shift. Useful for media cards, video embeds, image previews, and dashboard panels.
+> A container wrapper that preserves a fixed width-to-height ratio without layout shift. Useful for media cards, video embeds, image previews, and content panels.
 
 ---
 
@@ -9,7 +9,7 @@
 - Display media (images, videos, maps) at a consistent aspect ratio.
 - Prevent cumulative layout shift (CLS) during content loading.
 - Create responsive media cards and preview thumbnails.
-- Dashboard widgets that need predictable dimensions.
+- Content panels that need predictable dimensions.
 
 Do not use Aspect Ratio for content that should grow with its inner content — use a regular container instead.
 
@@ -33,7 +33,7 @@ Do not use Aspect Ratio for content that should grow with its inner content — 
 | `1:1` | Square avatar, album art |
 | `4:3` | Classic photo, presentation |
 | `16:9` | Widescreen video, hero banners |
-| `21:9` | Ultrawide cinematic, dashboards |
+| `21:9` | Ultrawide cinematic, data-dense layouts |
 
 ---
 

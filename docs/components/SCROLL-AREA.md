@@ -1,7 +1,5 @@
 # Scroll Area
 
-> Wave 4B — Advanced Navigation + Layout Utilities
-
 ## Overview
 
 A styled scrollable container with custom scrollbar styling. Supports vertical and horizontal overflow.

@@ -1,6 +1,6 @@
 # UX Patterns
 
-> Standardized interaction patterns for business workflows. These patterns ensure consistency across every feature in BRKTA ONE — from simple forms to complex data tables.
+> Reusable interaction patterns for forms, feedback, data display, and navigation.
 
 ---
 
@@ -14,7 +14,6 @@
 - [Drawer and Detail Actions](#drawer-and-detail-actions)
 - [Loading States](#loading-states)
 - [Mutation Readiness and In-Flight Actions](#mutation-readiness-and-in-flight-actions)
-- [Mutation Readiness and In-Flight Actions](#mutation-readiness-and-in-flight-actions)
 - [Skeletons](#skeletons)
 - [Empty States](#empty-states)
 - [Confirmations](#confirmations)
@@ -27,8 +26,7 @@
 - [Notifications](#notifications)
 - [Unsaved Changes](#unsaved-changes)
 - [Permission Denied](#permission-denied)
-- [Tenant / Company Switching](#tenant--company-switching)
-- [Responsive Business Workflows](#responsive-business-workflows)
+- [Responsive Workflows](#responsive-workflows)
 
 ---
 
@@ -57,10 +55,10 @@
 
 ### Input Placeholders
 
-- Every `brkta-input` in dashboard product surfaces must provide a translated `placeholder` binding.
+- Provide a localized `placeholder` for inputs when it adds a useful example or format hint.
 - Use a short example or format hint that helps the user enter the value; do not repeat the field label.
-- Keep examples appropriate to the workspace context, and define them in the dashboard message catalog rather than inline in a template.
-- The design-system audit maintains a temporary, sorted allowlist for legacy screens; that allowlist may only shrink as screens adopt translated placeholders.
+- Keep examples appropriate to the application context, and define visible strings in the consuming app's message catalog rather than inline in a template.
+- Keep placeholder copy concise and localized; do not repeat the visible field label.
 
 ### Section Grouping
 
@@ -561,7 +559,7 @@ useEffect(() => {
 | Warning | AlertTriangle | `--warning` | Auto-dismiss after 6s |
 | Information | Info | `--information` | Auto-dismiss after 4s |
 
-- Toasts stack in the top-right corner (dashboard) or top-center (website).
+- Position toast notifications consistently within the application and away from critical controls.
 - Maximum 3 visible toasts at once — older toasts are replaced.
 - Toasts do not block interaction.
 
@@ -616,33 +614,7 @@ When a user attempts to access a feature or resource they do not have permission
 
 ---
 
-## Tenant / Company Switching
-
-- Company switcher is located in the sidebar (dashboard) or top navigation (website).
-- Dropdown shows the current company name and a chevron.
-- When switching companies, preserve the current page **if the page is accessible in the target company**.
-- If the current page is not accessible, navigate to the target company's dashboard.
-- Switching companies re-fetches all data for the new company — no stale data crosses tenant boundaries.
-
-```html
-<div class="company-switcher">
-  <button aria-haspopup="true" aria-expanded="false">
-    <BuildingIcon aria-hidden="true" />
-    <span>Acme Corp</span>
-    <ChevronDown aria-hidden="true" />
-  </button>
-  <!-- Dropdown with company list -->
-  <div class="company-dropdown" role="menu">
-    <button role="menuitem" class="active">Acme Corp</button>
-    <button role="menuitem">Globex Inc</button>
-    <button role="menuitem">Initech</button>
-  </div>
-</div>
-```
-
----
-
-## Responsive Business Workflows
+## Responsive Workflows
 
 - **Critical actions** (approve, reject, pay, create) are available on mobile — through the action bar, FAB, or contextual actions.
 - **Complex workflows** (multi-step forms, bulk operations, data heavy edits) are reserved for desktop — on mobile, show a "Use desktop for this action" message for workflows that genuinely cannot be simplified.

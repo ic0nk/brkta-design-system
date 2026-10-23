@@ -15,7 +15,6 @@
     {
       "name": "Consent Banner",
       "category": "feedback",
-      "wave": "custom",
       "dataAttributes": ["data-brkta-consent-banner"],
       "designSystemSection": "Consent Banner",
       "uiCoreContract": "packages/ui-core/consent-banner/consent-banner-contract.ts",
@@ -26,12 +25,11 @@
       "angularComponent": "packages/ui-angular/src/consent-banner/consent-banner.component.ts",
       "angularTest": "packages/ui-angular/src/consent-banner/consent-banner.spec.ts",
       "angularStory": "packages/ui-angular/src/consent-banner/consent-banner.stories.ts",
-      "docs": "docs/design-system/components/CONSENT-BANNER.md"
+      "docs": "docs/components/CONSENT-BANNER.md"
     },
     {
       "name": "Button",
       "category": "foundations",
-      "wave": "1",
       "dataAttributes": ["data-brkta-button"],
       "designSystemSection": "Buttons",
       "uiCoreContract": "packages/ui-core/button/button-contract.ts",
@@ -42,12 +40,11 @@
       "angularComponent": "packages/ui-angular/src/button/button.component.ts",
       "angularTest": "packages/ui-angular/src/button/button.spec.ts",
       "angularStory": "packages/ui-angular/src/button/button.stories.ts",
-      "docs": "docs/design-system/components/BUTTON.md"
+      "docs": "docs/components/BUTTON.md"
     },
     {
       "name": "Icon Motion",
       "category": "foundations",
-      "wave": "1",
       "dataAttributes": [
         ".brkta-icon-motion",
         ".brkta-icon-motion-message-circle",
@@ -59,19 +56,19 @@
       "designSystemSection": "Icon Motion",
       "uiCoreContract": null,
       "uiCoreCss": "packages/ui-core/icon-motion/icon-motion.css",
-      "reactComponent": "apps/website/src/components/animated-icons/index.ts",
+      "reactComponent": "packages/ui-react/src/animated-icons/index.ts",
       "reactTest": null,
       "reactStory": null,
       "angularComponent": "packages/ui-angular/src/animated-icons/index.ts",
       "angularTest": null,
       "angularStory": null,
-      "docs": "docs/design-system/ICONS.md",
+      "docs": "docs/ICONS.md",
       "motionVariants": {
         "message-circle": {
           "className": "brkta-icon-motion-message-circle",
           "semantic": "WhatsApp connection settings",
           "transform": "translateY(-1px) scale(1.04)",
-          "reactWrapper": "apps/website/src/components/animated-icons/animated-message-circle.tsx",
+          "reactWrapper": "packages/ui-react/src/animated-icons/animated-message-circle.tsx",
           "uiReactWrapper": "packages/ui-react/src/animated-icons/animated-message-circle.tsx",
           "angularWrapper": "packages/ui-angular/src/animated-icons/animated-message-circle.component.ts",
           "reactTest": "packages/ui-react/src/animated-icons/animated-messaging.spec.tsx",
@@ -81,7 +78,7 @@
           "className": "brkta-icon-motion-inbox",
           "semantic": "Incoming price lists",
           "transform": "translateY(-1px) scale(1.04)",
-          "reactWrapper": "apps/website/src/components/animated-icons/animated-inbox.tsx",
+          "reactWrapper": "packages/ui-react/src/animated-icons/animated-inbox.tsx",
           "uiReactWrapper": "packages/ui-react/src/animated-icons/animated-inbox.tsx",
           "angularWrapper": "packages/ui-angular/src/animated-icons/animated-inbox.component.ts",
           "reactTest": "packages/ui-react/src/animated-icons/animated-messaging.spec.tsx",
@@ -91,14 +88,14 @@
           "className": "brkta-icon-motion-log-out",
           "semantic": "Exit or sign out",
           "transform": "translateX(2px)",
-          "reactWrapper": "apps/website/src/components/animated-icons/animated-log-out.tsx",
+          "reactWrapper": "packages/ui-react/src/animated-icons/animated-log-out.tsx",
           "angularWrapper": "packages/ui-angular/src/animated-icons/animated-log-out.component.ts"
         },
         "panel-left": {
           "className": "brkta-icon-motion-panel-left",
           "semantic": "Toggle or navigate a left panel",
           "transform": "translateX(-2px)",
-          "reactWrapper": "apps/website/src/components/animated-icons/animated-panel-left.tsx",
+          "reactWrapper": "packages/ui-react/src/animated-icons/animated-panel-left.tsx",
           "uiReactWrapper": "packages/ui-react/src/animated-icons/animated-panel-left.tsx",
           "angularWrapper": "packages/ui-angular/src/animated-icons/animated-panel-left.component.ts"
         },
@@ -106,7 +103,7 @@
           "className": "brkta-icon-motion-building-2",
           "semantic": "Company, workspace, or organization",
           "transform": "translateY(-1px) scale(1.04)",
-          "reactWrapper": "apps/website/src/components/animated-icons/animated-building-2.tsx",
+          "reactWrapper": "packages/ui-react/src/animated-icons/animated-building-2.tsx",
           "angularWrapper": "packages/ui-angular/src/animated-icons/animated-building-2.component.ts"
         }
       },
@@ -115,7 +112,6 @@
     {
       "name": "Badge",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-badge"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/badge/badge-contract.ts",
@@ -126,12 +122,11 @@
       "angularComponent": "packages/ui-angular/src/badge/badge.component.ts",
       "angularTest": "packages/ui-angular/src/badge/badge.spec.ts",
       "angularStory": "packages/ui-angular/src/badge/badge.stories.ts",
-      "docs": "docs/design-system/components/BADGE.md"
+      "docs": "docs/components/BADGE.md"
     },
     {
       "name": "Card",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-card"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/card/card-contract.ts",
@@ -142,12 +137,11 @@
       "angularComponent": "packages/ui-angular/src/card/card.component.ts",
       "angularTest": "packages/ui-angular/src/card/card.spec.ts",
       "angularStory": "packages/ui-angular/src/card/card.stories.ts",
-      "docs": "docs/design-system/components/CARD.md"
+      "docs": "docs/components/CARD.md"
     },
     {
       "name": "Alert",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-alert"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/alert/alert-contract.ts",
@@ -158,12 +152,11 @@
       "angularComponent": "packages/ui-angular/src/alert/alert.component.ts",
       "angularTest": "packages/ui-angular/src/alert/alert.spec.ts",
       "angularStory": "packages/ui-angular/src/alert/alert.stories.ts",
-      "docs": "docs/design-system/components/ALERT.md"
+      "docs": "docs/components/ALERT.md"
     },
     {
       "name": "Avatar",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-avatar"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/avatar/avatar-contract.ts",
@@ -174,12 +167,11 @@
       "angularComponent": "packages/ui-angular/src/avatar/avatar.component.ts",
       "angularTest": "packages/ui-angular/src/avatar/avatar.spec.ts",
       "angularStory": "packages/ui-angular/src/avatar/avatar.stories.ts",
-      "docs": "docs/design-system/components/AVATAR.md"
+      "docs": "docs/components/AVATAR.md"
     },
     {
       "name": "Separator",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-separator"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/separator/separator-contract.ts",
@@ -190,12 +182,11 @@
       "angularComponent": "packages/ui-angular/src/separator/separator.component.ts",
       "angularTest": "packages/ui-angular/src/separator/separator.spec.ts",
       "angularStory": "packages/ui-angular/src/separator/separator.stories.ts",
-      "docs": "docs/design-system/components/SEPARATOR.md"
+      "docs": "docs/components/SEPARATOR.md"
     },
     {
       "name": "Skeleton",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-skeleton"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/skeleton/skeleton-contract.ts",
@@ -206,12 +197,11 @@
       "angularComponent": "packages/ui-angular/src/skeleton/skeleton.component.ts",
       "angularTest": "packages/ui-angular/src/skeleton/skeleton.spec.ts",
       "angularStory": "packages/ui-angular/src/skeleton/skeleton.stories.ts",
-      "docs": "docs/design-system/components/SKELETON.md"
+      "docs": "docs/components/SKELETON.md"
     },
     {
       "name": "Spinner",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-spinner"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/spinner/spinner-contract.ts",
@@ -222,12 +212,11 @@
       "angularComponent": "packages/ui-angular/src/spinner/spinner.component.ts",
       "angularTest": "packages/ui-angular/src/spinner/spinner.spec.ts",
       "angularStory": "packages/ui-angular/src/spinner/spinner.stories.ts",
-      "docs": "docs/design-system/components/SPINNER.md"
+      "docs": "docs/components/SPINNER.md"
     },
     {
       "name": "Progress",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-progress"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/progress/progress-contract.ts",
@@ -238,12 +227,11 @@
       "angularComponent": "packages/ui-angular/src/progress/progress.component.ts",
       "angularTest": "packages/ui-angular/src/progress/progress.spec.ts",
       "angularStory": "packages/ui-angular/src/progress/progress.stories.ts",
-      "docs": "docs/design-system/components/PROGRESS.md"
+      "docs": "docs/components/PROGRESS.md"
     },
     {
       "name": "Password Strength",
       "category": "forms",
-      "wave": "7C",
       "dataAttributes": ["data-brkta-password-strength"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/password-strength/password-strength-contract.ts",
@@ -254,12 +242,11 @@
       "angularComponent": "packages/ui-angular/src/password-strength/password-strength.component.ts",
       "angularTest": "packages/ui-angular/src/password-strength/password-strength.spec.ts",
       "angularStory": "packages/ui-angular/src/password-strength/password-strength.stories.ts",
-      "docs": "docs/design-system/components/PASSWORD-STRENGTH.md"
+      "docs": "docs/components/PASSWORD-STRENGTH.md"
     },
     {
       "name": "Flow Tree",
       "category": "layout",
-      "wave": "7C",
       "dataAttributes": ["data-brkta-flow-tree"],
       "designSystemSection": "Utility + Layout",
       "uiCoreContract": "packages/ui-core/flow-tree/flow-tree-contract.ts",
@@ -270,13 +257,12 @@
       "angularComponent": "packages/ui-angular/src/flow-tree/flow-tree.component.ts",
       "angularTest": "packages/ui-angular/src/flow-tree/flow-tree.spec.ts",
       "angularStory": "packages/ui-angular/src/flow-tree/flow-tree.stories.ts",
-      "docs": "docs/design-system/components/FLOW-TREE.md",
+      "docs": "docs/components/FLOW-TREE.md",
       "notes": "Framework renderers consume geometry from @brkta/ui-core/flow-geometry."
     },
     {
       "name": "Kbd",
       "category": "primitives",
-      "wave": "1",
       "dataAttributes": ["data-brkta-kbd"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/kbd/kbd-contract.ts",
@@ -287,12 +273,11 @@
       "angularComponent": "packages/ui-angular/src/kbd/kbd.component.ts",
       "angularTest": "packages/ui-angular/src/kbd/kbd.spec.ts",
       "angularStory": "packages/ui-angular/src/kbd/kbd.stories.ts",
-      "docs": "docs/design-system/components/KBD.md"
+      "docs": "docs/components/KBD.md"
     },
     {
       "name": "Label",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-label"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/label/label-contract.ts",
@@ -303,12 +288,11 @@
       "angularComponent": "packages/ui-angular/src/label/label.component.ts",
       "angularTest": "packages/ui-angular/src/label/label.spec.ts",
       "angularStory": "packages/ui-angular/src/label/label.stories.ts",
-      "docs": "docs/design-system/components/LABEL.md"
+      "docs": "docs/components/LABEL.md"
     },
     {
       "name": "Input",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": [
         "data-brkta-input",
         "data-brkta-input-container",
@@ -323,12 +307,11 @@
       "angularComponent": "packages/ui-angular/src/input/input.component.ts",
       "angularTest": "packages/ui-angular/src/input/input.spec.ts",
       "angularStory": "packages/ui-angular/src/input/input.stories.ts",
-      "docs": "docs/design-system/components/INPUT.md"
+      "docs": "docs/components/INPUT.md"
     },
     {
       "name": "Textarea",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-textarea"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/textarea/textarea-contract.ts",
@@ -339,12 +322,11 @@
       "angularComponent": "packages/ui-angular/src/textarea/textarea.component.ts",
       "angularTest": "packages/ui-angular/src/textarea/textarea.spec.ts",
       "angularStory": "packages/ui-angular/src/textarea/textarea.stories.ts",
-      "docs": "docs/design-system/components/TEXTAREA.md"
+      "docs": "docs/components/TEXTAREA.md"
     },
     {
       "name": "Field",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-field"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/field/field-contract.ts",
@@ -355,12 +337,11 @@
       "angularComponent": "packages/ui-angular/src/field/field.component.ts",
       "angularTest": "packages/ui-angular/src/field/field.spec.ts",
       "angularStory": "packages/ui-angular/src/field/field.stories.ts",
-      "docs": "docs/design-system/components/FIELD.md"
+      "docs": "docs/components/FIELD.md"
     },
     {
       "name": "Field Help Text",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-field-help"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/field-help/field-help-contract.ts",
@@ -371,12 +352,11 @@
       "angularComponent": "packages/ui-angular/src/field-help/field-help.component.ts",
       "angularTest": "packages/ui-angular/src/field-help/field-help.spec.ts",
       "angularStory": "packages/ui-angular/src/field-help/field-help.stories.ts",
-      "docs": "docs/design-system/components/FIELD.md"
+      "docs": "docs/components/FIELD.md"
     },
     {
       "name": "Field Error Text",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-field-error"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/field-error/field-error-contract.ts",
@@ -387,12 +367,11 @@
       "angularComponent": "packages/ui-angular/src/field-error/field-error.component.ts",
       "angularTest": "packages/ui-angular/src/field-error/field-error.spec.ts",
       "angularStory": "packages/ui-angular/src/field-error/field-error.stories.ts",
-      "docs": "docs/design-system/components/FIELD.md"
+      "docs": "docs/components/FIELD.md"
     },
     {
       "name": "Field Description",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-field-description"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/field-description/field-description-contract.ts",
@@ -403,12 +382,11 @@
       "angularComponent": "packages/ui-angular/src/field-description/field-description.component.ts",
       "angularTest": "packages/ui-angular/src/field-description/field-description.spec.ts",
       "angularStory": "packages/ui-angular/src/field-description/field-description.stories.ts",
-      "docs": "docs/design-system/components/FIELD.md"
+      "docs": "docs/components/FIELD.md"
     },
     {
       "name": "Native Select",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-native-select"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/native-select/native-select-contract.ts",
@@ -419,12 +397,11 @@
       "angularComponent": "packages/ui-angular/src/native-select/native-select.component.ts",
       "angularTest": "packages/ui-angular/src/native-select/native-select.spec.ts",
       "angularStory": "packages/ui-angular/src/native-select/native-select.stories.ts",
-      "docs": "docs/design-system/components/NATIVE-SELECT.md"
+      "docs": "docs/components/NATIVE-SELECT.md"
     },
     {
       "name": "Checkbox",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-checkbox"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/checkbox/checkbox-contract.ts",
@@ -435,12 +412,11 @@
       "angularComponent": "packages/ui-angular/src/checkbox/checkbox.component.ts",
       "angularTest": "packages/ui-angular/src/checkbox/checkbox.spec.ts",
       "angularStory": "packages/ui-angular/src/checkbox/checkbox.stories.ts",
-      "docs": "docs/design-system/components/CHECKBOX.md"
+      "docs": "docs/components/CHECKBOX.md"
     },
     {
       "name": "Radio Group",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-radio-group", "data-brkta-radio"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/radio-group/radio-group-contract.ts",
@@ -451,12 +427,11 @@
       "angularComponent": "packages/ui-angular/src/radio-group/radio-group.component.ts",
       "angularTest": "packages/ui-angular/src/radio-group/radio-group.spec.ts",
       "angularStory": "packages/ui-angular/src/radio-group/radio-group.stories.ts",
-      "docs": "docs/design-system/components/RADIO-GROUP.md"
+      "docs": "docs/components/RADIO-GROUP.md"
     },
     {
       "name": "Switch",
       "category": "forms",
-      "wave": "2",
       "dataAttributes": ["data-brkta-switch"],
       "designSystemSection": "Forms Foundation",
       "uiCoreContract": "packages/ui-core/switch/switch-contract.ts",
@@ -467,12 +442,11 @@
       "angularComponent": "packages/ui-angular/src/switch/switch.component.ts",
       "angularTest": "packages/ui-angular/src/switch/switch.spec.ts",
       "angularStory": "packages/ui-angular/src/switch/switch.stories.ts",
-      "docs": "docs/design-system/components/SWITCH.md"
+      "docs": "docs/components/SWITCH.md"
     },
     {
       "name": "Select",
       "category": "forms",
-      "wave": "2.5",
       "dataAttributes": [
         "data-brkta-select",
         "data-brkta-select-trigger",
@@ -487,12 +461,11 @@
       "angularComponent": "packages/ui-angular/src/select/select.component.ts",
       "angularTest": "packages/ui-angular/src/select/select.spec.ts",
       "angularStory": "packages/ui-angular/src/select/select.stories.ts",
-      "docs": "docs/design-system/components/SELECT.md"
+      "docs": "docs/components/SELECT.md"
     },
     {
       "name": "Dropdown Menu",
       "category": "overlays",
-      "wave": "3A",
       "dataAttributes": ["data-brkta-dropdown-menu"],
       "designSystemSection": "Overlay + Menu",
       "uiCoreContract": "packages/ui-core/dropdown-menu/dropdown-menu-contract.ts",
@@ -503,12 +476,11 @@
       "angularComponent": "packages/ui-angular/src/dropdown-menu/dropdown-menu.component.ts",
       "angularTest": "packages/ui-angular/src/dropdown-menu/dropdown-menu.spec.ts",
       "angularStory": "packages/ui-angular/src/dropdown-menu/dropdown-menu.stories.ts",
-      "docs": "docs/design-system/components/DROPDOWN-MENU.md"
+      "docs": "docs/components/DROPDOWN-MENU.md"
     },
     {
       "name": "Popover",
       "category": "overlays",
-      "wave": "3A",
       "dataAttributes": ["data-brkta-popover"],
       "designSystemSection": "Overlay + Menu",
       "uiCoreContract": "packages/ui-core/popover/popover-contract.ts",
@@ -519,12 +491,11 @@
       "angularComponent": "packages/ui-angular/src/popover/popover.component.ts",
       "angularTest": "packages/ui-angular/src/popover/popover.spec.ts",
       "angularStory": "packages/ui-angular/src/popover/popover.stories.ts",
-      "docs": "docs/design-system/components/POPOVER.md"
+      "docs": "docs/components/POPOVER.md"
     },
     {
       "name": "Tooltip",
       "category": "overlays",
-      "wave": "3A",
       "dataAttributes": ["data-brkta-tooltip"],
       "designSystemSection": "Overlay + Menu",
       "uiCoreContract": "packages/ui-core/tooltip/tooltip-contract.ts",
@@ -535,12 +506,11 @@
       "angularComponent": "packages/ui-angular/src/tooltip/tooltip.component.ts",
       "angularTest": "packages/ui-angular/src/tooltip/tooltip.spec.ts",
       "angularStory": "packages/ui-angular/src/tooltip/tooltip.stories.ts",
-      "docs": "docs/design-system/components/TOOLTIP.md"
+      "docs": "docs/components/TOOLTIP.md"
     },
     {
       "name": "Dialog",
       "category": "overlays",
-      "wave": "3B",
       "dataAttributes": ["data-brkta-dialog"],
       "designSystemSection": "Modal + Feedback",
       "uiCoreContract": "packages/ui-core/dialog/dialog-contract.ts",
@@ -551,12 +521,11 @@
       "angularComponent": "packages/ui-angular/src/dialog/dialog.component.ts",
       "angularTest": "packages/ui-angular/src/dialog/dialog.spec.ts",
       "angularStory": "packages/ui-angular/src/dialog/dialog.stories.ts",
-      "docs": "docs/design-system/components/DIALOG.md"
+      "docs": "docs/components/DIALOG.md"
     },
     {
       "name": "Alert Dialog",
       "category": "overlays",
-      "wave": "3B",
       "dataAttributes": ["data-brkta-alert-dialog"],
       "designSystemSection": "Modal + Feedback",
       "uiCoreContract": "packages/ui-core/alert-dialog/alert-dialog-contract.ts",
@@ -567,12 +536,11 @@
       "angularComponent": "packages/ui-angular/src/alert-dialog/alert-dialog.component.ts",
       "angularTest": "packages/ui-angular/src/alert-dialog/alert-dialog.spec.ts",
       "angularStory": "packages/ui-angular/src/alert-dialog/alert-dialog.stories.ts",
-      "docs": "docs/design-system/components/ALERT-DIALOG.md"
+      "docs": "docs/components/ALERT-DIALOG.md"
     },
     {
       "name": "Sheet",
       "category": "overlays",
-      "wave": "3B",
       "dataAttributes": ["data-brkta-sheet"],
       "designSystemSection": "Modal + Feedback",
       "uiCoreContract": "packages/ui-core/sheet/sheet-contract.ts",
@@ -583,12 +551,11 @@
       "angularComponent": "packages/ui-angular/src/sheet/sheet.component.ts",
       "angularTest": "packages/ui-angular/src/sheet/sheet.spec.ts",
       "angularStory": "packages/ui-angular/src/sheet/sheet.stories.ts",
-      "docs": "docs/design-system/components/SHEET.md"
+      "docs": "docs/components/SHEET.md"
     },
     {
       "name": "Toast",
       "category": "overlays",
-      "wave": "3B",
       "dataAttributes": ["data-brkta-toast"],
       "designSystemSection": "Modal + Feedback",
       "uiCoreContract": "packages/ui-core/toast/toast-contract.ts",
@@ -599,12 +566,11 @@
       "angularComponent": "packages/ui-angular/src/toast/toast.component.ts",
       "angularTest": "packages/ui-angular/src/toast/toast.spec.ts",
       "angularStory": "packages/ui-angular/src/toast/toast.stories.ts",
-      "docs": "docs/design-system/components/TOAST.md"
+      "docs": "docs/components/TOAST.md"
     },
     {
       "name": "Breadcrumb",
       "category": "navigation",
-      "wave": "4A",
       "dataAttributes": ["data-brkta-breadcrumb"],
       "designSystemSection": "Navigation + Data Display",
       "uiCoreContract": "packages/ui-core/breadcrumb/breadcrumb-contract.ts",
@@ -615,12 +581,11 @@
       "angularComponent": "packages/ui-angular/src/breadcrumb/breadcrumb.component.ts",
       "angularTest": "packages/ui-angular/src/breadcrumb/breadcrumb.spec.ts",
       "angularStory": "packages/ui-angular/src/breadcrumb/breadcrumb.stories.ts",
-      "docs": "docs/design-system/components/BREADCRUMB.md"
+      "docs": "docs/components/BREADCRUMB.md"
     },
     {
       "name": "Tabs",
       "category": "navigation",
-      "wave": "4A",
       "dataAttributes": ["data-brkta-tabs"],
       "designSystemSection": "Navigation + Data Display",
       "uiCoreContract": "packages/ui-core/tabs/tabs-contract.ts",
@@ -631,12 +596,11 @@
       "angularComponent": "packages/ui-angular/src/tabs/tabs.component.ts",
       "angularTest": "packages/ui-angular/src/tabs/tabs.spec.ts",
       "angularStory": "packages/ui-angular/src/tabs/tabs.stories.ts",
-      "docs": "docs/design-system/components/TABS.md"
+      "docs": "docs/components/TABS.md"
     },
     {
       "name": "Pagination",
       "category": "navigation",
-      "wave": "4A",
       "dataAttributes": ["data-brkta-pagination"],
       "designSystemSection": "Navigation + Data Display",
       "uiCoreContract": "packages/ui-core/pagination/pagination-contract.ts",
@@ -647,12 +611,11 @@
       "angularComponent": "packages/ui-angular/src/pagination/pagination.component.ts",
       "angularTest": "packages/ui-angular/src/pagination/pagination.spec.ts",
       "angularStory": "packages/ui-angular/src/pagination/pagination.stories.ts",
-      "docs": "docs/design-system/components/PAGINATION.md"
+      "docs": "docs/components/PAGINATION.md"
     },
     {
       "name": "Table",
       "category": "data-display",
-      "wave": "4A",
       "dataAttributes": ["data-brkta-table"],
       "designSystemSection": "Navigation + Data Display",
       "uiCoreContract": "packages/ui-core/table/table-contract.ts",
@@ -663,12 +626,11 @@
       "angularComponent": "packages/ui-angular/src/table/table.component.ts",
       "angularTest": "packages/ui-angular/src/table/table.spec.ts",
       "angularStory": "packages/ui-angular/src/table/table.stories.ts",
-      "docs": "docs/design-system/components/TABLE.md"
+      "docs": "docs/components/TABLE.md"
     },
     {
       "name": "Empty State",
       "category": "data-display",
-      "wave": "4A",
       "dataAttributes": ["data-brkta-empty-state"],
       "designSystemSection": "Navigation + Data Display",
       "uiCoreContract": "packages/ui-core/empty-state/empty-state-contract.ts",
@@ -679,12 +641,11 @@
       "angularComponent": "packages/ui-angular/src/empty-state/empty-state.component.ts",
       "angularTest": "packages/ui-angular/src/empty-state/empty-state.spec.ts",
       "angularStory": "packages/ui-angular/src/empty-state/empty-state.stories.ts",
-      "docs": "docs/design-system/components/EMPTY-STATE.md"
+      "docs": "docs/components/EMPTY-STATE.md"
     },
     {
       "name": "Accordion",
       "category": "navigation",
-      "wave": "4B",
       "dataAttributes": ["data-brkta-accordion"],
       "designSystemSection": "Advanced Navigation + Layout",
       "uiCoreContract": "packages/ui-core/accordion/accordion-contract.ts",
@@ -695,12 +656,11 @@
       "angularComponent": "packages/ui-angular/src/accordion/accordion.component.ts",
       "angularTest": "packages/ui-angular/src/accordion/accordion.spec.ts",
       "angularStory": "packages/ui-angular/src/accordion/accordion.stories.ts",
-      "docs": "docs/design-system/components/ACCORDION.md"
+      "docs": "docs/components/ACCORDION.md"
     },
     {
       "name": "Collapsible",
       "category": "navigation",
-      "wave": "4B",
       "dataAttributes": ["data-brkta-collapsible", "data-compact"],
       "designSystemSection": "Advanced Navigation + Layout",
       "uiCoreContract": "packages/ui-core/collapsible/collapsible-contract.ts",
@@ -711,12 +671,11 @@
       "angularComponent": "packages/ui-angular/src/collapsible/collapsible.component.ts",
       "angularTest": "packages/ui-angular/src/collapsible/collapsible.spec.ts",
       "angularStory": "packages/ui-angular/src/collapsible/collapsible.stories.ts",
-      "docs": "docs/design-system/components/COLLAPSIBLE.md"
+      "docs": "docs/components/COLLAPSIBLE.md"
     },
     {
       "name": "Button Group",
       "category": "navigation",
-      "wave": "4B",
       "dataAttributes": ["data-brkta-button-group"],
       "designSystemSection": "Advanced Navigation + Layout",
       "uiCoreContract": "packages/ui-core/button-group/button-group-contract.ts",
@@ -727,12 +686,11 @@
       "angularComponent": "packages/ui-angular/src/button-group/button-group.component.ts",
       "angularTest": "packages/ui-angular/src/button-group/button-group.spec.ts",
       "angularStory": "packages/ui-angular/src/button-group/button-group.stories.ts",
-      "docs": "docs/design-system/components/BUTTON-GROUP.md"
+      "docs": "docs/components/BUTTON-GROUP.md"
     },
     {
       "name": "Scroll Area",
       "category": "layout",
-      "wave": "4B",
       "dataAttributes": ["data-brkta-scroll-area"],
       "designSystemSection": "Advanced Navigation + Layout",
       "uiCoreContract": "packages/ui-core/scroll-area/scroll-area-contract.ts",
@@ -743,12 +701,11 @@
       "angularComponent": "packages/ui-angular/src/scroll-area/scroll-area.component.ts",
       "angularTest": "packages/ui-angular/src/scroll-area/scroll-area.spec.ts",
       "angularStory": "packages/ui-angular/src/scroll-area/scroll-area.stories.ts",
-      "docs": "docs/design-system/components/SCROLL-AREA.md"
+      "docs": "docs/components/SCROLL-AREA.md"
     },
     {
       "name": "Sidebar",
       "category": "navigation",
-      "wave": "4B",
       "dataAttributes": ["data-brkta-sidebar"],
       "variants": ["standalone", "embedded"],
       "designSystemSection": "Advanced Navigation + Layout",
@@ -760,7 +717,7 @@
       "angularComponent": "packages/ui-angular/src/sidebar/sidebar.component.ts",
       "angularTest": "packages/ui-angular/src/sidebar/sidebar.spec.ts",
       "angularStory": "packages/ui-angular/src/sidebar/sidebar.stories.ts",
-      "docs": "docs/design-system/components/SIDEBAR.md",
+      "docs": "docs/components/SIDEBAR.md",
       "api": {
         "showCollapseToggle": {
           "type": "boolean",
@@ -776,7 +733,6 @@
     {
       "name": "Resizable",
       "category": "layout",
-      "wave": "4B",
       "dataAttributes": ["data-brkta-resizable"],
       "designSystemSection": "Advanced Navigation + Layout",
       "uiCoreContract": "packages/ui-core/resizable/resizable-contract.ts",
@@ -787,12 +743,11 @@
       "angularComponent": "packages/ui-angular/src/resizable/resizable.component.ts",
       "angularTest": "packages/ui-angular/src/resizable/resizable.spec.ts",
       "angularStory": "packages/ui-angular/src/resizable/resizable.stories.ts",
-      "docs": "docs/design-system/components/RESIZABLE.md"
+      "docs": "docs/components/RESIZABLE.md"
     },
     {
       "name": "Slider",
       "category": "forms",
-      "wave": "5",
       "dataAttributes": ["data-brkta-slider", "data-brkta-slider-thumb-lower", "data-brkta-slider-thumb-upper"],
       "designSystemSection": "Advanced Inputs + Pickers",
       "uiCoreContract": "packages/ui-core/slider/slider-contract.ts",
@@ -803,12 +758,11 @@
       "angularComponent": "packages/ui-angular/src/slider/slider.component.ts",
       "angularTest": "packages/ui-angular/src/slider/slider.spec.ts",
       "angularStory": "packages/ui-angular/src/slider/slider.stories.ts",
-      "docs": "docs/design-system/components/SLIDER.md"
+      "docs": "docs/components/SLIDER.md"
     },
     {
       "name": "Input OTP",
       "category": "forms",
-      "wave": "5",
       "dataAttributes": ["data-brkta-input-otp"],
       "designSystemSection": "Advanced Inputs + Pickers",
       "uiCoreContract": "packages/ui-core/input-otp/input-otp-contract.ts",
@@ -819,12 +773,11 @@
       "angularComponent": "packages/ui-angular/src/input-otp/input-otp.component.ts",
       "angularTest": "packages/ui-angular/src/input-otp/input-otp.spec.ts",
       "angularStory": "packages/ui-angular/src/input-otp/input-otp.stories.ts",
-      "docs": "docs/design-system/components/INPUT-OTP.md"
+      "docs": "docs/components/INPUT-OTP.md"
     },
     {
       "name": "Calendar",
       "category": "forms",
-      "wave": "5",
       "dataAttributes": ["data-brkta-calendar"],
       "designSystemSection": "Advanced Inputs + Pickers",
       "uiCoreContract": "packages/ui-core/calendar/calendar-contract.ts",
@@ -835,12 +788,11 @@
       "angularComponent": "packages/ui-angular/src/calendar/calendar.component.ts",
       "angularTest": "packages/ui-angular/src/calendar/calendar.spec.ts",
       "angularStory": "packages/ui-angular/src/calendar/calendar.stories.ts",
-      "docs": "docs/design-system/components/CALENDAR.md"
+      "docs": "docs/components/CALENDAR.md"
     },
     {
       "name": "Date Picker",
       "category": "forms",
-      "wave": "5",
       "dataAttributes": ["data-brkta-date-picker"],
       "designSystemSection": "Advanced Inputs + Pickers",
       "uiCoreContract": "packages/ui-core/date-picker/date-picker-contract.ts",
@@ -851,12 +803,11 @@
       "angularComponent": "packages/ui-angular/src/date-picker/date-picker.component.ts",
       "angularTest": "packages/ui-angular/src/date-picker/date-picker.spec.ts",
       "angularStory": "packages/ui-angular/src/date-picker/date-picker.stories.ts",
-      "docs": "docs/design-system/components/DATE-PICKER.md"
+      "docs": "docs/components/DATE-PICKER.md"
     },
     {
       "name": "Color Picker",
       "category": "forms",
-      "wave": "5",
       "dataAttributes": [
         "data-brkta-color-picker",
         "data-brkta-color-picker-trigger",
@@ -871,12 +822,11 @@
       "angularComponent": "packages/ui-angular/src/color-picker/color-picker.component.ts",
       "angularTest": "packages/ui-angular/src/color-picker/color-picker.spec.ts",
       "angularStory": "packages/ui-angular/src/color-picker/color-picker.stories.ts",
-      "docs": "docs/design-system/components/COLOR-PICKER.md"
+      "docs": "docs/components/COLOR-PICKER.md"
     },
     {
       "name": "Combobox",
       "category": "forms",
-      "wave": "5",
       "dataAttributes": ["data-brkta-combobox"],
       "designSystemSection": "Advanced Inputs + Pickers",
       "uiCoreContract": "packages/ui-core/combobox/combobox-contract.ts",
@@ -887,12 +837,11 @@
       "angularComponent": "packages/ui-angular/src/combobox/combobox.component.ts",
       "angularTest": "packages/ui-angular/src/combobox/combobox.spec.ts",
       "angularStory": "packages/ui-angular/src/combobox/combobox.stories.ts",
-      "docs": "docs/design-system/components/COMBOBOX.md"
+      "docs": "docs/components/COMBOBOX.md"
     },
     {
       "name": "Data Table",
       "category": "data-display",
-      "wave": "6",
       "dataAttributes": ["data-brkta-data-table", "data-brkta-data-table-header", "data-brkta-data-table-actions-heading", "data-brkta-data-table-actions", "data-brkta-data-table-action-list"],
       "designSystemSection": "Data + Operational",
       "uiCoreContract": "packages/ui-core/data-table/data-table-contract.ts",
@@ -903,13 +852,12 @@
       "angularComponent": "packages/ui-angular/src/data-table/data-table.component.ts",
       "angularTest": "packages/ui-angular/src/data-table/data-table.spec.ts",
       "angularStory": "packages/ui-angular/src/data-table/data-table.stories.ts",
-      "docs": "docs/design-system/components/DATA-TABLE.md",
-      "notes": "Owner-approved 2026-10-21: optional cellTemplates keyed by column, with row/column/value context in Angular and React. Unspecified cells retain plain text."
+      "docs": "docs/components/DATA-TABLE.md",
+      "notes": "Optional cellTemplates keyed by column provide row, column, and value context in Angular and React. Unspecified cells retain plain text."
     },
     {
       "name": "Chart",
       "category": "data-display",
-      "wave": "6",
       "dataAttributes": ["data-brkta-chart"],
       "designSystemSection": "Data + Operational",
       "uiCoreContract": "packages/ui-core/chart/chart-contract.ts",
@@ -920,12 +868,11 @@
       "angularComponent": "packages/ui-angular/src/chart/chart.component.ts",
       "angularTest": "packages/ui-angular/src/chart/chart.spec.ts",
       "angularStory": "packages/ui-angular/src/chart/chart.stories.ts",
-      "docs": "docs/design-system/components/CHART.md"
+      "docs": "docs/components/CHART.md"
     },
     {
       "name": "Command",
       "category": "overlays",
-      "wave": "6",
       "dataAttributes": ["data-brkta-command"],
       "designSystemSection": "Data + Operational",
       "uiCoreContract": "packages/ui-core/command/command-contract.ts",
@@ -936,12 +883,11 @@
       "angularComponent": "packages/ui-angular/src/command/command.component.ts",
       "angularTest": "packages/ui-angular/src/command/command.spec.ts",
       "angularStory": "packages/ui-angular/src/command/command.stories.ts",
-      "docs": "docs/design-system/components/COMMAND.md"
+      "docs": "docs/components/COMMAND.md"
     },
     {
       "name": "Context Menu",
       "category": "overlays",
-      "wave": "6",
       "dataAttributes": ["data-brkta-context-menu"],
       "designSystemSection": "Data + Operational",
       "uiCoreContract": "packages/ui-core/context-menu/context-menu-contract.ts",
@@ -952,12 +898,11 @@
       "angularComponent": "packages/ui-angular/src/context-menu/context-menu.component.ts",
       "angularTest": "packages/ui-angular/src/context-menu/context-menu.spec.ts",
       "angularStory": "packages/ui-angular/src/context-menu/context-menu.stories.ts",
-      "docs": "docs/design-system/components/CONTEXT-MENU.md"
+      "docs": "docs/components/CONTEXT-MENU.md"
     },
     {
       "name": "Menubar",
       "category": "navigation",
-      "wave": "6",
       "dataAttributes": ["data-brkta-menubar"],
       "designSystemSection": "Data + Operational",
       "uiCoreContract": "packages/ui-core/menubar/menubar-contract.ts",
@@ -968,12 +913,11 @@
       "angularComponent": "packages/ui-angular/src/menubar/menubar.component.ts",
       "angularTest": "packages/ui-angular/src/menubar/menubar.spec.ts",
       "angularStory": "packages/ui-angular/src/menubar/menubar.stories.ts",
-      "docs": "docs/design-system/components/MENUBAR.md"
+      "docs": "docs/components/MENUBAR.md"
     },
     {
       "name": "Attachment",
       "category": "communication",
-      "wave": "7A",
       "dataAttributes": ["data-brkta-attachment"],
       "designSystemSection": "Communication",
       "uiCoreContract": "packages/ui-core/attachment/attachment-contract.ts",
@@ -984,12 +928,11 @@
       "angularComponent": "packages/ui-angular/src/attachment/attachment.component.ts",
       "angularTest": "packages/ui-angular/src/attachment/attachment.spec.ts",
       "angularStory": "packages/ui-angular/src/attachment/attachment.stories.ts",
-      "docs": "docs/design-system/components/ATTACHMENT.md"
+      "docs": "docs/components/ATTACHMENT.md"
     },
     {
       "name": "File Upload",
       "category": "forms",
-      "wave": "7A",
       "dataAttributes": ["data-brkta-file-upload", "data-brkta-upload-queue", "data-brkta-drop-zone"],
       "designSystemSection": "Forms",
       "uiCoreContract": "packages/ui-core/file-upload/file-upload-contract.ts",
@@ -1000,12 +943,11 @@
       "angularComponent": "packages/ui-angular/src/file-upload/file-upload.component.ts",
       "angularTest": "packages/ui-angular/src/file-upload/file-upload.spec.ts",
       "angularStory": "packages/ui-angular/src/file-upload/file-upload.stories.ts",
-      "docs": "docs/design-system/components/FILE-UPLOAD.md"
+      "docs": "docs/components/FILE-UPLOAD.md"
     },
     {
       "name": "Bubble",
       "category": "communication",
-      "wave": "7A",
       "dataAttributes": ["data-brkta-bubble"],
       "designSystemSection": "Communication",
       "uiCoreContract": "packages/ui-core/bubble/bubble-contract.ts",
@@ -1016,12 +958,11 @@
       "angularComponent": "packages/ui-angular/src/bubble/bubble.component.ts",
       "angularTest": "packages/ui-angular/src/bubble/bubble.spec.ts",
       "angularStory": "packages/ui-angular/src/bubble/bubble.stories.ts",
-      "docs": "docs/design-system/components/BUBBLE.md"
+      "docs": "docs/components/BUBBLE.md"
     },
     {
       "name": "Message",
       "category": "communication",
-      "wave": "7A",
       "dataAttributes": ["data-brkta-message"],
       "designSystemSection": "Communication",
       "uiCoreContract": "packages/ui-core/message/message-contract.ts",
@@ -1032,12 +973,11 @@
       "angularComponent": "packages/ui-angular/src/message/message.component.ts",
       "angularTest": "packages/ui-angular/src/message/message.spec.ts",
       "angularStory": "packages/ui-angular/src/message/message.stories.ts",
-      "docs": "docs/design-system/components/MESSAGE.md"
+      "docs": "docs/components/MESSAGE.md"
     },
     {
       "name": "Message Scroller",
       "category": "communication",
-      "wave": "7A",
       "dataAttributes": ["data-brkta-message-scroller"],
       "designSystemSection": "Communication",
       "uiCoreContract": "packages/ui-core/message-scroller/message-scroller-contract.ts",
@@ -1048,12 +988,11 @@
       "angularComponent": "packages/ui-angular/src/message-scroller/message-scroller.component.ts",
       "angularTest": "packages/ui-angular/src/message-scroller/message-scroller.spec.ts",
       "angularStory": "packages/ui-angular/src/message-scroller/message-scroller.stories.ts",
-      "docs": "docs/design-system/components/MESSAGE-SCROLLER.md"
+      "docs": "docs/components/MESSAGE-SCROLLER.md"
     },
     {
       "name": "Marker",
       "category": "communication",
-      "wave": "7A",
       "dataAttributes": ["data-brkta-marker"],
       "designSystemSection": "Communication",
       "uiCoreContract": "packages/ui-core/marker/marker-contract.ts",
@@ -1064,12 +1003,11 @@
       "angularComponent": "packages/ui-angular/src/marker/marker.component.ts",
       "angularTest": "packages/ui-angular/src/marker/marker.spec.ts",
       "angularStory": "packages/ui-angular/src/marker/marker.stories.ts",
-      "docs": "docs/design-system/components/MARKER.md"
+      "docs": "docs/components/MARKER.md"
     },
     {
       "name": "Aspect Ratio",
       "category": "layout",
-      "wave": "7B",
       "dataAttributes": ["data-brkta-aspect-ratio"],
       "designSystemSection": "Utility + Layout",
       "uiCoreContract": "packages/ui-core/aspect-ratio/aspect-ratio-contract.ts",
@@ -1080,12 +1018,11 @@
       "angularComponent": "packages/ui-angular/src/aspect-ratio/aspect-ratio.component.ts",
       "angularTest": "packages/ui-angular/src/aspect-ratio/aspect-ratio.spec.ts",
       "angularStory": "packages/ui-angular/src/aspect-ratio/aspect-ratio.stories.ts",
-      "docs": "docs/design-system/components/ASPECT-RATIO.md"
+      "docs": "docs/components/ASPECT-RATIO.md"
     },
     {
       "name": "Input Group",
       "category": "forms",
-      "wave": "7B",
       "dataAttributes": ["data-brkta-input-group"],
       "designSystemSection": "Utility + Layout",
       "uiCoreContract": "packages/ui-core/input-group/input-group-contract.ts",
@@ -1096,12 +1033,11 @@
       "angularComponent": "packages/ui-angular/src/input-group/input-group.component.ts",
       "angularTest": "packages/ui-angular/src/input-group/input-group.spec.ts",
       "angularStory": "packages/ui-angular/src/input-group/input-group.stories.ts",
-      "docs": "docs/design-system/components/INPUT-GROUP.md"
+      "docs": "docs/components/INPUT-GROUP.md"
     },
     {
       "name": "Item",
       "category": "layout",
-      "wave": "7B",
       "dataAttributes": ["data-brkta-item"],
       "designSystemSection": "Utility + Layout",
       "uiCoreContract": "packages/ui-core/item/item-contract.ts",
@@ -1112,12 +1048,11 @@
       "angularComponent": "packages/ui-angular/src/item/item.component.ts",
       "angularTest": "packages/ui-angular/src/item/item.spec.ts",
       "angularStory": "packages/ui-angular/src/item/item.stories.ts",
-      "docs": "docs/design-system/components/ITEM.md"
+      "docs": "docs/components/ITEM.md"
     },
     {
       "name": "Toggle",
       "category": "forms",
-      "wave": "7B",
       "dataAttributes": ["data-brkta-toggle"],
       "designSystemSection": "Utility + Layout",
       "uiCoreContract": "packages/ui-core/toggle/toggle-contract.ts",
@@ -1128,12 +1063,11 @@
       "angularComponent": "packages/ui-angular/src/toggle/toggle.component.ts",
       "angularTest": "packages/ui-angular/src/toggle/toggle.spec.ts",
       "angularStory": "packages/ui-angular/src/toggle/toggle.stories.ts",
-      "docs": "docs/design-system/components/TOGGLE.md"
+      "docs": "docs/components/TOGGLE.md"
     },
     {
       "name": "Toggle Group",
       "category": "forms",
-      "wave": "7B",
       "dataAttributes": ["data-brkta-toggle-group"],
       "designSystemSection": "Utility + Layout",
       "uiCoreContract": "packages/ui-core/toggle-group/toggle-group-contract.ts",
@@ -1144,14 +1078,13 @@
       "angularComponent": "packages/ui-angular/src/toggle-group/toggle-group.component.ts",
       "angularTest": "packages/ui-angular/src/toggle-group/toggle-group.spec.ts",
       "angularStory": "packages/ui-angular/src/toggle-group/toggle-group.stories.ts",
-      "docs": "docs/design-system/components/TOGGLE-GROUP.md"
+      "docs": "docs/components/TOGGLE-GROUP.md"
     },
     {
       "name": "Theme Toggle",
       "category": "complex-interactive",
-      "wave": "7C",
       "dataAttributes": ["data-brkta-theme-toggle"],
-      "designSystemSection": "Wave 7C — Complex Interactive",
+      "designSystemSection": "Theme controls",
       "uiCoreContract": "packages/ui-core/theme-toggle/theme-toggle-contract.ts",
       "uiCoreCss": "packages/ui-core/theme-toggle/theme-toggle.css",
       "reactComponent": "packages/ui-react/src/theme-toggle/theme-toggle.tsx",
@@ -1160,12 +1093,11 @@
       "angularComponent": "packages/ui-angular/src/theme-toggle/theme-toggle.component.ts",
       "angularTest": "packages/ui-angular/src/theme-toggle/theme-toggle.spec.ts",
       "angularStory": "packages/ui-angular/src/theme-toggle/theme-toggle.stories.ts",
-      "docs": "docs/design-system/components/THEME-TOGGLE.md"
+      "docs": "docs/components/THEME-TOGGLE.md"
     },
     {
       "name": "Direction",
       "category": "layout",
-      "wave": "7B",
       "dataAttributes": ["data-brkta-direction"],
       "designSystemSection": "Utility + Layout",
       "uiCoreContract": "packages/ui-core/direction/direction-contract.ts",
@@ -1176,12 +1108,11 @@
       "angularComponent": "packages/ui-angular/src/direction/direction.component.ts",
       "angularTest": "packages/ui-angular/src/direction/direction.spec.ts",
       "angularStory": "packages/ui-angular/src/direction/direction.stories.ts",
-      "docs": "docs/design-system/components/DIRECTION.md"
+      "docs": "docs/components/DIRECTION.md"
     },
     {
       "name": "Carousel",
       "category": "data-display",
-      "wave": "7C",
       "dataAttributes": ["data-brkta-carousel"],
       "designSystemSection": "Complex Interactive",
       "uiCoreContract": "packages/ui-core/carousel/carousel-contract.ts",
@@ -1192,12 +1123,11 @@
       "angularComponent": "packages/ui-angular/src/carousel/carousel.component.ts",
       "angularTest": "packages/ui-angular/src/carousel/carousel.spec.ts",
       "angularStory": "packages/ui-angular/src/carousel/carousel.stories.ts",
-      "docs": "docs/design-system/components/CAROUSEL.md"
+      "docs": "docs/components/CAROUSEL.md"
     },
     {
       "name": "Hover Card",
       "category": "overlays",
-      "wave": "7C",
       "dataAttributes": ["data-brkta-hover-card"],
       "designSystemSection": "Complex Interactive",
       "uiCoreContract": "packages/ui-core/hover-card/hover-card-contract.ts",
@@ -1208,12 +1138,11 @@
       "angularComponent": "packages/ui-angular/src/hover-card/hover-card.component.ts",
       "angularTest": "packages/ui-angular/src/hover-card/hover-card.spec.ts",
       "angularStory": "packages/ui-angular/src/hover-card/hover-card.stories.ts",
-      "docs": "docs/design-system/components/HOVER-CARD.md"
+      "docs": "docs/components/HOVER-CARD.md"
     },
     {
       "name": "Brik",
       "category": "primitives",
-      "wave": "8",
       "dataAttributes": ["data-brkta-brik"],
       "designSystemSection": "Primitives",
       "uiCoreContract": "packages/ui-core/brik/brik-contract.ts",
@@ -1224,7 +1153,7 @@
       "angularComponent": "packages/ui-angular/src/brik/brik.component.ts",
       "angularTest": "packages/ui-angular/src/brik/brik.spec.ts",
       "angularStory": "packages/ui-angular/src/brik/brik.stories.ts",
-      "docs": "docs/design-system/components/BRIK.md"
+      "docs": "docs/components/BRIK.md"
     }
   ],
   "summary": {

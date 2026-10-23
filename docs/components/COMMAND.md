@@ -1,7 +1,5 @@
 # Command
 
-> Wave 6 — Data + Operational Components
-
 A keyboard-driven command/search palette. Opens via `Ctrl+K` / `Cmd+K` global shortcut.
 
 ## Data Attributes

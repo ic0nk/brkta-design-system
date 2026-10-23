@@ -1,7 +1,5 @@
 # Slider
 
-> Wave 5 — Advanced Inputs + Pickers
-
 ## Overview
 
 A slider for selecting a numeric value within a defined range. Uses native pointer events for drag and keyboard support. Supports two modes:

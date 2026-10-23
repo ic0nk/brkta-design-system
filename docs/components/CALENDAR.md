@@ -1,7 +1,5 @@
 # Calendar
 
-> Wave 5 — Advanced Inputs + Pickers
-
 ## Overview
 
 A month calendar grid with selectable days, keyboard navigation, and today/selected/disabled day states.

@@ -6,7 +6,7 @@
 
 ## When to use
 
-- Showcase a series of content slides (dashboards, features, images).
+- Showcase a series of content slides (data visualizations, features, images).
 - Guided onboarding or feature tours.
 - Content galleries where manual navigation is needed.
 

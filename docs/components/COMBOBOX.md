@@ -1,7 +1,5 @@
 # Combobox
 
-> Wave 5 — Advanced Inputs + Pickers
-
 ## Overview
 
 A searchable select combobox with a text input and filterable options list. Supports keyboard navigation and ARIA combobox pattern.

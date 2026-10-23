@@ -1,7 +1,5 @@
 # Resizable
 
-> Wave 4B — Advanced Navigation + Layout Utilities
-
 ## Overview
 
 A split panel foundation with a draggable handle. Supports horizontal and vertical splits, keyboard resizing, and minimum size constraints.

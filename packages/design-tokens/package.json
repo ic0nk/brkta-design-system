@@ -2,6 +2,7 @@
   "name": "@brkta/design-tokens",
   "version": "0.1.0",
   "type": "module",
+  "license": "MIT",
   "main": "theme.css",
   "scripts": {
     "build": "echo 'design-tokens: CSS-only, no compilation required'",
@@ -27,7 +28,7 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,9 @@
   "files": [
     "*.css",
     "fonts/**",
+    "fonts/OFL.txt",
+    "README.md",
+    "LICENSE",
     "scripts/validate-contrast.mjs"
   ]
 }

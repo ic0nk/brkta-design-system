@@ -6,3 +6,7 @@ storybook-static
 .env*
 .smoke
 .pnpm-store
+site-dist/
+.angular/
+storybook-static/
+.smoke/

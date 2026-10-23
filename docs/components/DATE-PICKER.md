@@ -1,7 +1,5 @@
 # Date Picker
 
-> Wave 5 — Advanced Inputs + Pickers
-
 ## Overview
 
 A trigger button that opens a Calendar popover for date selection. Uses the Calendar component internally.

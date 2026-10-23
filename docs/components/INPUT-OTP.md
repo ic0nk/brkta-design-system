@@ -1,7 +1,5 @@
 # Input OTP
 
-> Wave 5 — Advanced Inputs + Pickers
-
 ## Overview
 
 One-time password input with individually focused slots. Supports paste, backspace navigation, and keyboard arrow movement.

@@ -1,11 +1,11 @@
 # Native Select
 
-> ⚠️ **Restricted.** NativeSelect is NOT the standard select control for BRKTA ONE product UI.
+> ⚠️ **Restricted.** NativeSelect is not the standard select control for the BRKTA Design System.
 > Use [Select](SELECT.md) (Custom Select) for all normal product UI.
 > NativeSelect is only permitted where browser-native menus are explicitly required
 > (e.g., platform-specific behavior, accessibility exceptions).
 > Browser-native `<select>` dropdown menus are rendered by the operating system
-> and cannot be styled with CSS to match the BRKTA ONE warm cream design system.
+> and cannot be styled with CSS to match the shared token-driven visual style.
 
 A styled native `<select>` element with a custom chevron indicator. Uses the browser's native select behavior for accessibility.
 
@@ -100,4 +100,4 @@ import { NativeSelect } from '@brkta/ui-react/native-select';
 
 - Input — shares the same variant/size/state system
 - Field — layout wrapper
-- Select (custom) — **Blocked.** Planned for a future wave when accessibility behavior decisions are made.
+- Select (custom) — Use when you need a token-styled, keyboard-operable dropdown; see [SELECT.md](SELECT.md).

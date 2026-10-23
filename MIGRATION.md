@@ -1,9 +1,11 @@
-# BRKTA application repository migration (future)
+# Migrating an existing app from workspace packages
 
-This document describes a later migration only; the source application repository is not changed by this extraction.
+If your application currently consumes BRKTA packages through a local pnpm workspace or `link:` dependencies, move it to published GitHub Packages versions.
 
-1. Configure the application repository’s `.npmrc` for `@brkta` on GitHub Packages and store a classic PAT with `read:packages` as `GITHUB_TOKEN` in local/CI secret storage. Never commit credentials.
-2. Replace each internal BRKTA `workspace:*` dependency with the corresponding released version (initially `^0.1.0`) and install using pnpm.
-3. Keep the application imports on the same public package subpaths. Keep the global CSS imports for `@brkta/design-tokens/*` and `@brkta/ui-core/styles/components.css`.
-4. Remove only the app repository’s workspace package declarations/aliases after all consumers have switched; validate dashboard and website builds, tests, and design-system audit before merging.
-5. Verify the lockfile resolves from GitHub Packages and CI has package-read access.
+1. Create a GitHub token with `read:packages` permission.
+2. Configure the `@brkta` registry and token in your user-level npm configuration, as shown in the [getting started guide](docs/getting-started/nextjs.md). Do not commit credentials.
+3. Replace local workspace/link package specifications with published versions of the packages your framework needs. Use `@brkta/ui-angular` for Angular or `@brkta/ui-react` for React, plus `@brkta/design-tokens` and `@brkta/ui-core` as appropriate.
+4. Remove app-local copies of shared component CSS and import the shared token and component styles from the packages.
+5. Run your app's build and tests, then update the lockfile with your normal package-manager workflow.
+
+For fresh projects, use the [`@brkta/cli`](docs/cli.md). For package/API differences, check the [release notes](https://github.com/ic0nk/brkta-design-system/releases) and package documentation.

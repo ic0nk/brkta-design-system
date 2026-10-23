@@ -1,6 +1,6 @@
 # Color System
 
-> A perceptually-uniform semantic color system built in OKLCH with a warm creamy neutral foundation. Every color in BRKTA ONE comes from this single set of tokens — no exceptions.
+> A perceptually-uniform semantic color system built in OKLCH with a warm creamy neutral foundation. Use these shared tokens for component colors rather than one-off values.
 
 ---
 
@@ -20,7 +20,7 @@
 
 ## Creamy Neutral Foundation
 
-BRKTA ONE uses a **warm creamy neutral** foundation instead of a cold zero-chroma grayscale or a pure-white / pure-black scheme.
+The BRKTA Design System uses a **warm creamy neutral** foundation instead of a cold zero-chroma grayscale or a pure-white / pure-black scheme.
 
 **Connecting cream**: `#F4F1EA` → `oklch(0.9585 0.0098 87.5)`
 
@@ -43,7 +43,7 @@ This single color connects both themes:
 
 ## OKLCH Color Space
 
-All colors in the BRKTA ONE Design System are defined in **OKLCH** (Oklab Lightness Chroma Hue), a perceptually-uniform color space that provides:
+All colors in the BRKTA Design System are defined in **OKLCH** (Oklab Lightness Chroma Hue), a perceptually-uniform color space that provides:
 
 - **Consistent lightness perception** — a lightness value of 0.5 appears equally bright across all hues. This is not true of HSL or sRGB.
 - **Wide gamut** — OKLCH natively supports Display P3 and beyond, enabling more vibrant accent colors (like the brand lime) that sRGB cannot represent accurately.
@@ -270,26 +270,26 @@ Five chart colors are provided for data visualization. They are designed to be p
 
 ## Brand Colors vs. UI Colors
 
-**Brand colors** represent BRKTA as a company — they appear on the marketing website, in the logo, and in limited brand-identity contexts.
+**Brand colors** are reserved for BRKTA brand artwork and limited accent use.
 
-**UI colors** are the semantic tokens used throughout the product dashboard.
+**UI colors** are semantic tokens for application interfaces.
 
 | Category | Colors | Where Used |
 |----------|--------|------------|
-| Brand | Lime accent (`#D7FF3F` / `oklch(0.92 0.3 120)`), warm near-black foreground (`#181713`), connecting cream (`#F4F1EA`) | Marketing pages, logo, limited product emphasis |
-| UI | All `--background`, `--foreground`, `--surface`, `--primary`, `--secondary`, etc. | Product dashboard, data tables, forms, navigation |
+| Brand | Lime accent (`#D7FF3F` / `oklch(0.92 0.3 120)`), warm near-black foreground (`#181713`), connecting cream (`#F4F1EA`) | Brand artwork and limited emphasis |
+| UI | All `--background`, `--foreground`, `--surface`, `--primary`, `--secondary`, etc. | Application surfaces, data tables, forms, and navigation |
 
 **Rules:**
 - The lime accent (`--accent`) is used **sparingly** in the product UI — it is for brand emphasis, calls-to-action, and marketing elements, not for everyday surfaces.
 - Everyday UI emphasis should use `--secondary` or `--muted` for neutral alternatives.
-- Never use a brand color as a background for large surface areas in the dashboard.
+- Avoid using a brand color as a background for large application surfaces.
 - The brand lime on dark backgrounds is the closest the product gets to a vibrant accent — but it must always remain readable (WCAG AA) against its foreground.
 
 ---
 
 ## Contrast Expectations
 
-All token pairs are designed to meet WCAG AA contrast minimums:
+Treat WCAG AA contrast ratios as targets and validate the actual token pairs used by each component and theme:
 
 | Text Type | Minimum Ratio | Standard |
 |-----------|--------------|----------|

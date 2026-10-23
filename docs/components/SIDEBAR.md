@@ -1,7 +1,5 @@
 # Sidebar
 
-> Wave 4B — Advanced Navigation + Layout Utilities
-
 ## Overview
 
 An app navigation shell primitive with collapsible/expanded states. Supports header, nav items with badges, footer, and a compact rail variant. Its public layout variants are `standalone` and `embedded`; the standalone wrapper may omit `data-variant` as an implementation detail.
@@ -47,7 +45,7 @@ Embedded sizing requires the containing layout to provide a usable block size. T
 | ---------- | --------------------------------------------------------- | ---------------------------------------------------- |
 | `value`    | `string`                                                  | Unique identifier                                    |
 | `label`    | `string`                                                  | Display label                                        |
-| `icon`     | `unknown` (React: `ReactNode`, Angular: icon name string) | Icon rendered via BRKTA ONE animated icon components |
+| `icon`     | `unknown` (React: `ReactNode`, Angular: icon name string) | Icon rendered via BRKTA animated icon components |
 | `active`   | `boolean`                                                 | Active state (sets `aria-current="page"`)            |
 | `disabled` | `boolean`                                                 | Disabled state                                       |
 | `badge`    | `string \| number`                                        | Count badge                                          |
@@ -58,9 +56,9 @@ authorization remain application concerns.
 
 ## Icon Rendering
 
-**React:** Accepts any `ReactNode` — pass a BRKTA ONE animated icon wrapper or `lucide-react` component with `brkta-icon-motion` classes. Icons render inside `[data-brkta-sidebar-item-icon]` with `aria-hidden="true"`.
+**React:** Accepts any `ReactNode` — pass a BRKTA animated icon wrapper or `lucide-react` component with `brkta-icon-motion` classes. Icons render inside `[data-brkta-sidebar-item-icon]` with `aria-hidden="true"`.
 
-**Angular:** Accepts an icon name string (e.g. `'dashboard'`, `'users'`, `'settings'`). The component uses an `@if`/`@else-if` chain to render the matching BRKTA ONE animated icon component (`<brkta-animated-dashboard>`, `<brkta-animated-users>`, etc.). 17 icon names are supported; unrecognized names render no icon.
+**Angular:** Accepts an icon name string (e.g. `'dashboard'`, `'users'`, `'settings'`). The component uses an `@if`/`@else-if` chain to render the matching BRKTA animated icon component (`<brkta-animated-dashboard>`, `<brkta-animated-users>`, etc.). 17 icon names are supported; unrecognized names render no icon.
 
 ## Design Notes
 

@@ -1,6 +1,6 @@
 # Elevation and Shadows
 
-> A systematic approach to visual depth. Elevation in BRKTA ONE uses shadows and z-index together to create a layered interface where the physical hierarchy matches the information hierarchy.
+> A systematic approach to visual depth. The BRKTA Design System combines shadows and z-index to create a layered interface where physical hierarchy supports information hierarchy.
 
 ---
 
@@ -128,7 +128,7 @@ Dropdowns use `--shadow-md` — enough separation from the trigger button withou
 | Raised | `--shadow-sm` — default interactive card state |
 | Elevated | `--shadow-md` — hover state for clickable cards |
 
-Cards in the dashboard default to flat (`--card` background with `--border` outline). They do not need shadows to be visible — the background color provides separation.
+Cards default to flat (`--card` background with `--border` outline). They do not need shadows to be visible — the background color provides separation.
 
 ---
 

@@ -1,8 +1,10 @@
 import type { Preview } from '@storybook/react';
 
+import '@brkta/design-tokens/fonts.css';
 import '@brkta/design-tokens/theme.css';
 import '@brkta/design-tokens/base.css';
 import '@brkta/design-tokens/glass.css';
+import '@brkta/ui-core/styles/components.css';
 
 const preview: Preview = {
   parameters: {

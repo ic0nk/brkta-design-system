@@ -1,68 +1,149 @@
 # BRKTA Design System
 
-Standalone pnpm monorepo for BRKTA tokens, shared UI contracts/styles, React and Angular components, platform primitives, and governed icons. Packages publish privately to GitHub Packages under `@brkta`.
+> A cross-framework design system with shared tokens, accessible components, and a CLI for Angular and React apps.
 
-## Quick start with the CLI
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![GitHub release](https://img.shields.io/github/v/release/ic0nk/brkta-design-system)](https://github.com/ic0nk/brkta-design-system/releases) [![GitHub Packages](https://img.shields.io/badge/GitHub%20Packages-%40brkta-blue)](https://github.com/orgs/ic0nk/packages?repo_name=brkta-design-system) [![Documentation](https://img.shields.io/badge/docs-live-blue)](https://ic0nk.github.io/brkta-design-system/)
 
-Run the setup wizard from an Angular or React/Next.js project:
+![BRKTA Design System](docs/images/hero.png)
+
+## Component gallery
+
+<!-- gallery:start -->
+<table>
+  <tr>
+    <td align="center"><img src="docs/images/hero.png" alt="BRKTA foundations and light/dark themes" width="100%"><br><strong>Foundations · themes</strong></td>
+    <td align="center"><img src="docs/images/button.png" alt="Button variants on cream background" width="100%"><br><strong>Button · light</strong></td>
+    <td align="center"><img src="docs/images/button-dark.png" alt="Button variants on dark background" width="100%"><br><strong>Button · dark</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/card.png" alt="Card component on cream background" width="100%"><br><strong>Card · light</strong></td>
+    <td align="center"><img src="docs/images/card-dark.png" alt="Card component on dark background" width="100%"><br><strong>Card · dark</strong></td>
+    <td align="center"><img src="docs/images/badge.png" alt="Badge variants on cream background" width="100%"><br><strong>Badge · light</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/input.png" alt="Input variants on cream background" width="100%"><br><strong>Input · light</strong></td>
+    <td align="center"><img src="docs/images/input-dark.png" alt="Input variants on dark background" width="100%"><br><strong>Input · dark</strong></td>
+    <td align="center"><img src="docs/images/badge-dark.png" alt="Badge variants on dark background" width="100%"><br><strong>Badge · dark</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/select.png" alt="Select component with options" width="100%"><br><strong>Select</strong></td>
+    <td align="center"><img src="docs/images/dropdown-menu.png" alt="Opened dropdown menu" width="100%"><br><strong>Dropdown menu</strong></td>
+    <td align="center"><img src="docs/images/dialog.png" alt="Open dialog on dimmed background" width="100%"><br><strong>Dialog</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/tabs.png" alt="Segmented tabs component" width="100%"><br><strong>Tabs</strong></td>
+    <td align="center"><img src="docs/images/data-table.png" alt="Data table component" width="100%"><br><strong>Data table</strong></td>
+    <td align="center"><img src="docs/images/toast.png" alt="Success toast component" width="100%"><br><strong>Toast</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/sidebar.png" alt="Sidebar navigation component" width="100%"><br><strong>Sidebar</strong></td>
+    <td align="center"><img src="docs/images/date-picker.png" alt="Date picker with selected value" width="100%"><br><strong>Date picker</strong></td>
+    <td align="center"><img src="docs/images/slider.png" alt="Range slider component" width="100%"><br><strong>Slider</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/switch.png" alt="Enabled switch component" width="100%"><br><strong>Switch</strong></td>
+    <td align="center"><img src="docs/images/avatar.png" alt="Avatar component with image" width="100%"><br><strong>Avatar</strong></td>
+    <td></td>
+  </tr>
+</table>
+<!-- gallery:end -->
+
+## Features
+
+- Angular and React components built from one shared contract and CSS layer.
+- Semantic design tokens for color, typography, spacing, radius, elevation, and effects.
+- Light and dark themes, right-to-left (RTL) layout support, and accessibility-minded defaults.
+- Animated icon wrappers with reduced-motion support.
+- CLI setup, component guidance, and package updates.
+
+## Quick start
+
+Packages are published to GitHub Packages. Create a GitHub token with `read:packages` permission. Configure the registry and authentication in your **user-level** npm configuration before using `pnpm dlx`; otherwise pnpm cannot download the CLI.
+
+```sh
+npm config set @brkta:registry https://npm.pkg.github.com
+```
+
+Add this line to your user-level `.npmrc` (for example, `~/.npmrc`), replacing the environment variable with your token or keeping it as an environment reference:
+
+```ini
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+Set `GITHUB_TOKEN` in your shell or secret manager, and do not commit credentials. Then, from an Angular or React/Next.js project:
 
 ```sh
 pnpm dlx @brkta/cli init
 pnpm dlx @brkta/cli add button
 ```
 
-The CLI detects the framework and package manager, configures the GitHub Packages registry without embedding credentials, and adds design-system styles. Set `GITHUB_TOKEN` to a classic GitHub PAT with `read:packages` before installing. Use `--css minimal` to add component CSS only as components are selected, and `pnpm dlx @brkta/cli update` to update installed BRKTA packages. The manual setup below remains available as a fallback.
+The CLI detects Angular versus React/Next.js, installs only the matching framework package, and configures shared styles. See [Angular setup](docs/getting-started/angular.md), [Next.js setup](docs/getting-started/nextjs.md), and the [CLI reference](docs/cli.md).
 
-## Consumer setup
+## Use a component
 
-Configure the consuming project’s `.npmrc` (use a classic GitHub PAT with `read:packages`; never commit the token):
+### React / Next.js
 
-```ini
-@brkta:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```tsx
+import { Button } from '@brkta/ui-react/button';
+
+export function SaveAction() {
+  return <Button variant="primary">Save</Button>;
+}
 ```
 
-Set `GITHUB_TOKEN` in your shell/CI secret store. Install for Angular:
+### Angular
 
-```sh
-pnpm add @brkta/ui-angular @brkta/design-tokens @brkta/ui-core @brkta/icons
+```ts
+import { Component } from '@angular/core';
+import { ButtonComponent } from '@brkta/ui-angular';
+
+@Component({
+  standalone: true,
+  imports: [ButtonComponent],
+  template: `<brkta-button variant="primary">Save</brkta-button>`,
+})
+export class SaveActionComponent {}
 ```
 
-Install for Next.js/React:
+The CLI initializes token and shared component CSS imports. For manual CSS setup, see [theming](docs/theming.md).
 
-```sh
-pnpm add @brkta/ui-react @brkta/design-tokens @brkta/ui-core @brkta/icons
-```
+## Packages
 
-Import the semantic tokens and shared component recipes in the application’s global stylesheet:
+| Package | Purpose |
+| --- | --- |
+| [`@brkta/design-tokens`](packages/design-tokens/README.md) | CSS tokens, themes, fonts, and effects |
+| [`@brkta/ui-core`](packages/ui-core/README.md) | Framework-neutral contracts and shared CSS recipes |
+| [`@brkta/ui-react`](packages/ui-react/README.md) | React component wrappers |
+| [`@brkta/ui-angular`](packages/ui-angular/README.md) | Angular component wrappers |
+| [`@brkta/icons`](packages/icons/README.md) | Generic icon assets and governed BRKTA brand assets |
+| [`@brkta/platform-core`](packages/platform-core/README.md) | Framework-neutral platform primitives |
+| [`@brkta/cli`](packages/cli/README.md) | Project setup, component help, and update commands |
 
-```css
-@import "@brkta/design-tokens/fonts.css";
-@import "@brkta/design-tokens/theme.css";
-@import "@brkta/design-tokens/base.css";
-@import "@brkta/ui-core/styles/components.css";
-```
+## Documentation and Storybook
 
-Check for available updates with `pnpm outdated "@brkta/*"`. To update all BRKTA packages together, add this consumer script and run it:
+- [Documentation site](https://ic0nk.github.io/brkta-design-system/)
+- [Docs index](docs/README.md)
+- [React Storybook](https://ic0nk.github.io/brkta-design-system/react/)
+- [Angular Storybook](https://ic0nk.github.io/brkta-design-system/angular/)
+- [Component registry](docs/component-registry.json)
 
-```json
-{ "scripts": { "ds:update": "pnpm update \"@brkta/*\" --latest" } }
-```
+## Updating
 
-```sh
-pnpm ds:update
-```
+Run `pnpm dlx @brkta/cli update` in a consuming project to update its installed `@brkta/*` packages. Use `pnpm dlx @brkta/cli update --check` to check for outdated packages without updating them. See [CLI commands](docs/cli.md).
 
-## Development
+## Contributing
 
-Requirements: Node `>=24.0.0 <25`, pnpm 11.17.0. Install with `pnpm install`; run `pnpm build`, `pnpm test`, and `pnpm verify:pack` before submitting changes. `pnpm storybook:react` and `pnpm storybook:angular` launch each component catalog.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, checks, changesets, and the component contribution checklist. Please also read the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-For local consumer development, in the package checkout run `pnpm link --global` and in the consumer run `pnpm link --global @brkta/ui-react` (or the package needed). Alternatively use a local `link:` dependency, for example `"@brkta/ui-react": "link:../brkta-design-system/packages/ui-react"`, with sibling package links set up similarly. Rebuild with `pnpm build` after source changes.
+## License, trademarks, and third-party notices
 
-## Releases
+The project code is MIT licensed; see [LICENSE](LICENSE). The BRKTA, BRKTA ONE, and ICONK logos and brand marks are not licensed for reuse. You may use them only to refer to BRKTA; see [TRADEMARKS.md](TRADEMARKS.md) and [`@brkta/icons` licensing](packages/icons/LICENSE).
 
-Create a changeset with `pnpm changeset`, commit it, and merge to `main`. The Release Action builds and tests, opens version/changelog PRs as needed, then publishes approved versions to GitHub Packages.
+### Third-party notices
 
-## Brand assets
+- **Geist / Geist Pixel** font files: SIL Open Font License 1.1, Copyright 2024 The Geist Project Authors. See [`packages/design-tokens/fonts/OFL.txt`](packages/design-tokens/fonts/OFL.txt) and the [upstream Geist OFL](https://raw.githubusercontent.com/vercel/geist-font/main/OFL.txt).
+- **Noto Sans Arabic** and other `@fontsource` Geist font packages: SIL Open Font License (OFL); their upstream copyright and license notices are included with their respective package distributions.
+- **Lucide** icons (`lucide-react` and Lucide paths used by wrappers): ISC License; see [Lucide’s license](https://github.com/lucide-icons/lucide/blob/main/LICENSE).
+- **GSAP**: distributed under its own license; see [GSAP licensing](https://gsap.com/licensing/).
 
-The original `packages/Brand-Logo` files are published within `@brkta/icons/brand/` with original filenames and formats. Use package paths such as `@brkta/icons/brand/BRKTA/Logo-light-brkta.svg`.
+The packages are published to GitHub Packages at `npm.pkg.github.com`; consumers need GitHub authentication with `read:packages` to install them.

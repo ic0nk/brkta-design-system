@@ -2,6 +2,7 @@
   "name": "@brkta/platform-core",
   "version": "0.1.0",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "test": "vitest run",
@@ -60,7 +61,7 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -71,6 +72,8 @@
     "**/*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ]
 }

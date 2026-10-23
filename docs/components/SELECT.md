@@ -2,8 +2,8 @@
 
 ## Overview
 
-The **Select** component is the **standard** select control for BRKTA ONE product UI.
-It provides a custom-designed dropdown with a BRKTA ONE-branded listbox that replaces
+The **Select** component is the design system's **standard** custom select control.
+It provides a custom-designed dropdown with a token-styled listbox that replaces
 unstyled browser-native `<select>` option menus. The trigger is visually consistent
 with other form controls (Input, Textarea) while providing full control over the
 dropdown appearance.
@@ -12,14 +12,14 @@ NativeSelect is a restricted exception — see [NATIVE-SELECT.md](NATIVE-SELECT.
 
 ## When to use
 
-- As the **default** select control in all BRKTA ONE product UI
-- When the opened dropdown must match BRKTA ONE visual design
+- As the **default** custom select control where shared styling is required
+- When the opened dropdown must match the shared design system
 - When you need disabled options, keyboard navigation, or controlled/uncontrolled value
 - When you want consistent cross-browser dropdown styling
 
 ## When NOT to use
 
-- For autocomplete/type-ahead behavior (use `Combobox`, planned)
+- For autocomplete/type-ahead behavior (use [Combobox](COMBOBOX.md))
 - For multi-select (use future multi-select component)
 - Do NOT use NativeSelect as a general fallback — it is restricted
 

@@ -1,7 +1,5 @@
 # Accordion
 
-> Wave 4B — Advanced Navigation + Layout Utilities
-
 ## Overview
 
 The Accordion component displays a vertically stacked list of items that can be expanded to reveal hidden content. Only one item (or multiple in `multiple` mode) can be open at a time.

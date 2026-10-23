@@ -1,7 +1,5 @@
 # Button Group
 
-> Wave 4B — Advanced Navigation + Layout Utilities
-
 ## Overview
 
 Groups existing Button components into a connected visual cluster with attached edges. Supports horizontal and vertical orientation.

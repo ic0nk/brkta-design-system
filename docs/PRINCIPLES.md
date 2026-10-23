@@ -1,6 +1,6 @@
 # Design Principles
 
-> Eleven principles govern every decision in the BRKTA ONE Design System. They apply to visual design, component architecture, interaction patterns, and documentation. If a design choice conflicts with a principle, the principle wins.
+> Eleven principles govern every decision in the BRKTA Design System. They apply to visual design, component architecture, interaction patterns, and documentation. If a design choice conflicts with a principle, the principle wins.
 
 ---
 
@@ -8,14 +8,14 @@
 
 **The visual foundation is warm, approachable, and neutral — not cold, achromatic, or purely gray.**
 
-BRKTA ONE uses a warm creamy neutral palette (`oklch(0.9585 0.0098 87.5)` / `#F4F1EA`) rather than a zero-chroma grayscale or pure-white / pure-black scheme. This choice is deliberate:
+The BRKTA Design System uses a warm creamy neutral palette (`oklch(0.9585 0.0098 87.5)` / `#F4F1EA`) rather than a zero-chroma grayscale or pure-white / pure-black scheme. This choice is deliberate:
 
-- Warm neutrals reduce eye strain during extended business use.
+- Warm neutrals create a comfortable canvas for extended use.
 - They create a cohesive "cream across themes" identity — the same cream serves as the light-theme page background and the dark-theme principal text foreground.
 - Pure white and pure black are restricted to utility-only roles (print, export, documented exceptions).
-- Subtle warm chroma in every neutral token distinguishes BRKTA ONE from cold, technical UIs.
+- Subtle warm chroma in every neutral token distinguishes the palette from cold, technical UIs.
 - Cream is a neutral canvas, NOT the corporate primary color. The brand accent is lime.
-- Tenant themes remain independent — the creamy neutral foundation is the BRKTA ONE brand identity, not a customization constraint.
+- Consumer themes can customize semantic tokens without changing the intended neutral foundation.
 
 > *"A calm, warm canvas lets the data and the brand accent speak."*
 
@@ -25,7 +25,7 @@ BRKTA ONE uses a warm creamy neutral palette (`oklch(0.9585 0.0098 87.5)` / `#F4
 
 **Every interface element communicates its purpose immediately. Remove ambiguity before removing pixels.**
 
-Business software fails when users hesitate. Every label, icon, color, and layout choice must make the next action obvious. If a user pauses to interpret what something means, the design has failed.
+Software fails when users hesitate. Every label, icon, color, and layout choice should make the next action clear. If a user pauses to interpret what something means, the design has failed.
 
 - Labels are explicit — never rely on icons alone without text.
 - Status is unmistakable — success, error, warning, and information are visually distinct.
@@ -38,7 +38,7 @@ Business software fails when users hesitate. Every label, icon, color, and layou
 
 **One semantic token system. One component contract. Two framework implementations — one visual outcome.**
 
-BRKTA ONE runs two frontend frameworks — Angular and React — but users experience one product. Visual inconsistency between the dashboard and the website erodes trust.
+The design system supports Angular and React while maintaining a consistent visual language across applications.
 
 - A button in Angular looks identical to a button in React — same tokens, same CSS, same data attributes.
 - A `primary` variant means the same thing in every component and every framework.
@@ -51,7 +51,7 @@ BRKTA ONE runs two frontend frameworks — Angular and React — but users exper
 
 **Visual weight matches importance. Actions, information, and navigation are distinguishable at a glance.**
 
-Business dashboards are dense. A clear hierarchy helps users find what matters without reading everything.
+Dense interfaces need clear hierarchy so people can find what matters without reading everything.
 
 - Primary actions use `--primary` background or prominent positioning.
 - Secondary actions use `--secondary` or `outline` — present but not competing.
@@ -79,7 +79,7 @@ Users build mental models of how the system behaves. Unexpected behavior breaks 
 
 **Reduce steps, not information. Business users need speed and accuracy.**
 
-BRKTA ONE serves businesses. Every extra click, every unnecessary scroll, every redundant confirmation slows down real work.
+Good interfaces help people complete tasks without unnecessary clicks, scrolling, or confirmation steps.
 
 - Default values are pre-filled where predictable.
 - Keyboard shortcuts and tab order follow logical progression.
@@ -120,16 +120,15 @@ Not every user needs every option every time. Progressive disclosure reduces cog
 
 ## Accessibility
 
-**Every component meets WCAG 2.2 AA at minimum. Accessible design is not a mode — it's the default.**
+**Design for WCAG 2.2 AA; verify each component and consuming application. Accessibility is not an optional mode.**
 
-Accessibility is not an afterthought or a theme toggle. It is baked into every token, every component contract, and every interaction pattern.
+Treat accessibility as a core part of tokens, component contracts, and interaction patterns, not as an afterthought or a theme toggle.
 
-- Color contrast ratios meet 4.5:1 for normal text and 3:1 for large text in both light and dark themes.
-- All interactive elements are reachable and operable by keyboard.
-- Focus-visible rings are visible on every focusable element.
-- Screen reader support is built into component contracts — ARIA labels, landmarks, live regions.
-- Reduced motion and reduced transparency preferences are respected.
-- Accessible design is tested in CI, not manually verified once.
+- Target at least 4.5:1 contrast for normal text and 3:1 for large text and meaningful graphical elements; validate actual theme combinations.
+- Make interactive elements reachable and operable by keyboard, with visible focus indicators.
+- Use semantic markup and the ARIA patterns appropriate to each component.
+- Respect reduced-motion and reduced-transparency preferences where applicable.
+- Include automated and manual accessibility checks in component validation.
 
 ---
 
@@ -144,7 +143,7 @@ Business users work from offices, homes, phones, and tablets. The experience mus
 - Touch targets are minimum 44px for interactive elements.
 - Navigation collapses appropriately — sidebar becomes drawer on small screens.
 - Data tables scroll horizontally or use responsive card layouts on narrow viewports.
-- Critical business actions remain available on mobile — read-only is insufficient.
+- Essential actions remain available on mobile; do not reduce a responsive experience to read-only content.
 
 ---
 

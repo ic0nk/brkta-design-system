@@ -1,7 +1,5 @@
 # Context Menu
 
-> Wave 6 — Data + Operational Components
-
 A right-click context menu with items, separators, disabled items, and destructive items.
 
 ## Data Attributes

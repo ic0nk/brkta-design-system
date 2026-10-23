@@ -1,6 +1,6 @@
 # Motion
 
-> Purposeful animation that communicates state changes and guides attention. Motion in BRKTA ONE is restrained — it serves a function, never decoration.
+> Purposeful animation that communicates state changes and guides attention. Motion in the BRKTA Design System is restrained — it serves a function, never decoration.
 
 ---
 

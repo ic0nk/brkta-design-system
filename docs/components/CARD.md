@@ -8,7 +8,7 @@
 
 - Present a distinct piece of content (feature, module, summary).
 - Group related form fields or information.
-- Create dashboard widgets or stat cards.
+- Create data widgets or stat cards.
 - Display content in a grid layout.
 
 Do not nest Cards more than one level deep. Use a single Card as the outer container.
@@ -68,7 +68,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 
 | Variant | Style | Use Case |
 |---------|-------|----------|
-| `default` | Filled background + border + shadow | Most cards, dashboard widgets |
+| `default` | Filled background + border + shadow | Most cards, data widgets |
 | `outlined` | Transparent background + border | Cards on colored surfaces, subtle containers |
 | `ghost` | No background, no border, no shadow | Nested content groups, layout only |
 
@@ -82,5 +82,5 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 
 ## Related
 
-- **Dialog** — Planned. For modal content containers.
+- **Dialog** — For modal content containers.
 - **Button** — For actions inside a card footer.

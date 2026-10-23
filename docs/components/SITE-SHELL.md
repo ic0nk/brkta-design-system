@@ -1,6 +1,6 @@
 # Site Shell
 
-The public-site shell provides the reusable first-entry intro, responsive header, mobile navigation, and footer reveal used by the BRKTA company website and future public product websites.
+The public-site shell provides a reusable intro, responsive header, mobile navigation, and footer reveal for React-based sites.
 
 ## Package
 
@@ -8,7 +8,7 @@ The public-site shell provides the reusable first-entry intro, responsive header
 import { SiteExperience } from "@brkta/ui-react/site-shell";
 ```
 
-The shell accepts the logo, navigation, CTA, intro copy, and footer groups as configuration. It does not hardcode company or product routes.
+The shell accepts the logo, navigation, CTA, intro copy, and footer groups as configuration. It does not hardcode application routes.
 
 ## Theme integration
 

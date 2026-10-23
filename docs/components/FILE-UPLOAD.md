@@ -63,13 +63,8 @@ read as one system.
 </section>
 ```
 
-- In the dashboard, the `brktaFileDrop` directive (`apps/dashboard/src/app/core/file-drop.ts`) sets
-  the host attributes, reads the drop (files only; in-page drags without `Files`, such as gallery
-  reordering, are ignored), and enforces `accept`, `maxFileSize` and `maxFiles`. Surfaces place the
-  overlay and status slots in their own templates and add no drop-zone styles of their own.
-- **No React or Angular wrapper component.** The recipe is attribute-only CSS, so there is nothing
-  for a wrapper to render. The website has no drop surfaces today; a React surface would set the
-  same attributes.
+- A consuming app can set the host attributes, read file drops, and enforce `accept`, `maxFileSize`, and `maxFiles`. Keep the overlay and status slots in the host template; do not duplicate drop-zone styles.
+- The drop-zone recipe is attribute-only CSS. A consumer that supports dropping files supplies the behavior and markup; this recipe does not itself upload files.
 - The overlay is decorative (`aria-hidden`). The section's existing buttons stay the keyboard and
   screen-reader path to upload; the status region announces progress.
 - Reduced-motion mode removes the outline transition.

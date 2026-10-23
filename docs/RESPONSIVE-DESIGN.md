@@ -14,8 +14,8 @@ Do not solve a narrow viewport by hiding essential content, shrinking text until
 
 - [Breakpoints](#breakpoints)
 - [Mobile-First Approach](#mobile-first-approach)
-- [Dashboard Specific Patterns](#dashboard-specific-patterns)
-- [Website Specific Patterns](#website-specific-patterns)
+- [Dense Application Layouts](#dense-application-layouts)
+- [Content-First Layouts](#content-first-layouts)
 - [Touch Targets](#touch-targets)
 - [Typography](#typography)
 - [Navigation Patterns](#navigation-patterns)
@@ -25,7 +25,7 @@ Do not solve a narrow viewport by hiding essential content, shrinking text until
 
 ## Breakpoints
 
-Breakpoints are defined by Tailwind v4 and used consistently across both the dashboard and website. They are documented here for reference.
+The following Tailwind v4 breakpoints provide a consistent reference for consuming applications.
 
 | Breakpoint | Min Width | CSS                          | Target Devices              |
 | ---------- | --------- | ---------------------------- | --------------------------- |
@@ -100,7 +100,7 @@ Desktop:    [Sidebar] [Primary Content] [Detail Panel]
 
 ---
 
-## Dashboard Specific Patterns
+## Dense Application Layouts
 
 ### Sidebar Behavior
 
@@ -136,22 +136,22 @@ Desktop:    [Sidebar] [Primary Content] [Detail Panel]
 | Breakpoint        | Layout                                                                    |
 | ----------------- | ------------------------------------------------------------------------- |
 | Default (< 768px) | All sections stacked vertically — full width                              |
-| md (768px+)       | Two-column layout for dashboards with sidebar + content                   |
-| lg (1024px+)      | Full multi-column layout with sidebar, content, and optional detail panel |
+| md (768px+)       | Two-column layout for an application shell with navigation + content                   |
+| lg (1024px+)      | Multi-column layout with navigation, content, and optional detail panel |
 
-### Dashboard Grid
+### Responsive Grid
 
-Dashboard grids (metric cards, chart panels) should use `auto-fill` with a minimum column width:
+Dense content grids (metric cards, chart panels) should use `auto-fill` with a minimum column width:
 
 ```css
-.dashboard-grid {
+.responsive-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
   gap: var(--space-4);
 }
 
 @media (min-width: 768px) {
-  .dashboard-grid {
+  .responsive-grid {
     gap: var(--space-6);
   }
 }
@@ -159,7 +159,7 @@ Dashboard grids (metric cards, chart panels) should use `auto-fill` with a minim
 
 ---
 
-## Website Specific Patterns
+## Content-First Layouts
 
 ### Content Layout
 
@@ -170,20 +170,20 @@ Dashboard grids (metric cards, chart panels) should use `auto-fill` with a minim
 | lg (1024px+)      | Wider content area with constrained max-width, multi-column features |
 
 ```css
-.website-content {
+.site-content {
   padding-inline: var(--space-4);
   max-width: 72rem;
   margin-inline: auto;
 }
 
 @media (min-width: 768px) {
-  .website-content {
+  .site-content {
     padding-inline: var(--space-8);
   }
 }
 
 @media (min-width: 1024px) {
-  .website-content {
+  .site-content {
     padding-inline: var(--space-12);
   }
 }
@@ -191,7 +191,7 @@ Dashboard grids (metric cards, chart panels) should use `auto-fill` with a minim
 
 ### Feature Sections
 
-Website feature sections (marketing pages, product pages) stack vertically on mobile and align side-by-side on desktop:
+Content feature sections (documentation, editorial, or product pages) stack vertically on mobile and align side-by-side on desktop:
 
 ```css
 .feature-section {

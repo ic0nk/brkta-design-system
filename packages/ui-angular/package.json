@@ -2,6 +2,7 @@
   "name": "@brkta/ui-angular",
   "version": "0.1.0",
   "type": "module",
+  "license": "MIT",
   "main": "./dist/fesm2022/brkta-ui-angular.mjs",
   "types": "./dist/types/brkta-ui-angular.d.ts",
   "scripts": {
@@ -48,7 +49,7 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
-    "access": "restricted"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -59,6 +60,8 @@
     "**/*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ]
 }

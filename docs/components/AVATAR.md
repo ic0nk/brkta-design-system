@@ -86,4 +86,4 @@ import { Avatar } from '@brkta/ui-react/avatar';
 
 ## Related
 
-- **Badge** — For count indicators on avatars (planned).
+- **Badge** — For count indicators on avatars.

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#F4F1EA">
+    <meta name="description" content="BRKTA Design System — shared React and Angular components, tokens, and styles.">
+    <title>BRKTA Design System</title>
+    <style>
+      :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #F4F1EA; color: #24221d; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; }
+      main { width: min(100% - 2rem, 1100px); margin-inline: auto; padding: clamp(3rem, 10vw, 8rem) 0; }
+      .eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #68645c; }
+      h1 { max-width: 800px; margin: 1rem 0; font-size: clamp(3rem, 8vw, 6.5rem); line-height: .98; letter-spacing: -.065em; }
+      .pitch { max-width: 640px; margin: 1.5rem 0 2.5rem; color: #5d594f; font-size: clamp(1.1rem, 2.5vw, 1.35rem); line-height: 1.6; }
+      .install { display: inline-block; padding: .9rem 1rem; border: 1px solid #d8d1c5; border-radius: .7rem; background: #fffcf7; color: #29271f; font: 500 .95rem ui-monospace, SFMono-Regular, Consolas, monospace; overflow-wrap: anywhere; }
+      nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 3rem 0; }
+      nav a { display: flex; min-height: 150px; align-items: end; justify-content: space-between; gap: 1rem; padding: 1.5rem; border: 1px solid #d8d1c5; border-radius: 1rem; background: #fffcf7; color: inherit; font-size: clamp(1.15rem, 3vw, 1.65rem); font-weight: 650; text-decoration: none; transition: transform .18s ease, border-color .18s ease; }
+      nav a:hover { transform: translateY(-3px); border-color: #777063; }
+      nav a:focus-visible, .repo:focus-visible { outline: 3px solid #5d6530; outline-offset: 4px; }
+      nav a span:last-child { font-size: 1.5rem; }
+      .repo { color: #5d594f; text-underline-offset: .2em; }
+      .build-note { display: block; margin-top: .5rem; color: #6a665c; font-size: .8rem; font-weight: 450; }
+      @media (max-width: 600px) { nav { grid-template-columns: 1fr; } nav a { min-height: 115px; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">BRKTA · Design System</p>
+      <h1>One design.<br>Two frameworks.</h1>
+      <p class="pitch">A shared foundation of warm, considered design tokens and production-ready components for React and Angular.</p>
+      <p class="install" aria-label="Install the React package">pnpm add @brkta/ui-react</p>
+      <nav aria-label="Component libraries">
+        <a href="./react/"><span>React Storybook<!-- react-build-note --></span><span aria-hidden="true">↗</span></a>
+        <a href="./angular/"><span>Angular Storybook</span><span aria-hidden="true">↗</span></a>
+      </nav>
+      <a class="repo" href="https://github.com/ic0nk/brkta-design-system">Explore the project on GitHub ↗</a>
+    </main>
+  </body>
+</html>

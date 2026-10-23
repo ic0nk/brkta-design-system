@@ -1,7 +1,5 @@
 # Menubar
 
-> Wave 6 — Data + Operational Components
-
 A horizontal menu bar with dropdown submenus. Supports disabled items, keyboard navigation, and blur-based auto-close.
 
 ## Data Attributes

@@ -1,9 +1,8 @@
 # Border Radius — Little Curve
 
-> BRKTA ONE uses a "little curve" visual language — modest, precise radii that
-> communicate professionalism and efficiency, not playfulness. The product is a
-> serious multi-tenant business operating system: calm, sharp, efficient, not
-> decorative.
+> BRKTA uses a "little curve" visual language — modest, precise radii that
+> communicate clarity and restraint. Components feel calm and efficient rather
+> than overly decorative.
 
 ---
 
@@ -74,7 +73,7 @@ standard component radius rules.
 | Style | Radius | Character |
 |-------|--------|-----------|
 | None / Square | 0 px | Harsh, unfinished |
-| Little curve (BRKTA ONE) | 6–10 px | Professional, precise, calm |
+| Little curve (BRKTA) | 6–10 px | Professional, precise, calm |
 | Rounded | 12–16 px | Friendly, approachable |
 | Pill / Bubble | 9999 px | Playful, bubbly — use only for approved exceptions |
 
@@ -155,4 +154,4 @@ When reviewing a component or page for radius correctness:
 - [Elevation and Shadows](ELEVATION.md)
 - [Glass Effects](GLASS.md)
 - [Component Governance](COMPONENT-GOVERNANCE.md)
-- [Visual Review Checklist](VISUAL-REVIEW-CHECKLIST.md)
+- [Responsive Design](RESPONSIVE-DESIGN.md)

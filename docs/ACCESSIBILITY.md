@@ -1,6 +1,6 @@
 # Accessibility
 
-> Every component in the BRKTA ONE Design System meets WCAG 2.2 AA at minimum. Accessible design is not a separate track or a theme toggle — it is baked into every token, every contract, and every component from the start.
+> Accessibility is a design goal across tokens, component contracts, and interaction patterns. Verify each component and consumer against the relevant WCAG 2.2 criteria; this guide does not certify compliance.
 
 ---
 
@@ -22,26 +22,26 @@
 
 ## WCAG 2.2 AA Target
 
-The BRKTA ONE Design System targets **WCAG 2.2 Level AA** as its minimum compliance level. This covers:
+The design system uses **WCAG 2.2 Level AA** as an accessibility target. This guide summarizes relevant criteria; validate the shipped implementation in the consuming context.
 
-| Criteria | Requirement | Status |
-|----------|-------------|--------|
-| 1.1.1 Non-text Content | All non-text content has a text alternative | Built into contracts |
-| 1.3.1 Info and Relationships | Information and relationships programmatically determined | Built into contracts |
-| 1.4.1 Use of Color | Color is not the only means of conveying information | Enforced by design |
-| 1.4.3 Contrast (Normal) | Minimum 4.5:1 contrast ratio | Verified for all token pairs |
-| 1.4.4 Resize Text | Text can be resized to 200% without loss of content | Fluid typography |
-| 1.4.10 Reflow | Content reflows without scroll at 320px | Responsive system |
-| 1.4.11 Non-text Contrast | UI components meet 3:1 | Verified for all interactive elements |
-| 1.4.12 Text Spacing | No loss of content when text spacing is overridden | Tested |
-| 2.1.1 Keyboard | All functionality operable via keyboard | Built into contracts |
-| 2.4.3 Focus Order | Focus order preserves meaning | Tested per component |
-| 2.4.7 Focus Visible | Keyboard focus indicator is visible | Built into CSS |
-| 2.4.11 Focus Not Obscured | Focused element is not hidden by other content | Verified |
-| 2.5.8 Target Size | Minimum 24px target size (AA) | 44px default for interactive |
-| 3.3.1 Error Identification | Errors are identified and described | Built into form contracts |
-| 3.3.2 Labels or Instructions | Labels or instructions provided | Built into form contracts |
-| 3.3.4 Error Prevention | Reversible, checked, or confirmed for legal/financial | Enforced by UX patterns |
+| Criteria | Requirement |
+|----------|-------------|
+| 1.1.1 Non-text Content | Provide text alternatives for non-text content. |
+| 1.3.1 Info and Relationships | Expose content relationships programmatically. |
+| 1.4.1 Use of Color | Do not use color as the only means of conveying information. |
+| 1.4.3 Contrast (Normal) | Target at least 4.5:1 contrast for normal text. |
+| 1.4.4 Resize Text | Support text resizing to 200% without loss of content. |
+| 1.4.10 Reflow | Support reflow at narrow viewports, including 320px. |
+| 1.4.11 Non-text Contrast | Target at least 3:1 for meaningful UI components and graphics. |
+| 1.4.12 Text Spacing | Preserve content and functionality when text spacing is increased. |
+| 2.1.1 Keyboard | Make all functionality operable by keyboard. |
+| 2.4.3 Focus Order | Keep focus order meaningful. |
+| 2.4.7 Focus Visible | Provide a visible keyboard focus indicator. |
+| 2.4.11 Focus Not Obscured | Keep focused elements from being obscured. |
+| 2.5.8 Target Size | Meet the WCAG minimum target size; prefer 44px touch targets where practical. |
+| 3.3.1 Error Identification | Identify and describe input errors. |
+| 3.3.2 Labels or Instructions | Provide labels or instructions for user input. |
+| 3.3.4 Error Prevention | For significant submissions, support review, correction, or confirmation as applicable. |
 
 ---
 
@@ -49,7 +49,7 @@ The BRKTA ONE Design System targets **WCAG 2.2 Level AA** as its minimum complia
 
 ### Focus-Visible Rings
 
-All interactive elements use `:focus-visible` to show a visible focus indicator only when the user navigates with a keyboard (not when clicking with a mouse).
+Use `:focus-visible` to show a clear focus indicator when a person navigates with a keyboard.
 
 ```css
 /* Applied globally in base.css */
@@ -85,7 +85,7 @@ Modals, dialogs, and sheets must trap keyboard focus within the component when o
 
 ### Skip Links
 
-The dashboard and website must include a skip-to-content link as the first focusable element:
+Each application should include a skip-to-content link as the first focusable element:
 
 ```html
 <a href="#main-content" class="skip-link">
@@ -169,21 +169,7 @@ Groups of related controls (radio buttons, tab lists, menu items, toolbar button
 
 ### Token Verification
 
-All semantic token pairs have been verified to meet WCAG 2.2 AA contrast minimums:
-
-| Background | Foreground | Light Ratio | Dark Ratio | Passes AA? |
-|------------|------------|-------------|-------------|------------|
-| `--background` (cream `#F4F1EA`) | `--foreground` (warm near-black `#181713`) | ~14:1 | ~14:1 | Yes |
-| `--background` (cream `#F4F1EA`) | `--muted-foreground` (warm mid-gray `#68645C`) | ~5.5:1 | ~7:1 | Yes |
-| `--background` (cream `#F4F1EA`) | `--subtle-foreground` (warm gray `#827D73`) | ~4.5:1 | ~6:1 | Yes |
-| `--card` (warm off-white) | `--card-foreground` (warm near-black) | ~14:1 | ~14:1 | Yes |
-| `--primary` (warm near-black) | `--primary-foreground` (cream) | ~14:1 | ~14:1 | Yes |
-| `--destructive` (red) | `--destructive-foreground` (cream) | ~5.5:1 | ~5.5:1 | Yes |
-| `--accent` (lime `#D7FF3F`) | `--accent-foreground` (dark green-black) | ~7:1 | ~7:1 | Yes |
-| `--accent` (dark lime) | `--accent-foreground` (cream) | — | ~8:1 | Yes |
-| `--border` (warm beige `#DDD5C8`) | `--background` (cream) | ~3:1 | ~3:1 | Yes (graphical) |
-
-All critical text contrast pairs meet or exceed the 4.5:1 WCAG AA requirement for normal text and 3:1 for large text and graphical objects.
+Do not assume every semantic token pairing passes contrast requirements. Validate the combinations actually used in both light and dark themes whenever token values change, and review text, icons, borders, and focus indicators against their rendered backgrounds.
 
 **Key properties of the warm creamy neutral palette:**
 - The cream background (`#F4F1EA`, L=0.9585) is slightly darker than pure white, which actually improves contrast against all foreground colors compared to a pure white background.
@@ -192,7 +178,7 @@ All critical text contrast pairs meet or exceed the 4.5:1 WCAG AA requirement fo
 
 ### Testing
 
-- Every new component must have its color contrast verified against WCAG AA standards.
+- Verify every new component's color contrast against WCAG AA targets.
 - Test in both light and dark modes.
 - Test text on glass surfaces with the worst-case visible background.
 - Use automated tools (axe-core, Lighthouse) in CI.

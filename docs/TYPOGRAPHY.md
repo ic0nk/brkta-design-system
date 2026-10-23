@@ -1,6 +1,6 @@
 # Typography
 
-> A clear, functional type system built for business applications. Typography in BRKTA ONE prioritizes readability, scanability, and information hierarchy over decorative expression.
+> A clear, functional type system for interfaces. BRKTA typography prioritizes readability, scanability, and information hierarchy over decorative expression.
 
 ---
 
@@ -30,7 +30,7 @@
 
 **Geist Sans** (via `@fontsource-variable/geist`) is the primary typeface for all UI text — headings, body, labels, buttons, navigation, and table content. It is a modern, geometric sans-serif optimized for screen readability with clear character distinction and excellent legibility at both small and large sizes.
 
-- Used everywhere in the dashboard and website.
+- Use for headings, body text, labels, controls, navigation, and table content.
 - Loaded as a variable font (weight range 100–900) for performance via fontsource.
 - Self-hosted — no external CDN or Google Fonts requests.
 - Arabic fallback uses Noto Sans Arabic Variable (see below).
@@ -51,7 +51,7 @@
 `--font-arabic: var(--font-family-arabic);`
 `--font-family-arabic: 'Noto Sans Arabic Variable', 'Noto Sans Arabic', sans-serif;`
 
-**Noto Sans Arabic** (via `@fontsource-variable/noto-sans-arabic`) is the Arabic UI companion font for the BRKTA ONE typography system.
+**Noto Sans Arabic** (via `@fontsource-variable/noto-sans-arabic`) is the Arabic UI companion font for the BRKTA Design System typography.
 
 - **Preferred:** Noto Sans Arabic UI (exact UI variant).
 - **Current:** Noto Sans Arabic Variable — the exact "UI" variant is not available as a clean self-hosted npm package at this time.
@@ -60,18 +60,16 @@
 - Apply `direction: rtl` on elements containing Arabic text.
 - Will be updated to the exact UI variant once available.
 
-### Geist Pixel (Restricted Display / Accent — Planned)
+### Geist Pixel Square (Display / Accent)
 
 `--font-pixel: var(--font-family-pixel);`
 `--font-family-pixel: 'Geist Pixel Square', 'Geist Pixel', var(--font-family-sans);`
 
 **Geist Pixel** is a rare display/accent font intended for small brand markers, technical labels, and special visual inventory indicators only.
 
-- **Status:** Planned / self-hosting not yet implemented.
-- Falls back to `var(--font-sans)` until the font files are added.
-- **Restricted:** Must NOT be used for body text, buttons, tables, forms, cards, dashboard UI, or normal navigation.
-- Every use requires documented approval.
-- Will be self-hosted in `packages/design-tokens/fonts/` once implemented.
+- The Geist Pixel Square font file is distributed from `packages/design-tokens/fonts/GeistPixel-Square.woff2`.
+- Use it selectively for display accents rather than long-form text or dense interface content.
+- The font is licensed under SIL Open Font License 1.1; see `packages/design-tokens/fonts/OFL.txt`.
 
 ---
 
@@ -119,7 +117,7 @@ h1 {
 | Line height | `--line-height-normal` (1.5) |
 | Font family | `--font-sans` |
 
-The **14px base** is intentional — business dashboards display dense information. The larger 16px base is reserved for long-form reading contexts.
+The **14px base** supports compact interface content. Use a larger 16px base for long-form reading contexts.
 
 ### Long-form Reading Text
 

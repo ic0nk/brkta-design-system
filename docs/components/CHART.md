@@ -1,8 +1,6 @@
 # Chart
 
-> Wave 6 — Data + Operational Components
-
-Visualization primitives for bar, donut, and metric card charts. Uses BRKTA ONE semantic tokens.
+Visualization primitives for bar, donut, and metric card charts. Uses semantic design tokens.
 
 ## Data Attributes
 | Attribute | Element | Purpose |

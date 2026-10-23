@@ -1,6 +1,6 @@
 # Spacing
 
-> A consistent spacing scale derived from a 0.25rem (4px) base unit. Every gap, margin, and padding in BRKTA ONE draws from this single scale — no ad-hoc values.
+> A consistent spacing scale derived from a 0.25rem (4px) base unit. Every gap, margin, and padding in the design system draws from this single scale — no ad-hoc values.
 
 ---
 
@@ -59,7 +59,7 @@ All spacing values are defined as CSS custom properties in `theme.css` and follo
 
 ## Layout Spacing
 
-These conventions govern the overall page layout in the dashboard and website.
+Use these conventions to build consistent page layouts in consuming applications.
 
 | Context | Token | Value (rem) | Value (px) |
 |---------|-------|-------------|------------|

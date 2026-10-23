@@ -98,5 +98,5 @@ An Alert can contain:
 
 ## Related
 
-- **Toast** — Planned. For transient notifications.
-- **Dialog** — Planned. For blocking messages requiring user action.
+- **Toast** — For transient notifications.
+- **Dialog** — For blocking messages requiring user action.

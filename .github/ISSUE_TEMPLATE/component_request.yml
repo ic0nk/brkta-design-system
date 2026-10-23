@@ -1,0 +1,42 @@
+name: Component request
+description: Propose a reusable design-system component or variant.
+title: "[Component]: "
+labels: [component-request]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: Component or variant name
+    validations:
+      required: true
+  - type: textarea
+    id: use_cases
+    attributes:
+      label: Use cases
+      description: Describe the user needs and where the component would be used.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected behavior and states
+      description: Include keyboard, loading, disabled, empty, and error states where relevant.
+    validations:
+      required: true
+  - type: dropdown
+    id: framework
+    attributes:
+      label: Frameworks
+      multiple: true
+      options:
+        - Angular
+        - React / Next.js
+        - Framework-neutral
+    validations:
+      required: true
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility considerations
+    validations:
+      required: false

@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a reproducible problem in the design system.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Please check existing issues first and do not include credentials or personal data.
+  - type: input
+    id: package
+    attributes:
+      label: Package and version
+      placeholder: "@brkta/ui-react 0.1.0"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Include expected behavior and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps or reproduction
+      description: Share the smallest reproducible example.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Framework and environment
+      placeholder: "React 19, pnpm, browser"
+    validations:
+      required: false

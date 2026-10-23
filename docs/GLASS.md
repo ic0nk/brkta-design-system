@@ -1,6 +1,6 @@
 # Glass Effects
 
-> Frosted-glass visual effects using `backdrop-filter` blur and `color-mix()` for automatic theme adaptation. Glass in BRKTA ONE is used deliberately — it communicates depth and surface separation without overwhelming content.
+> Frosted-glass visual effects using `backdrop-filter` blur and `color-mix()` for automatic theme adaptation. Glass effects are used deliberately — it communicates depth and surface separation without overwhelming content.
 
 All glass recipes use **semantic tokens** (`--surface`, `--border`, `--accent`, `--popover`) and therefore adapt automatically to both light and dark themes. No hardcoded colors are used.
 
@@ -25,7 +25,7 @@ Five glass classes are defined in `@brkta/design-tokens/glass.css`. Each is a ut
 
 ### glass-card
 
-For cards, metric tiles, and content panels on the dashboard.
+For cards, metric tiles, and content panels.
 
 ```css
 .glass-card {
@@ -235,7 +235,7 @@ Do not use blur values outside this set. 4px is too subtle to matter; values abo
 
 Glass effects are permitted exclusively in these contexts:
 
-- **Cards** — `glass-card` for dashboard metric panels and content cards.
+- **Cards** — `glass-card` for metric panels and content cards.
 - **Modals and dialogs** — `glass-elevated` for floating overlays.
 - **Navigation** — `glass-nav-pill`, `glass-nav-menu`, `glass-nav-item`, `glass-nav-item-active`, `glass-nav-subitem`, and `glass-nav-subitem-active` for navigation surfaces.
 - **Sidebars** — subtle glass on background panels when the sidebar overlays content.

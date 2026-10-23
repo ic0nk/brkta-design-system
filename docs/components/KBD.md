@@ -64,4 +64,4 @@ import { Kbd } from '@brkta/ui-react/kbd';
 
 ## Related
 
-- **Tooltip** — Planned. For showing keyboard shortcuts on hover.
+- **Tooltip** — For showing keyboard shortcuts on hover.

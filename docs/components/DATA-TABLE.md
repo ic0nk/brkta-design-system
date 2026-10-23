@@ -2,13 +2,11 @@
 
 ## Cell templates
 
-Owner-approved 2026-10-21: optional column-keyed `cellTemplates` render inside the existing
+Optional column-keyed `cellTemplates` render inside the existing
 governed `<td>`. Unspecified columns retain plain text. Angular takes `TemplateRef` values
 with `$implicit`/`row`, `column` and `value`; React takes render functions receiving
 `{ row, column, value }`. Compose existing Badge/icon components in these slots; never HTML
 strings. Sorting continues to use the original row data, and selection/action behavior is unchanged.
-
-> Wave 6 — Data + Operational Components
 
 A data-centric table with sortable columns, row selection, row actions, status cells, and empty/loading states.
 

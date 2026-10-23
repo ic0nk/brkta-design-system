@@ -1,7 +1,5 @@
 # Collapsible
 
-> Wave 4B — Advanced Navigation + Layout Utilities
-
 ## Overview
 
 A single-item expand/collapse component. Unlike Accordion which manages multiple items, Collapsible manages a single trigger/content pair.

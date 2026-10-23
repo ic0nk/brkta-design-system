@@ -74,7 +74,7 @@ import { Skeleton } from '@brkta/ui-react/skeleton';
 | Variant | Shape | Height | Use Case |
 |---------|-------|--------|----------|
 | `text` | Small rounded rectangle | 12px | Text lines, labels, paragraphs |
-| `card` | Large rounded rectangle | 128px | Card content, dashboard widgets |
+| `card` | Large rounded rectangle | 128px | Card content, data widgets |
 | `table` | Medium rounded rectangle | 40px | Table rows, list items |
 
 ## Accessibility

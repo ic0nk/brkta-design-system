@@ -3,9 +3,9 @@
 The shared content wrapper uses inline flex alignment and `--space-2` spacing so
 icons and labels stay on one horizontal row in both framework wrappers.
 
-> A clickable element that triggers an action. The Button is the most frequently used interactive component in BRKTA ONE. It appears in every module, every dialog, every toolbar, and every form.
+> A clickable element that triggers an action. The Button is a foundational interactive component used in dialogs, toolbars, and forms.
 
-The Button is the first shared component in the BRKTA ONE Design System. Its architecture establishes the pattern that all other components follow: a shared contract and CSS recipe in `@brkta/ui-core` with thin framework wrappers in `@brkta/ui-react` and `@brkta/ui-angular`.
+The Button is a foundational shared component in the BRKTA Design System. Its architecture establishes the pattern that all other components follow: a shared contract and CSS recipe in `@brkta/ui-core` with thin framework wrappers in `@brkta/ui-react` and `@brkta/ui-angular`.
 
 ---
 
@@ -15,8 +15,8 @@ The Button is the first shared component in the BRKTA ONE Design System. Its arc
 |-------|------|----------------|
 | Core | `@brkta/ui-core/button/button.css` | Shared visual recipe — variants, sizes, states, data-attribute selectors |
 | Core | `@brkta/ui-core/button/button-contract.ts` | Shared type contract — `ButtonContract` interface, variant/size literal types |
-| React | `@brkta/ui-react/src/button/button.tsx` | React wrapper — `forwardRef`, data attributes, icon slots |
-| Angular | `@brkta/ui-angular/src/button/button.component.ts` | Angular standalone component — data attributes, `@Input()` bindings |
+| React | `packages/ui-react/src/button/button.tsx` | React wrapper — `forwardRef`, data attributes, icon slots |
+| Angular | `packages/ui-angular/src/button/button.component.ts` | Angular standalone component — data attributes, `@Input()` bindings |
 
 ---
 
@@ -180,12 +180,12 @@ Single-click destructive (no confirmation dialog) is allowed **only** for non-cr
 
 ### Double confirmation
 
-Irreversible actions with significant business impact (deleting a customer, voiding a posted invoice, terminating a subscription) require **double confirmation**:
+Irreversible actions with significant impact (deleting a customer, voiding a posted invoice, terminating a subscription) require **double confirmation**:
 
 1. First confirmation dialog: "Are you sure?"
 2. Second input: the user must type a word or phrase (e.g., "DELETE") to confirm.
 
-This prevents accidental destructive actions in high-stakes business operations.
+This prevents accidental destructive actions in high-impact operations.
 
 ---
 
@@ -326,6 +326,6 @@ Glass uses the existing `glass-elevated` values from `@brkta/design-tokens/glass
 
 ## Figma Reference
 
-[Button — BRKTA ONE Design System (Figma)](https://figma.com/files/brkta-design-system/button) — _Provisional. Verify link with design team._
+
 
 Pass a translated `loadingLabel` in both frameworks for the screen-reader request announcement. Existing English defaults are preserved.
